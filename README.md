@@ -19,16 +19,16 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
 
 <table>
   <tr>
-    <td><img src="assets/screenshots/lagoon.webp" alt="Lagoon" width="320"></td>
-    <td><img src="assets/screenshots/desert.webp" alt="Desert" width="320"></td>
+    <td><img src="assets/screenshots/tmux-lagoon.webp" alt="Lagoon" width="320"></td>
+    <td><img src="assets/screenshots/tmux-desert.webp" alt="Desert" width="320"></td>
   </tr>
   <tr>
     <td align="center">Lagoon</td>
     <td align="center">Desert</td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/abyss.webp" alt="Abyss" width="320"></td>
-    <td><img src="assets/screenshots/twilight.webp" alt="Twilight" width="320"></td>
+    <td><img src="assets/screenshots/tmux-abyss.webp" alt="Abyss" width="320"></td>
+    <td><img src="assets/screenshots/tmux-twilight.webp" alt="Twilight" width="320"></td>
   </tr>
   <tr>
     <td align="center">Abyss</td>
@@ -40,16 +40,16 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
 
 <table>
   <tr>
-    <td><img src="assets/screenshots/sol.webp" alt="Sol" width="320"></td>
-    <td><img src="assets/screenshots/canyon.webp" alt="Canyon" width="320"></td>
+    <td><img src="assets/screenshots/tmux-sol.webp" alt="Sol" width="320"></td>
+    <td><img src="assets/screenshots/tmux-canyon.webp" alt="Canyon" width="320"></td>
   </tr>
   <tr>
     <td align="center">Sol</td>
     <td align="center">Canyon</td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/mirage.webp" alt="Mirage" width="320"></td>
-    <td><img src="assets/screenshots/cactus.webp" alt="Cactus" width="320"></td>
+    <td><img src="assets/screenshots/tmux-mirage.webp" alt="Mirage" width="320"></td>
+    <td><img src="assets/screenshots/tmux-cactus.webp" alt="Cactus" width="320"></td>
   </tr>
   <tr>
     <td align="center">Mirage</td>
