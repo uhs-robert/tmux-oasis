@@ -59,24 +59,37 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
 
 ### Status Bar with Dynamic Modes
 
-<table>
-  <tr>
-    <td><img src="assets/screenshots/status/mode_normal.webp" alt="Normal" width="320"></td>
-    <td><img src="assets/screenshots/status/mode_command.webp" alt="Command" width="320"></td>
-  </tr>
-  <tr>
-    <td align="center">Normal</td>
-    <td align="center">Command</td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/status/mode_copy.webp" alt="Copy" width="320"></td>
-    <td><img src="assets/screenshots/status/mode_choose.webp" alt="Choose" width="320"></td>
-  </tr>
-  <tr>
-    <td align="center">Copy</td>
-    <td align="center">Choose</td>
-  </tr>
-</table>
+<div align="center">
+
+**Normal Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-normal.webp" alt="Normal Mode" width="600">
+
+**Command Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-command.webp" alt="Command Mode" width="600">
+
+**Copy Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-copy.webp" alt="Copy Mode" width="600">
+
+**View Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-view.webp" alt="View Mode" width="600">
+
+**Choose Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-choose.webp" alt="Choose Mode" width="600">
+
+**Clock Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-clock.webp" alt="Clock Mode" width="600">
+
+**Options Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-options.webp" alt="Options Mode" width="600">
+
+</div>
 
 <details>
   <summary><b>All variants (click to expand)</b></summary>
