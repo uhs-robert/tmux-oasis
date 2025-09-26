@@ -96,51 +96,51 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
 
 ### Abyss
 
-<img src="assets/screenshots/abyss.webp" alt="Abyss" width="800">
+<img src="assets/screenshots/tmux-abyss.webp" alt="Abyss" width="800">
 
 ### Cactus
 
-<img src="assets/screenshots/cactus.webp" alt="Cactus" width="800">
+<img src="assets/screenshots/tmux-tmux-cactus.webp" alt="Cactus" width="800">
 
 ### Canyon
 
-<img src="assets/screenshots/canyon.webp" alt="Canyon" width="800">
+<img src="assets/screenshots/tmux-canyon.webp" alt="Canyon" width="800">
 
 ### Desert
 
-<img src="assets/screenshots/desert.webp" alt="Desert" width="800">
+<img src="assets/screenshots/tmux-desert.webp" alt="Desert" width="800">
 
 ### Dune
 
-<img src="assets/screenshots/dune.webp" alt="Dune" width="800">
+<img src="assets/screenshots/tmux-dune.webp" alt="Dune" width="800">
 
 ### Lagoon
 
-<img src="assets/screenshots/lagoon.webp" alt="Lagoon" width="800">
+<img src="assets/screenshots/tmux-lagoon.webp" alt="Lagoon" width="800">
 
 ### Mirage
 
-<img src="assets/screenshots/mirage.webp" alt="Mirage" width="800">
+<img src="assets/screenshots/tmux-mirage.webp" alt="Mirage" width="800">
 
 ### Night
 
-<img src="assets/screenshots/night.webp" alt="Night" width="800">
+<img src="assets/screenshots/tmux-night.webp" alt="Night" width="800">
 
 ### Rose
 
-<img src="assets/screenshots/rose.webp" alt="Rose" width="800">
+<img src="assets/screenshots/tmux-rose.webp" alt="Rose" width="800">
 
 ### Sol
 
-<img src="assets/screenshots/sol.webp" alt="Sol" width="800">
+<img src="assets/screenshots/tmux-sol.webp" alt="Sol" width="800">
 
 ### Starlight
 
-<img src="assets/screenshots/starlight.webp" alt="Starlight" width="800">
+<img src="assets/screenshots/tmux-starlight.webp" alt="Starlight" width="800">
 
 ### Twilight
 
-<img src="assets/screenshots/twilight.webp" alt="Twilight" width="800">
+<img src="assets/screenshots/tmux-twilight.webp" alt="Twilight" width="800">
 
 </details>
 
