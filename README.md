@@ -57,6 +57,9 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
   </tr>
 </table>
 
+> [!NOTE]
+> This is just a sample. [Want to see them all?](#view-all-theme-variants)
+
 ### Status Bar with Dynamic Modes
 
 <div align="center">
@@ -91,6 +94,8 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
 
 </div>
 
+### View All Theme Variants
+
 <details>
   <summary><b>All variants (click to expand)</b></summary>
 
@@ -100,7 +105,7 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
 
 ### Cactus
 
-<img src="assets/screenshots/tmux-tmux-cactus.webp" alt="Cactus" width="800">
+<img src="assets/screenshots/tmux-cactus.webp" alt="Cactus" width="800">
 
 ### Canyon
 
