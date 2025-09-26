@@ -1,16 +1,135 @@
 # 🏜️ Oasis Tmux
 
-A modular desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants. Originally inspired by the classic `desert` theme for vim, also uses the cool/warm philosophy from `melange` (i.e., `warm colors = action/flow` and `cool colors = structure/data`).
+A modular desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants. Originally inspired by the classic `desert` theme for vim; includes a status line inspired by vim as well.
 
-This is the companion to the **Oasis** theme suite: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
+> [!TIP]
+> This is the companion to the **Oasis** theme suite from NeoVim: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
 
 ## Features
 
-- **Multiple theme variants**: Support for all the Oasis theme variants (lagoon, desert, dune, etc.)
-- **Automatic theme loading**: Set `@oasis_flavor` and the system automatically loads the correct theme
+- **Multiple theme variants**: Support for all the Oasis theme variants (`lagoon`, `desert`, `dune`, etc.)
+- **Automatic theme loading**: Set `@oasis_flavor` and the system will handles the rest
+- **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes. See [status bar screenshots here](#status-bar-with-dynamic-modes)
+- **Modular design**: Separate theme files and unique status line configurations
 - **Standalone**: Zero dependencies on any other plugin
-- **Advanced status line**: Dynamic mode indicators with color-coded states
-- **Modular design**: Separate theme files and status line configuration
+
+## Screenshots
+
+### Classic Desert Themes
+
+<table>
+  <tr>
+    <td><img src="assets/screenshots/lagoon.webp" alt="Lagoon" width="320"></td>
+    <td><img src="assets/screenshots/desert.webp" alt="Desert" width="320"></td>
+  </tr>
+  <tr>
+    <td align="center">Lagoon</td>
+    <td align="center">Desert</td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/abyss.webp" alt="Abyss" width="320"></td>
+    <td><img src="assets/screenshots/twilight.webp" alt="Twilight" width="320"></td>
+  </tr>
+  <tr>
+    <td align="center">Abyss</td>
+    <td align="center">Twilight</td>
+  </tr>
+</table>
+
+### Full Color Spectrum (This is just a sample, [click here to see all 12](/assets/screenshots/))
+
+<table>
+  <tr>
+    <td><img src="assets/screenshots/sol.webp" alt="Sol" width="320"></td>
+    <td><img src="assets/screenshots/canyon.webp" alt="Canyon" width="320"></td>
+  </tr>
+  <tr>
+    <td align="center">Sol</td>
+    <td align="center">Canyon</td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/mirage.webp" alt="Mirage" width="320"></td>
+    <td><img src="assets/screenshots/cactus.webp" alt="Cactus" width="320"></td>
+  </tr>
+  <tr>
+    <td align="center">Mirage</td>
+    <td align="center">Cactus</td>
+  </tr>
+</table>
+
+### Status Bar with Dynamic Modes
+
+<table>
+  <tr>
+    <td><img src="assets/screenshots/status/mode_normal.webp" alt="Normal" width="320"></td>
+    <td><img src="assets/screenshots/status/mode_command.webp" alt="Command" width="320"></td>
+  </tr>
+  <tr>
+    <td align="center">Normal</td>
+    <td align="center">Command</td>
+  </tr>
+  <tr>
+    <td><img src="assets/screenshots/status/mode_copy.webp" alt="Copy" width="320"></td>
+    <td><img src="assets/screenshots/status/mode_choose.webp" alt="Choose" width="320"></td>
+  </tr>
+  <tr>
+    <td align="center">Copy</td>
+    <td align="center">Choose</td>
+  </tr>
+</table>
+
+<details>
+  <summary><b>All variants (click to expand)</b></summary>
+
+### Abyss
+
+<img src="assets/screenshots/abyss.webp" alt="Abyss" width="800">
+
+### Cactus
+
+<img src="assets/screenshots/cactus.webp" alt="Cactus" width="800">
+
+### Canyon
+
+<img src="assets/screenshots/canyon.webp" alt="Canyon" width="800">
+
+### Desert
+
+<img src="assets/screenshots/desert.webp" alt="Desert" width="800">
+
+### Dune
+
+<img src="assets/screenshots/dune.webp" alt="Dune" width="800">
+
+### Lagoon
+
+<img src="assets/screenshots/lagoon.webp" alt="Lagoon" width="800">
+
+### Mirage
+
+<img src="assets/screenshots/mirage.webp" alt="Mirage" width="800">
+
+### Night
+
+<img src="assets/screenshots/night.webp" alt="Night" width="800">
+
+### Rose
+
+<img src="assets/screenshots/rose.webp" alt="Rose" width="800">
+
+### Sol
+
+<img src="assets/screenshots/sol.webp" alt="Sol" width="800">
+
+### Starlight
+
+<img src="assets/screenshots/starlight.webp" alt="Starlight" width="800">
+
+### Twilight
+
+<img src="assets/screenshots/twilight.webp" alt="Twilight" width="800">
+
+</details>
 
 ## Installation
 
@@ -51,8 +170,28 @@ source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
 
 ### Available Theme Variants
 
-- `lagoon` (default) - The original Oasis theme with lagoon-inspired colors
-- Add your own variants by creating `themes/oasis_[variant].conf` files
+#### Classic Desert Themes
+
+- `lagoon` (default) - The original Oasis theme, the heart of the oasis is a lagoon
+- `desert` - Classic desert theme inspired by vim with warm sand and earth tones
+- `abyss` - Deep, dark variant with mysterious depths
+- `twilight` - Evening desert with purple and indigo hues
+
+#### Full Color Spectrum
+
+- `sol` - Bright sunny yellows and warm light tones
+- `canyon` - Rich reds and oranges of desert canyons
+- `mirage` - Cool blues and teals of desert mirages
+- `cactus` - Fresh greens of desert vegetation
+
+#### Additional Variants
+
+- `dune` - Sandy beiges and warm earth tones
+- `night` - Dark blues and purples of desert nights
+- `rose` - Soft pinks and warm rose tones
+- `starlight` - Another black theme, with vibrant/vivid colors
+
+Feel free to add your own variants by creating `themes/oasis_[variant].conf` files
 
 ### Theme Variables
 
@@ -81,4 +220,3 @@ The status line is inspired from lualine in Neovim. It includes:
 - **Current directory**: Abbreviated path display
 - **Real-time clock**: Hours, minutes, seconds with AM/PM
 - **Color-coded states**: Different colors for different tmux modes
-
