@@ -229,7 +229,8 @@ source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
 - `abyss` - **Black** - Deep, dark variant with mysterious depths
 - `starlight` - **Black Vivid** - Desert abyss illuminated by brilliant starlight with vivid accent colors
 
-Feel free to add your own variants by creating `themes/oasis_[variant].conf` files
+> [!TIP]
+> Feel free to add your own variants by creating `themes/oasis_[variant].conf` files
 
 ## Status Line Features
 
