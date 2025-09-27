@@ -101,51 +101,75 @@ A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and mu
 <details>
   <summary><b>All variants (click to expand)</b></summary>
 
-### Sol
+### Sol - Red
+
+Hot, scorching desert sun with intense red tones
 
 <img src="assets/screenshots/tmux-sol.webp" alt="Sol" width="800">
 
-### Canyon
+### Canyon - Orange
+
+Rich oranges of desert canyon walls
 
 <img src="assets/screenshots/tmux-canyon.webp" alt="Canyon" width="800">
 
-### Dune
+### Dune - Yellow
+
+Sandy beiges and warm yellow earth tones
 
 <img src="assets/screenshots/tmux-dune.webp" alt="Dune" width="800">
 
-### Cactus
+### Cactus - Green
+
+Fresh greens of desert vegetation
 
 <img src="assets/screenshots/tmux-cactus.webp" alt="Cactus" width="800">
 
-### Mirage
+### Mirage - Teal
+
+Cool teals of shimmering desert mirages
 
 <img src="assets/screenshots/tmux-mirage.webp" alt="Mirage" width="800">
 
-### Lagoon
+### Lagoon - Blue
+
+The original Oasis theme, cool blues of the oasis lagoon
 
 <img src="assets/screenshots/tmux-lagoon.webp" alt="Lagoon" width="800">
 
-### Rose
+### Rose - Pink
+
+Soft pinks of the warm desert rose
 
 <img src="assets/screenshots/tmux-rose.webp" alt="Rose" width="800">
 
-### Twilight
+### Twilight - Purple
+
+Evening desert with purple and indigo hues
 
 <img src="assets/screenshots/tmux-twilight.webp" alt="Twilight" width="800">
 
-### Desert
+### Desert - Grey
+
+Inspired by the classic vim desert theme, neutral sand and earth tones
 
 <img src="assets/screenshots/tmux-desert.webp" alt="Desert" width="800">
 
-### Night
+### Night - Off Black
+
+Deep desert night sky, almost black for those who prefer softer darkness
 
 <img src="assets/screenshots/tmux-night.webp" alt="Night" width="800">
 
-### Abyss
+### Abyss - Black
+
+Deep, dark variant with mysterious depths
 
 <img src="assets/screenshots/tmux-abyss.webp" alt="Abyss" width="800">
 
-### Starlight
+### Starlight - Black Vivid
+
+Desert abyss illuminated by brilliant starlight with vivid accent colors
 
 <img src="assets/screenshots/tmux-starlight.webp" alt="Starlight" width="800">
 
@@ -207,30 +231,18 @@ source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
 
 Feel free to add your own variants by creating `themes/oasis_[variant].conf` files
 
-### Theme Variables
+## Status Line Features
 
-Each theme provides these color variables:
+The status line is inspired from 'lualine' in Neovim. It includes:
 
-- `@thm_fg` - Foreground text color
-- `@thm_primary` - Primary accent color
-- `@thm_secondary` - Secondary accent color
-- `@thm_core` - Core/background color
-- `@thm_mantle` - Mantle color
-- `@thm_surface` - Surface color
-- `@thm_red`, `@thm_orange`, `@thm_yellow`, `@thm_green`, etc. - Standard colors
+- **Dynamic mode indicators**: Visual indicators for `prefix mode`, `copy mode`, `command mode`, `tree mode` etc.
+- **Session information**: Current session name with icons
+- **Current directory**: Abbreviated path display
+- **Real-time clock**: Hours, minutes, seconds with AM/PM
+- **Color-coded states**: Different colors for all of the different tmux modes
 
-### Creating New Theme Variants
+## (Devs) Creating New Theme Variants
 
 1. Create a new file in `themes/oasis_[name].conf`
 2. Define all the `@thm_*` color variables
 3. Use `set -g @oasis_flavor "[name]"` in your tmux.conf
-
-### Status Line Features
-
-The status line is inspired from lualine in Neovim. It includes:
-
-- **Dynamic mode indicators**: Visual indicators for copy mode, command mode, etc.
-- **Session information**: Current session name with icons
-- **Current directory**: Abbreviated path display
-- **Real-time clock**: Hours, minutes, seconds with AM/PM
-- **Color-coded states**: Different colors for different tmux modes
