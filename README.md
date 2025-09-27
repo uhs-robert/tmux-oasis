@@ -87,31 +87,31 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
 
 **Normal Mode**
 <br>
-<img src="assets/screenshots/statusbar/mode-normal.webp" alt="Normal Mode" width="600">
+<img src="assets/screenshots/statusbar/mode-normal.webp" alt="Normal Mode">
 
 **Command Mode**
 <br>
-<img src="assets/screenshots/statusbar/mode-command.webp" alt="Command Mode" width="600">
+<img src="assets/screenshots/statusbar/mode-command.webp" alt="Command Mode">
 
 **Copy Mode**
 <br>
-<img src="assets/screenshots/statusbar/mode-copy.webp" alt="Copy Mode" width="600">
+<img src="assets/screenshots/statusbar/mode-copy.webp" alt="Copy Mode">
 
 **View Mode**
 <br>
-<img src="assets/screenshots/statusbar/mode-view.webp" alt="View Mode" width="600">
+<img src="assets/screenshots/statusbar/mode-view.webp" alt="View Mode">
 
 **Choose Mode**
 <br>
-<img src="assets/screenshots/statusbar/mode-choose.webp" alt="Choose Mode" width="600">
+<img src="assets/screenshots/statusbar/mode-choose.webp" alt="Choose Mode">
 
 **Clock Mode**
 <br>
-<img src="assets/screenshots/statusbar/mode-clock.webp" alt="Clock Mode" width="600">
+<img src="assets/screenshots/statusbar/mode-clock.webp" alt="Clock Mode">
 
 **Options Mode**
 <br>
-<img src="assets/screenshots/statusbar/mode-options.webp" alt="Options Mode" width="600">
+<img src="assets/screenshots/statusbar/mode-options.webp" alt="Options Mode">
 
 </div>
 
