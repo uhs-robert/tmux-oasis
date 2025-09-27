@@ -1,17 +1,18 @@
 # 🏜️ Oasis Tmux
 
-A modular desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants. Originally inspired by the classic `desert` theme for vim; includes a status line inspired by vim as well.
+A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants (12 Total Themes). Originally inspired by the classic `desert` theme for vim; includes a status line inspired by vim as well.
 
 > [!TIP]
 > This is the companion to the **Oasis** theme suite from NeoVim: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
 
 ## Features
 
-- **Multiple theme variants**: Support for all the Oasis theme variants (`lagoon`, `desert`, `dune`, etc.)
+- **12 different theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert inspired and include (`lagoon`, `desert`, `dune`, `sol` etc.). There are 4 different black variants as well.
 - **Automatic theme loading**: Set `@oasis_flavor` and the system will handles the rest
-- **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes. See [status bar screenshots here](#status-bar-with-dynamic-modes)
-- **Modular design**: Separate theme files and unique status line configurations
-- **Standalone**: Zero dependencies on any other plugin
+- **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
+  - [Status bar screenshots here](#status-bar-with-dynamic-modes)
+- **Modular design**: Separate theme files and unique status line configurations (_you could just download **only** what you need_)
+- **Standalone**: Zero dependencies on any other plugins
 
 ## Screenshots
 
@@ -36,7 +37,7 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
   </tr>
 </table>
 
-### Full Color Spectrum (This is just a sample, [click here to see all 12](/assets/screenshots/))
+### Full Color Spectrum (12 Themes Total)
 
 <table>
   <tr>
@@ -59,7 +60,7 @@ A modular desert-themed colorscheme for Tmux with warm, earthy tones and multipl
 </table>
 
 > [!NOTE]
-> This is just a sample. [Want to see them all?](#view-all-theme-variants)
+> This is just a small sample. There are many more. [Click here to see them all](#view-all-theme-variants)
 
 ### Status Bar with Dynamic Modes
 
@@ -189,26 +190,20 @@ source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
 
 ### Available Theme Variants
 
-#### Classic Desert Themes
+#### By Dominant Color
 
-- `lagoon` (default) - The original Oasis theme, the heart of the oasis is a lagoon
-- `desert` - Classic desert theme inspired by vim with warm sand and earth tones
-- `abyss` - Deep, dark variant with mysterious depths
-- `twilight` - Evening desert with purple and indigo hues
-
-#### Full Color Spectrum
-
-- `sol` - Bright sunny yellows and warm light tones
-- `canyon` - Rich reds and oranges of desert canyons
-- `mirage` - Cool blues and teals of desert mirages
-- `cactus` - Fresh greens of desert vegetation
-
-#### Additional Variants
-
-- `dune` - Sandy beiges and warm earth tones
-- `night` - Dark blues and purples of desert nights
-- `rose` - Soft pinks and warm rose tones
-- `starlight` - Another black theme, with vibrant/vivid colors
+- `sol` - **Red** - Hot, scorching desert sun with intense red tones
+- `canyon` - **Orange** - Rich oranges of desert canyon walls
+- `dune` - **Yellow** - Sandy beiges and warm yellow earth tones
+- `cactus` - **Green** - Fresh greens of desert vegetation
+- `mirage` - **Teal** - Cool teals of shimmering desert mirages
+- `lagoon` (default) - **Blue** - The original Oasis theme, cool blues of the oasis lagoon
+- `twilight` - **Purple** - Evening desert with purple and indigo hues
+- `rose` - **Pink** - Soft pinks of the warm desert rose
+- `desert` - **Grey** - Inspired by the classic vim desert theme, neutral sand and earth tones
+- `night` - **Off Black** - Deep desert night sky, almost black for those who prefer softer darkness
+- `abyss` - **Black** - Deep, dark variant with mysterious depths
+- `starlight` - **Black Vivid** - Desert abyss illuminated by brilliant starlight with vivid accent colors
 
 Feel free to add your own variants by creating `themes/oasis_[variant].conf` files
 
