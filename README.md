@@ -7,62 +7,81 @@ A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and mu
 
 ## Features
 
-- **12 different theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert inspired and include (`lagoon`, `desert`, `dune`, `sol` etc.). There are 4 different black variants as well.
+- **12 theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert-inspired.
 - **Automatic theme loading**: Set `@oasis_flavor` and the system will handles the rest
 - **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
   - [Status bar screenshots here](#status-bar-with-dynamic-modes)
 - **Modular design**: Separate theme files and unique status line configurations (_you could just download **only** what you need_)
 - **Standalone**: Zero dependencies on any other plugins
 
-## Screenshots
+## Theme Overview
 
-### Classic Desert Themes
+Choose from 12 distinct desert-inspired variants, each with its own personality and color palette:
 
-<table>
-  <tr>
-    <td align="center">Lagoon</td>
-    <td align="center">Desert</td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/tmux-lagoon.webp" alt="Lagoon" width="320"></td>
-    <td><img src="assets/screenshots/tmux-desert.webp" alt="Desert" width="320"></td>
-  </tr>
-  <tr>
-    <td align="center">Abyss</td>
-    <td align="center">Twilight</td>
-  </tr>
-  <tr>
-    <td><img src="assets/screenshots/tmux-abyss.webp" alt="Abyss" width="320"></td>
-    <td><img src="assets/screenshots/tmux-twilight.webp" alt="Twilight" width="320"></td>
-  </tr>
-</table>
-
-### Full Color Spectrum (12 Themes Total)
+> Click one below to see a larger image (**the plugin is the _status line_ at the top**)
 
 <table>
   <tr>
-    <td align="center">Sol</td>
-    <td align="center">Canyon</td>
+    <td align="center">
+      <a href="#night---off-black"><img src="assets/screenshots/tmux-night.webp" alt="Night" width="180"></a><br>
+      <strong>Night</strong><br><em>Off Black</em>
+    </td>
+    <td align="center">
+      <a href="#abyss---black"><img src="assets/screenshots/tmux-abyss.webp" alt="Abyss" width="180"></a><br>
+      <strong>Abyss</strong><br><em>Black</em>
+    </td>
+    <td align="center">
+      <a href="#starlight---black-vivid"><img src="assets/screenshots/tmux-starlight.webp" alt="Starlight" width="180"></a><br>
+      <strong>Starlight</strong><br><em>Black Vivid</em>
+    </td>
+    <td align="center">
+      <a href="#desert---grey"><img src="assets/screenshots/tmux-desert.webp" alt="Desert" width="180"></a><br>
+      <strong>Desert</strong><br><em>Grey</em>
+    </td>
   </tr>
   <tr>
-    <td><img src="assets/screenshots/tmux-sol.webp" alt="Sol" width="320"></td>
-    <td><img src="assets/screenshots/tmux-canyon.webp" alt="Canyon" width="320"></td>
+    <td align="center">
+      <a href="#sol---red"><img src="assets/screenshots/tmux-sol.webp" alt="Sol" width="180"></a><br>
+      <strong>Sol</strong><br><em>Red</em>
+    </td>
+    <td align="center">
+      <a href="#canyon---orange"><img src="assets/screenshots/tmux-canyon.webp" alt="Canyon" width="180"></a><br>
+      <strong>Canyon</strong><br><em>Orange</em>
+    </td>
+    <td align="center">
+      <a href="#dune---yellow"><img src="assets/screenshots/tmux-dune.webp" alt="Dune" width="180"></a><br>
+      <strong>Dune</strong><br><em>Yellow</em>
+    </td>
+    <td align="center">
+      <a href="#cactus---green"><img src="assets/screenshots/tmux-cactus.webp" alt="Cactus" width="180"></a><br>
+      <strong>Cactus</strong><br><em>Green</em>
+    </td>
   </tr>
   <tr>
-    <td align="center">Mirage</td>
-    <td align="center">Cactus</td>
+    <td align="center">
+      <a href="#mirage---teal"><img src="assets/screenshots/tmux-mirage.webp" alt="Mirage" width="180"></a><br>
+      <strong>Mirage</strong><br><em>Teal</em>
+    </td>
+    <td align="center">
+      <a href="#lagoon---blue"><img src="assets/screenshots/tmux-lagoon.webp" alt="Lagoon" width="180"></a><br>
+      <strong>Lagoon (Default)</strong><br><em>Blue</em>
+    </td>
+    <td align="center">
+      <a href="#twilight---purple"><img src="assets/screenshots/tmux-twilight.webp" alt="Twilight" width="180"></a><br>
+      <strong>Twilight</strong><br><em>Purple</em>
+    </td>
+    <td align="center">
+      <a href="#rose---pink"><img src="assets/screenshots/tmux-rose.webp" alt="Rose" width="180"></a><br>
+      <strong>Rose</strong><br><em>Pink</em>
+    </td>
   </tr>
-  <tr>
-    <td><img src="assets/screenshots/tmux-mirage.webp" alt="Mirage" width="320"></td>
-    <td><img src="assets/screenshots/tmux-cactus.webp" alt="Cactus" width="320"></td>
-  </tr>
-
 </table>
 
-> [!NOTE]
-> This is just a small sample. There are many more. [Click here to see them all](#view-all-theme-variants)
+**[↓ See all variants expanded](#view-all-theme-variants)**
 
 ### Status Bar with Dynamic Modes
+
+> Previews below use the `lagoon` variant
 
 <div align="center">
 
@@ -96,10 +115,88 @@ A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and mu
 
 </div>
 
+## Installation
+
+### Method 1: Tmux Plugin Manager (TPM) - Recommended
+
+1. Add to your `tmux.conf`:
+
+```tmux
+set -g @plugin 'uhs-robert/tmux-oasis'
+set -g @oasis_flavor "lagoon"  # Optional: defaults to lagoon
+```
+
+2. Install with TPM: `prefix + I`
+
+### Method 2: Manual Installation
+
+1. Clone this repository:
+
+```bash
+git clone https://github.com/uhs-robert/tmux-oasis ~/.tmux/themes/tmux-oasis
+```
+
+2. In your `tmux.conf`, set your preferred theme variant:
+
+```tmux
+set -g @oasis_flavor "lagoon"
+```
+
+3. Source the main configuration:
+
+```tmux
+source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
+```
+
+4. Reload tmux: `tmux source ~/.tmux.conf`
+
+## Status Line Features
+
+The status line is inspired from 'lualine' in Neovim. It includes:
+
+- **Dynamic mode indicators**: Visual indicators for `prefix mode`, `copy mode`, `command mode`, `tree mode` etc.
+- **Session information**: Current session name with icons
+- **Current directory**: Abbreviated path display
+- **Real-time clock**: Hours, minutes, seconds with AM/PM
+- **Color-coded states**: Different colors for all of the different tmux modes
+
+## (Devs) Creating New Theme Variants
+
+1. Create a new file in `themes/oasis_[name].conf`
+2. Define all the `@thm_*` color variables
+3. Use `set -g @oasis_flavor "[name]"` in your tmux.conf
+
+> [!TIP]
+> Feel free to add your own variants by creating `themes/oasis_[variant].conf` files
+
 ## View All Theme Variants
 
-<details>
-  <summary><b>All variants (click to expand)</b></summary>
+<details open>
+  <summary><b>All variants (click to collapse)</b></summary>
+
+### Night - Off Black
+
+Deep desert night sky, almost black for those who prefer softer darkness
+
+<img src="assets/screenshots/tmux-night.webp" alt="Night" width="800">
+
+### Abyss - Black
+
+Deep, dark variant with mysterious depths
+
+<img src="assets/screenshots/tmux-abyss.webp" alt="Abyss" width="800">
+
+### Starlight - Black Vivid
+
+Desert abyss illuminated by brilliant starlight with vivid accent colors
+
+<img src="assets/screenshots/tmux-starlight.webp" alt="Starlight" width="800">
+
+### Desert - Grey
+
+Inspired by the classic vim desert theme, neutral sand and earth tones
+
+<img src="assets/screenshots/tmux-desert.webp" alt="Desert" width="800">
 
 ### Sol - Red
 
@@ -137,113 +234,16 @@ The original Oasis theme, cool blues of the oasis lagoon
 
 <img src="assets/screenshots/tmux-lagoon.webp" alt="Lagoon" width="800">
 
-### Rose - Pink
-
-Soft pinks of the warm desert rose
-
-<img src="assets/screenshots/tmux-rose.webp" alt="Rose" width="800">
-
 ### Twilight - Purple
 
 Evening desert with purple and indigo hues
 
 <img src="assets/screenshots/tmux-twilight.webp" alt="Twilight" width="800">
 
-### Desert - Grey
+### Rose - Pink
 
-Inspired by the classic vim desert theme, neutral sand and earth tones
+Soft pinks of the warm desert rose
 
-<img src="assets/screenshots/tmux-desert.webp" alt="Desert" width="800">
-
-### Night - Off Black
-
-Deep desert night sky, almost black for those who prefer softer darkness
-
-<img src="assets/screenshots/tmux-night.webp" alt="Night" width="800">
-
-### Abyss - Black
-
-Deep, dark variant with mysterious depths
-
-<img src="assets/screenshots/tmux-abyss.webp" alt="Abyss" width="800">
-
-### Starlight - Black Vivid
-
-Desert abyss illuminated by brilliant starlight with vivid accent colors
-
-<img src="assets/screenshots/tmux-starlight.webp" alt="Starlight" width="800">
+<img src="assets/screenshots/tmux-rose.webp" alt="Rose" width="800">
 
 </details>
-
-## Installation
-
-### Method 1: Tmux Plugin Manager (TPM) - Recommended
-
-1. Add to your `tmux.conf`:
-
-```tmux
-set -g @plugin 'uhs-robert/tmux-oasis'
-set -g @oasis_flavor "lagoon"  # Optional: defaults to lagoon
-```
-
-2. Install with TPM: `prefix + I`
-
-### Method 2: Manual Installation
-
-1. Clone this repository:
-
-```bash
-git clone https://github.com/uhs-robert/tmux-oasis ~/.tmux/themes/tmux-oasis
-```
-
-2. In your `tmux.conf`, set your preferred theme variant:
-
-```tmux
-set -g @oasis_flavor "lagoon"
-```
-
-3. Source the main configuration:
-
-```tmux
-source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
-```
-
-4. Reload tmux: `tmux source ~/.tmux.conf`
-
-## Usage
-
-### Available Theme Variants
-
-#### By Dominant Color
-
-- `sol` - **Red** - Hot, scorching desert sun with intense red tones
-- `canyon` - **Orange** - Rich oranges of desert canyon walls
-- `dune` - **Yellow** - Sandy beiges and warm yellow earth tones
-- `cactus` - **Green** - Fresh greens of desert vegetation
-- `mirage` - **Teal** - Cool teals of shimmering desert mirages
-- `lagoon` (default) - **Blue** - The original Oasis theme, cool blues of the oasis lagoon
-- `twilight` - **Purple** - Evening desert with purple and indigo hues
-- `rose` - **Pink** - Soft pinks of the warm desert rose
-- `desert` - **Grey** - Inspired by the classic vim desert theme, neutral sand and earth tones
-- `night` - **Off Black** - Deep desert night sky, almost black for those who prefer softer darkness
-- `abyss` - **Black** - Deep, dark variant with mysterious depths
-- `starlight` - **Black Vivid** - Desert abyss illuminated by brilliant starlight with vivid accent colors
-
-> [!TIP]
-> Feel free to add your own variants by creating `themes/oasis_[variant].conf` files
-
-## Status Line Features
-
-The status line is inspired from 'lualine' in Neovim. It includes:
-
-- **Dynamic mode indicators**: Visual indicators for `prefix mode`, `copy mode`, `command mode`, `tree mode` etc.
-- **Session information**: Current session name with icons
-- **Current directory**: Abbreviated path display
-- **Real-time clock**: Hours, minutes, seconds with AM/PM
-- **Color-coded states**: Different colors for all of the different tmux modes
-
-## (Devs) Creating New Theme Variants
-
-1. Create a new file in `themes/oasis_[name].conf`
-2. Define all the `@thm_*` color variables
-3. Use `set -g @oasis_flavor "[name]"` in your tmux.conf
