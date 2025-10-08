@@ -1,13 +1,13 @@
 # 🏜️ Oasis Tmux
 
-A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants (12 Total Themes). Originally inspired by the classic `desert` theme for vim; includes a status line inspired by vim as well.
+A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants (13 Total Themes). Originally inspired by the classic `desert` theme for vim; includes a status line inspired by vim as well.
 
 > [!TIP]
 > This is the companion to the **Oasis** theme suite from NeoVim: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
 
 ## Features
 
-- **12 theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert-inspired.
+- **13 theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert-inspired.
 - **Automatic theme loading**: Set `@oasis_flavor` and the system will handles the rest
 - **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
   - [Status bar screenshots here](#status-bar-with-dynamic-modes)
@@ -16,15 +16,19 @@ A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and mu
 
 ## Theme Overview
 
-Choose from 12 distinct desert-inspired variants, each with its own personality and color palette:
+Choose from 13 distinct desert-inspired variants, each with its own personality and color palette:
 
 > Click one below to see a larger image (**the plugin is the _status line_ at the top**)
 
 <table>
   <tr>
     <td align="center">
-      <a href="#night---off-black"><img src="assets/screenshots/tmux-night.webp" alt="Night" width="180"></a><br>
-      <strong>Night</strong><br><em>Off Black</em>
+      <a href="#night---purple-night-sky"><img src="assets/screenshots/tmux-night.webp" alt="Night" width="180"></a><br>
+      <strong>Night</strong><br><em>Purple Night Sky</em>
+    </td>
+    <td align="center">
+      <a href="#night---off-black"><img src="assets/screenshots/tmux-midnight.webp" alt="Midnight" width="180"></a><br>
+      <strong>Midnight</strong><br><em>Off Black</em>
     </td>
     <td align="center">
       <a href="#abyss---black"><img src="assets/screenshots/tmux-abyss.webp" alt="Abyss" width="180"></a><br>
@@ -34,12 +38,12 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
       <a href="#starlight---black-vivid"><img src="assets/screenshots/tmux-starlight.webp" alt="Starlight" width="180"></a><br>
       <strong>Starlight</strong><br><em>Black Vivid</em>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="#desert---grey"><img src="assets/screenshots/tmux-desert.webp" alt="Desert" width="180"></a><br>
       <strong>Desert</strong><br><em>Grey</em>
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <a href="#sol---red"><img src="assets/screenshots/tmux-sol.webp" alt="Sol" width="180"></a><br>
       <strong>Sol</strong><br><em>Red</em>
@@ -52,12 +56,12 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
       <a href="#dune---yellow"><img src="assets/screenshots/tmux-dune.webp" alt="Dune" width="180"></a><br>
       <strong>Dune</strong><br><em>Yellow</em>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="#cactus---green"><img src="assets/screenshots/tmux-cactus.webp" alt="Cactus" width="180"></a><br>
       <strong>Cactus</strong><br><em>Green</em>
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <a href="#mirage---teal"><img src="assets/screenshots/tmux-mirage.webp" alt="Mirage" width="180"></a><br>
       <strong>Mirage</strong><br><em>Teal</em>
@@ -70,6 +74,8 @@ Choose from 12 distinct desert-inspired variants, each with its own personality 
       <a href="#twilight---purple"><img src="assets/screenshots/tmux-twilight.webp" alt="Twilight" width="180"></a><br>
       <strong>Twilight</strong><br><em>Purple</em>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="#rose---pink"><img src="assets/screenshots/tmux-rose.webp" alt="Rose" width="180"></a><br>
       <strong>Rose</strong><br><em>Pink</em>
@@ -178,11 +184,17 @@ The status line is inspired from 'lualine' in Neovim. It includes:
 <details open>
   <summary><b>All variants (click to collapse)</b></summary>
 
-### Night - Off Black
+### Night - Purple Night Sky
 
-Deep desert night sky, almost black for those who prefer softer darkness
+Deep desert night sky with purple-indigo undertones, a deeper purple than twilight for those who prefer soft darkness
 
 <img src="assets/screenshots/tmux-night.webp" alt="Night" width="800">
+
+### Midnight - Off Black
+
+Deep slate and navy tones of the desert at midnight, a tinted-black lighter than abyss
+
+<img src="assets/screenshots/tmux-midnight.webp" alt="Midnight" width="800">
 
 ### Abyss - Black
 
