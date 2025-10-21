@@ -1,6 +1,6 @@
 # 🏜️ Oasis Tmux
 
-A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants (13 Total Themes). Originally inspired by the classic `desert` theme for vim; it includes a status line inspired by vim as well.
+A modular dark desert-themed colorscheme and status line for Tmux with warm, earthy tones and multiple palette variants (13 Total Themes). Originally inspired by the classic `desert` theme for Vim. This plugin provides a fully styled status line with a robust dynamic mode indicator for **ALL** of tmux's modes (like Vim).
 
 > [!TIP]
 > This is the companion to the **Oasis** theme suite from NeoVim: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
