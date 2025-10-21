@@ -1,6 +1,6 @@
 # 🏜️ Oasis Tmux
 
-A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants (13 Total Themes). Originally inspired by the classic `desert` theme for vim; includes a status line inspired by vim as well.
+A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and multiple palette variants (13 Total Themes). Originally inspired by the classic `desert` theme for vim; it includes a status line inspired by vim as well.
 
 > [!TIP]
 > This is the companion to the **Oasis** theme suite from NeoVim: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
@@ -8,16 +8,53 @@ A modular dark desert-themed colorscheme for Tmux with warm, earthy tones and mu
 ## Features
 
 - **13 theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert-inspired.
-- **Automatic theme loading**: Set `@oasis_flavor` and the system will handles the rest
+- **Automatic theme loading**: Set `@oasis_flavor` and the system will handle the rest
 - **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
-  - [Status bar screenshots here](#status-bar-with-dynamic-modes)
 - **Modular design**: Separate theme files and unique status line configurations (_you could just download **only** what you need_)
 - **Standalone**: Zero dependencies on any other plugins
+
+## Status Bar with Dynamic Modes
+
+<div align="center">
+
+**Normal Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-normal.webp" alt="Normal Mode">
+
+**Command Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-command.webp" alt="Command Mode">
+
+**Copy Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-copy.webp" alt="Copy Mode">
+
+**View Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-view.webp" alt="View Mode">
+
+**Choose Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-choose.webp" alt="Choose Mode">
+
+**Clock Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-clock.webp" alt="Clock Mode">
+
+**Options Mode**
+<br>
+<img src="assets/screenshots/statusbar/mode-options.webp" alt="Options Mode">
+
+</div>
+
+> [!NOTE]
+> Previews above all use the `lagoon` variant.
 
 ## Theme Overview
 
 Choose from 13 distinct desert-inspired variants, each with its own personality and color palette:
 
+> [!TIP]
 > Click one below to see a larger image (**the plugin is the _status line_ at the top**)
 
 <table>
@@ -85,41 +122,7 @@ Choose from 13 distinct desert-inspired variants, each with its own personality 
 
 **[↓ See all variants expanded](#view-all-theme-variants)**
 
-### Status Bar with Dynamic Modes
 
-> Previews below use the `lagoon` variant
-
-<div align="center">
-
-**Normal Mode**
-<br>
-<img src="assets/screenshots/statusbar/mode-normal.webp" alt="Normal Mode">
-
-**Command Mode**
-<br>
-<img src="assets/screenshots/statusbar/mode-command.webp" alt="Command Mode">
-
-**Copy Mode**
-<br>
-<img src="assets/screenshots/statusbar/mode-copy.webp" alt="Copy Mode">
-
-**View Mode**
-<br>
-<img src="assets/screenshots/statusbar/mode-view.webp" alt="View Mode">
-
-**Choose Mode**
-<br>
-<img src="assets/screenshots/statusbar/mode-choose.webp" alt="Choose Mode">
-
-**Clock Mode**
-<br>
-<img src="assets/screenshots/statusbar/mode-clock.webp" alt="Clock Mode">
-
-**Options Mode**
-<br>
-<img src="assets/screenshots/statusbar/mode-options.webp" alt="Options Mode">
-
-</div>
 
 ## Installation
 
@@ -179,6 +182,7 @@ The status line is inspired from 'lualine' in Neovim. It includes:
 
 > [!IMPORTANT]
 > The status line at the top is the TMUX plugin integration.
+> 
 > The screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
 
 <details open>
