@@ -1,19 +1,26 @@
-# 🏜️ Oasis Tmux
+<p align="center">
+  <img
+    src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f3dd.svg"
+    width="128" height="128" alt="Oasis emoji" />
+</p>
+<h1 align="center">Tmux Oasis</h1>
 
-A modular dark desert-themed colorscheme and status line for Tmux with warm, earthy tones and multiple palette variants (13 Total Themes). Originally inspired by the classic `desert` theme for Vim. This plugin provides a fully styled status line with a robust dynamic mode indicator for **ALL** of tmux's modes (like Vim).
+<p align="center">
+  <a href="https://github.com/uhs-robert/tmux-oasis/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/tmux-oasis?colorA=192330&colorB=skyblue&style=for-the-badge"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/issues"><img src="https://img.shields.io/github/issues/uhs-robert/tmux-oasis?colorA=192330&colorB=khaki&style=for-the-badge"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/tmux-oasis?colorA=192330&colorB=8FD1C7&style=for-the-badge"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/tmux-oasis?colorA=192330&colorB=CFA7FF&style=for-the-badge"></a>
+</p>
 
-> [!TIP]
-> This is the companion to the **Oasis** theme suite from NeoVim: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
-
-## Features
-
-- **13 theme variants**: Covers the entire rainbow of options with an emphasis on being dark. Variants are all desert-inspired.
-- **Automatic theme loading**: Set `@oasis_flavor` and the system will handle the rest
-- **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
-- **Modular design**: Separate theme files and unique status line configurations (_you could just download **only** what you need_)
-- **Standalone**: Zero dependencies on any other plugins
+<p align="center">
+A collection of <strong>14</strong> desert-inspired Tmux colorscheme status lines; warm, readable, and configurable.
+</p>
 
 ## Status Bar with Dynamic Modes
+
+Wouldn't it be nice to know what mode you're in? And not just one mode, but for **ALL modes like in Vim**.
+
+Oasis provides a fully styled status line with a robust dynamic mode indicator for **ALL** of tmux's modes and **14 unique color schemes**.
 
 <div align="center">
 
@@ -52,7 +59,7 @@ A modular dark desert-themed colorscheme and status line for Tmux with warm, ear
 
 ## Theme Overview
 
-Choose from 13 distinct desert-inspired variants, each with its own personality and color palette:
+Choose from 14 distinct desert-inspired variants, each with its own personality and color palette:
 
 > [!TIP]
 > Click one below to see a larger image (**the plugin is the _status line_ at the top**)
@@ -117,12 +124,25 @@ Choose from 13 distinct desert-inspired variants, each with its own personality 
       <a href="#rose---pink"><img src="assets/screenshots/tmux-rose.webp" alt="Rose" width="180"></a><br>
       <strong>Rose</strong><br><em>Pink</em>
     </td>
+    <td align="center">
+      <a href="#dawn---light"><img src="assets/screenshots/tmux-dawn.webp" alt="Dawn" width="180"></a><br>
+      <strong>Dawn</strong><br><em>Light</em>
+    </td>
   </tr>
 </table>
 
-**[↓ See all variants expanded](#view-all-theme-variants)**
+> [!TIP]
+> Click any card above to see the full preview. Or [click here to see all](#view-all-theme-variants).
+>
+> This is the companion to the **Oasis** theme suite from NeoVim: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
 
+## Features
 
+- **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
+- **14 theme variants**: Covers the entire rainbow of options with an emphasis on being dark with one light theme thrown in for good measure. Variants are all desert-inspired.
+- **Automatic theme loading**: Set `@oasis_flavor` and the system will handle the rest
+- **Modular design**: Separate theme files and unique status line configurations (_you could just download **only** what you need_)
+- **Standalone**: Zero dependencies on any other plugins
 
 ## Installation
 
@@ -182,7 +202,7 @@ The status line is inspired from 'lualine' in Neovim. It includes:
 
 > [!IMPORTANT]
 > The status line at the top is the TMUX plugin integration.
-> 
+>
 > The screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
 
 <details open>
@@ -265,5 +285,11 @@ Evening desert with purple and indigo hues
 Soft pinks of the warm desert rose
 
 <img src="assets/screenshots/tmux-rose.webp" alt="Rose" width="800">
+
+### Dawn - Light
+
+Ah, the morning sun. Don't forget your sunglasses!
+
+<img src="assets/screenshots/tmux-dawn.webp" alt="Dawn" width="800">
 
 </details>
