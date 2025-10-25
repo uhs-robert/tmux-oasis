@@ -61,9 +61,6 @@ Oasis provides a fully styled status line with a robust dynamic mode indicator f
 
 Choose from 14 distinct desert-inspired variants, each with its own personality and color palette:
 
-> [!TIP]
-> Click one below to see a larger image (**the plugin is the _status line_ at the top**)
-
 <table>
   <tr>
     <td align="center">
