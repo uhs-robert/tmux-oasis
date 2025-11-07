@@ -126,8 +126,8 @@ Choose from 14 distinct desert-inspired variants, each with its own personality 
       <strong>Dawn</strong><br><em>Beige</em>
     </td>
     <td align="center">
-      <a href="#daybreak-golden-beige"><img src="assets/screenshots/tmux-daybreak.png" alt="Daybreak" width="180"></a><br>
-      <strong>Daybreak</strong><br><em>Golden Beige</em>
+      <a href="#dawnlight-golden-beige"><img src="assets/screenshots/tmux-dawnlight.png" alt="Dawnlight" width="180"></a><br>
+      <strong>Dawnlight</strong><br><em>Golden Beige</em>
     </td>
     <td align="center">
       <a href="#day-gold"><img src="assets/screenshots/tmux-day.png" alt="Day" width="180"></a><br>
@@ -359,11 +359,11 @@ Ah, the morning sun. Don't forget your sunglasses!
   <a href="#theme-overview">↑ Back to Overview</a>
 </p>
 
-### Daybreak (Golden Beige)
+### Dawnlight (Golden Beige)
 
 Slightly warmer than dawn, a golden morning glow
 
-<img src="assets/screenshots/tmux-daybreak.png" alt="Daybreak" width="800">
+<img src="assets/screenshots/tmux-dawnlight.png" alt="Dawnlight" width="800">
 
 <p align="center">
   <a href="#theme-overview">↑ Back to Overview</a>
