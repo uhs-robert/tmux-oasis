@@ -16,7 +16,7 @@
 A collection of <strong>18</strong> desert-inspired Tmux colorscheme status lines; warm, readable, and configurable.
 </p>
 
-## Status Bar with Dynamic Modes
+## 🎨 Status Bar with Dynamic Modes
 
 Wouldn't it be nice to know what mode you're in? And not just one mode, but for **ALL modes like in Vim**.
 
@@ -57,7 +57,7 @@ Oasis provides a fully styled status line with a robust dynamic mode indicator f
 > [!NOTE]
 > Previews above all use the `lagoon` style.
 
-## Theme Overview
+## 🌅 Overview
 
 Choose from 18 distinct desert-inspired styles, each with its own personality and color palette:
 
@@ -147,11 +147,13 @@ Choose from 18 distinct desert-inspired styles, each with its own personality an
 </table>
 
 > [!TIP]
-> Click any card above to see the full preview example. Or [click here to see all](#view-all-theme-styles).
+> Click any card above to see the full preview example.
+>
+> [↓ Click here to view all full previews](#view-all-theme-styles).
 >
 > The companion NeoVim colorscheme can be found here: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
 
-## Features
+## ✨ Features
 
 - **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
 - **18 theme styles**: Covers the entire rainbow of options with an emphasis on being dark with multiple light themes thrown in for good measure. Styles are all desert-inspired.
@@ -159,7 +161,7 @@ Choose from 18 distinct desert-inspired styles, each with its own personality an
 - **Modular design**: Separate theme files and unique status line configurations (_you could just download **only** what you need_)
 - **Standalone**: Zero dependencies on any other plugins
 
-## Installation
+## 📦 Installation
 
 ### Method 1: Tmux Plugin Manager (TPM) - Recommended
 
@@ -194,7 +196,7 @@ source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
 
 4. Reload tmux: `tmux source ~/.tmux.conf`
 
-## Status Line Features
+## 🚀 Status Line Features
 
 The status line is inspired from 'lualine' in Neovim. It includes:
 
@@ -204,7 +206,7 @@ The status line is inspired from 'lualine' in Neovim. It includes:
 - **Real-time clock**: Hours, minutes, seconds with AM/PM
 - **Color-coded states**: Different colors for all of the different tmux modes
 
-## (Devs) Creating New Theme Styles
+## ⚙️ (Devs) Creating New Theme Styles
 
 1. Create a new file in `themes/oasis_[name].conf`
 2. Define all the `@thm_*` color variables
@@ -213,7 +215,7 @@ The status line is inspired from 'lualine' in Neovim. It includes:
 > [!TIP]
 > Feel free to add your own styles by creating `themes/oasis_[style].conf` files
 
-## View All Theme Styles
+## 👀 View All Theme Styles
 
 > [!IMPORTANT]
 > The status line at the top is the TMUX plugin integration.
