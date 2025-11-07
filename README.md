@@ -123,7 +123,21 @@ Choose from 14 distinct desert-inspired variants, each with its own personality 
     </td>
     <td align="center">
       <a href="#dawn---light"><img src="assets/screenshots/tmux-dawn.png" alt="Dawn" width="180"></a><br>
-      <strong>Dawn</strong><br><em>Light</em>
+      <strong>Dawn</strong><br><em>Beige</em>
+    </td>
+    <td align="center">
+      <a href="#daybreak---light"><img src="assets/screenshots/tmux-daybreak.png" alt="Daybreak" width="180"></a><br>
+      <strong>Daybreak</strong><br><em>Golden Beige</em>
+    </td>
+    <td align="center">
+      <a href="#day---light"><img src="assets/screenshots/tmux-day.png" alt="Day" width="180"></a><br>
+      <strong>Day</strong><br><em>Gold</em>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="#dusk---light"><img src="assets/screenshots/tmux-dusk.png" alt="Susk" width="180"></a><br>
+      <strong>Dusk</strong><br><em>Peach Gold</em>
     </td>
   </tr>
 </table>
@@ -205,88 +219,174 @@ The status line is inspired from 'lualine' in Neovim. It includes:
 <details open>
   <summary><b>All variants (click to collapse)</b></summary>
 
-### Night - Purple Night Sky
+### Night (Purple Night Sky)
 
 Deep desert night sky with purple-indigo undertones, a deeper purple than twilight for those who prefer soft darkness
 
 <img src="assets/screenshots/tmux-night.png" alt="Night" width="800">
 
-### Midnight - Off Black
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Midnight (Off Black)
 
 Deep slate and navy tones of the desert at midnight, a tinted-black lighter than abyss
 
 <img src="assets/screenshots/tmux-midnight.png" alt="Midnight" width="800">
 
-### Abyss - Black
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Abyss (Black)
 
 Deep, dark variant with mysterious depths
 
 <img src="assets/screenshots/tmux-abyss.png" alt="Abyss" width="800">
 
-### Starlight - Black Vivid
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Starlight (Black Vivid)
 
 Desert abyss illuminated by brilliant starlight with vivid accent colors
 
 <img src="assets/screenshots/tmux-starlight.png" alt="Starlight" width="800">
 
-### Desert - Grey
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Desert (Grey)
 
 Inspired by the classic vim desert theme, neutral sand and earth tones
 
 <img src="assets/screenshots/tmux-desert.png" alt="Desert" width="800">
 
-### Sol - Red
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Sol (Red)
 
 Hot, scorching desert sun with intense red tones
 
 <img src="assets/screenshots/tmux-sol.png" alt="Sol" width="800">
 
-### Canyon - Orange
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Canyon (Orange)
 
 Rich oranges of desert canyon walls
 
 <img src="assets/screenshots/tmux-canyon.png" alt="Canyon" width="800">
 
-### Dune - Yellow
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Dune (Yellow)
 
 Sandy beiges and warm yellow earth tones
 
 <img src="assets/screenshots/tmux-dune.png" alt="Dune" width="800">
 
-### Cactus - Green
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Cactus (Green)
 
 Fresh greens of desert vegetation
 
 <img src="assets/screenshots/tmux-cactus.png" alt="Cactus" width="800">
 
-### Mirage - Teal
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Mirage (Teal)
 
 Cool teals of shimmering desert mirages
 
 <img src="assets/screenshots/tmux-mirage.png" alt="Mirage" width="800">
 
-### Lagoon - Blue
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Lagoon (Blue)
 
 The original Oasis theme, cool blues of the oasis lagoon
 
 <img src="assets/screenshots/tmux-lagoon.png" alt="Lagoon" width="800">
 
-### Twilight - Purple
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Twilight (Purple)
 
 Evening desert with purple and indigo hues
 
 <img src="assets/screenshots/tmux-twilight.png" alt="Twilight" width="800">
 
-### Rose - Pink
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Rose (Pink)
 
 Soft pinks of the warm desert rose
 
 <img src="assets/screenshots/tmux-rose.png" alt="Rose" width="800">
 
-### Dawn - Beige
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Dawn (Beige)
 
 Ah, the morning sun. Don't forget your sunglasses!
 
 <img src="assets/screenshots/tmux-dawn.png" alt="Dawn" width="800">
+
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Daybreak (Golden Beige)
+
+Slightly warmer than dawn, a golden morning glow
+
+<img src="assets/screenshots/tmux-daybreak.png" alt="Daybreak" width="800">
+
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Day (Gold)
+
+Full daylight warmth with rich golden saturation - the default light style
+
+<img src="assets/screenshots/tmux-day.png" alt="Day" width="800">
+
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
+
+### Dusk (Peach Gold)
+
+Warmest peachy-golden tones for extended coding sessions
+
+<img src="assets/screenshots/tmux-dusk.png" alt="Dusk" width="800">
+
+<p align="center">
+  <a href="#-overview">↑ Back to Overview</a>
+</p>
 
 </details>
