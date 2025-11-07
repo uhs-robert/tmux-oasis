@@ -64,79 +64,79 @@ Choose from 14 distinct desert-inspired variants, each with its own personality 
 <table>
   <tr>
     <td align="center">
-      <a href="#night---purple-night-sky"><img src="assets/screenshots/tmux-night.png" alt="Night" width="180"></a><br>
+      <a href="#night-purple-night-sky"><img src="assets/screenshots/tmux-night.png" alt="Night" width="180"></a><br>
       <strong>Night</strong><br><em>Purple Night Sky</em>
     </td>
     <td align="center">
-      <a href="#night---off-black"><img src="assets/screenshots/tmux-midnight.png" alt="Midnight" width="180"></a><br>
+      <a href="#night-off-black"><img src="assets/screenshots/tmux-midnight.png" alt="Midnight" width="180"></a><br>
       <strong>Midnight</strong><br><em>Off Black</em>
     </td>
     <td align="center">
-      <a href="#abyss---black"><img src="assets/screenshots/tmux-abyss.png" alt="Abyss" width="180"></a><br>
+      <a href="#abyss-black"><img src="assets/screenshots/tmux-abyss.png" alt="Abyss" width="180"></a><br>
       <strong>Abyss</strong><br><em>Black</em>
     </td>
     <td align="center">
-      <a href="#starlight---black-vivid"><img src="assets/screenshots/tmux-starlight.png" alt="Starlight" width="180"></a><br>
+      <a href="#starlight-black-vivid"><img src="assets/screenshots/tmux-starlight.png" alt="Starlight" width="180"></a><br>
       <strong>Starlight</strong><br><em>Black Vivid</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#desert---grey"><img src="assets/screenshots/tmux-desert.png" alt="Desert" width="180"></a><br>
+      <a href="#desert-grey"><img src="assets/screenshots/tmux-desert.png" alt="Desert" width="180"></a><br>
       <strong>Desert</strong><br><em>Grey</em>
     </td>
     <td align="center">
-      <a href="#sol---red"><img src="assets/screenshots/tmux-sol.png" alt="Sol" width="180"></a><br>
+      <a href="#sol-red"><img src="assets/screenshots/tmux-sol.png" alt="Sol" width="180"></a><br>
       <strong>Sol</strong><br><em>Red</em>
     </td>
     <td align="center">
-      <a href="#canyon---orange"><img src="assets/screenshots/tmux-canyon.png" alt="Canyon" width="180"></a><br>
+      <a href="#canyon-orange"><img src="assets/screenshots/tmux-canyon.png" alt="Canyon" width="180"></a><br>
       <strong>Canyon</strong><br><em>Orange</em>
     </td>
     <td align="center">
-      <a href="#dune---yellow"><img src="assets/screenshots/tmux-dune.png" alt="Dune" width="180"></a><br>
+      <a href="#dune-yellow"><img src="assets/screenshots/tmux-dune.png" alt="Dune" width="180"></a><br>
       <strong>Dune</strong><br><em>Yellow</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#cactus---green"><img src="assets/screenshots/tmux-cactus.png" alt="Cactus" width="180"></a><br>
+      <a href="#cactus-green"><img src="assets/screenshots/tmux-cactus.png" alt="Cactus" width="180"></a><br>
       <strong>Cactus</strong><br><em>Green</em>
     </td>
     <td align="center">
-      <a href="#mirage---teal"><img src="assets/screenshots/tmux-mirage.png" alt="Mirage" width="180"></a><br>
+      <a href="#mirage-teal"><img src="assets/screenshots/tmux-mirage.png" alt="Mirage" width="180"></a><br>
       <strong>Mirage</strong><br><em>Teal</em>
     </td>
     <td align="center">
-      <a href="#lagoon---blue"><img src="assets/screenshots/tmux-lagoon.png" alt="Lagoon" width="180"></a><br>
+      <a href="#lagoon-blue"><img src="assets/screenshots/tmux-lagoon.png" alt="Lagoon" width="180"></a><br>
       <strong>Lagoon (Default)</strong><br><em>Blue</em>
     </td>
     <td align="center">
-      <a href="#twilight---purple"><img src="assets/screenshots/tmux-twilight.png" alt="Twilight" width="180"></a><br>
+      <a href="#twilight-purple"><img src="assets/screenshots/tmux-twilight.png" alt="Twilight" width="180"></a><br>
       <strong>Twilight</strong><br><em>Purple</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#rose---pink"><img src="assets/screenshots/tmux-rose.png" alt="Rose" width="180"></a><br>
+      <a href="#rose-pink"><img src="assets/screenshots/tmux-rose.png" alt="Rose" width="180"></a><br>
       <strong>Rose</strong><br><em>Pink</em>
     </td>
     <td align="center">
-      <a href="#dawn---light"><img src="assets/screenshots/tmux-dawn.png" alt="Dawn" width="180"></a><br>
+      <a href="#dawn-beige"><img src="assets/screenshots/tmux-dawn.png" alt="Dawn" width="180"></a><br>
       <strong>Dawn</strong><br><em>Beige</em>
     </td>
     <td align="center">
-      <a href="#daybreak---light"><img src="assets/screenshots/tmux-daybreak.png" alt="Daybreak" width="180"></a><br>
+      <a href="#daybreak-golden-beige"><img src="assets/screenshots/tmux-daybreak.png" alt="Daybreak" width="180"></a><br>
       <strong>Daybreak</strong><br><em>Golden Beige</em>
     </td>
     <td align="center">
-      <a href="#day---light"><img src="assets/screenshots/tmux-day.png" alt="Day" width="180"></a><br>
+      <a href="#day-gold"><img src="assets/screenshots/tmux-day.png" alt="Day" width="180"></a><br>
       <strong>Day</strong><br><em>Gold</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#dusk---light"><img src="assets/screenshots/tmux-dusk.png" alt="Susk" width="180"></a><br>
+      <a href="#dusk-peach-gold"><img src="assets/screenshots/tmux-dusk.png" alt="Susk" width="180"></a><br>
       <strong>Dusk</strong><br><em>Peach Gold</em>
     </td>
   </tr>
@@ -226,7 +226,7 @@ Deep desert night sky with purple-indigo undertones, a deeper purple than twilig
 <img src="assets/screenshots/tmux-night.png" alt="Night" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Midnight (Off Black)
@@ -236,7 +236,7 @@ Deep slate and navy tones of the desert at midnight, a tinted-black lighter than
 <img src="assets/screenshots/tmux-midnight.png" alt="Midnight" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Abyss (Black)
@@ -246,7 +246,7 @@ Deep, dark variant with mysterious depths
 <img src="assets/screenshots/tmux-abyss.png" alt="Abyss" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Starlight (Black Vivid)
@@ -256,7 +256,7 @@ Desert abyss illuminated by brilliant starlight with vivid accent colors
 <img src="assets/screenshots/tmux-starlight.png" alt="Starlight" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Desert (Grey)
@@ -266,7 +266,7 @@ Inspired by the classic vim desert theme, neutral sand and earth tones
 <img src="assets/screenshots/tmux-desert.png" alt="Desert" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Sol (Red)
@@ -276,7 +276,7 @@ Hot, scorching desert sun with intense red tones
 <img src="assets/screenshots/tmux-sol.png" alt="Sol" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Canyon (Orange)
@@ -286,7 +286,7 @@ Rich oranges of desert canyon walls
 <img src="assets/screenshots/tmux-canyon.png" alt="Canyon" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Dune (Yellow)
@@ -296,7 +296,7 @@ Sandy beiges and warm yellow earth tones
 <img src="assets/screenshots/tmux-dune.png" alt="Dune" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Cactus (Green)
@@ -306,7 +306,7 @@ Fresh greens of desert vegetation
 <img src="assets/screenshots/tmux-cactus.png" alt="Cactus" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Mirage (Teal)
@@ -316,7 +316,7 @@ Cool teals of shimmering desert mirages
 <img src="assets/screenshots/tmux-mirage.png" alt="Mirage" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Lagoon (Blue)
@@ -326,7 +326,7 @@ The original Oasis theme, cool blues of the oasis lagoon
 <img src="assets/screenshots/tmux-lagoon.png" alt="Lagoon" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Twilight (Purple)
@@ -336,7 +336,7 @@ Evening desert with purple and indigo hues
 <img src="assets/screenshots/tmux-twilight.png" alt="Twilight" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Rose (Pink)
@@ -346,7 +346,7 @@ Soft pinks of the warm desert rose
 <img src="assets/screenshots/tmux-rose.png" alt="Rose" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Dawn (Beige)
@@ -356,7 +356,7 @@ Ah, the morning sun. Don't forget your sunglasses!
 <img src="assets/screenshots/tmux-dawn.png" alt="Dawn" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Daybreak (Golden Beige)
@@ -366,7 +366,7 @@ Slightly warmer than dawn, a golden morning glow
 <img src="assets/screenshots/tmux-daybreak.png" alt="Daybreak" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Day (Gold)
@@ -376,7 +376,7 @@ Full daylight warmth with rich golden saturation - the default light style
 <img src="assets/screenshots/tmux-day.png" alt="Day" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 ### Dusk (Peach Gold)
@@ -386,7 +386,7 @@ Warmest peachy-golden tones for extended coding sessions
 <img src="assets/screenshots/tmux-dusk.png" alt="Dusk" width="800">
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#-theme-overview">↑ Back to Overview</a>
 </p>
 
 </details>
