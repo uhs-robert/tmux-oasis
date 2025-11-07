@@ -149,17 +149,21 @@ Choose from 18 distinct desert-inspired styles, each with its own personality an
 > [!TIP]
 > Click any card above to see the full preview example.
 >
-> [↓ Click here to view all full previews](#-view-all-theme-styles).
->
-> The companion NeoVim colorscheme can be found here: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
+> [↓ Click here to view all full previews](#view-all-theme-styles).
 
 ## ✨ Features
 
-- **Advanced status line**: Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes: includes `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
-- **18 theme styles**: Covers the entire rainbow of options with an emphasis on being dark with multiple light themes thrown in for good measure. Styles are all desert-inspired.
-- **Automatic theme loading**: Set `@oasis_flavor` and the system will handle the rest
-- **Modular design**: Separate theme files and unique status line configurations (_you could just download **only** what you need_)
-- **Standalone**: Zero dependencies on any other plugins
+- **Advanced status line**
+  - Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes, includes:
+    - `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
+- **18 theme styles**
+  - A rainbow of desert-inspired options; with an emphasis on warmth and readability.
+- **Automatic theme loading**
+  - Set `@oasis_flavor` and the system will handle the rest
+- **Modular design**
+  - Separate theme files and unique status line configurations (_you could just download **only** what you need_)
+- **Standalone**
+  - Zero dependencies on any other plugins
 
 ## 📦 Installation
 
@@ -198,7 +202,7 @@ source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
 
 ## 🚀 Status Line Features
 
-The status line is inspired from 'lualine' in Neovim. It includes:
+The status line is inspired from **lualine** in Neovim. It includes:
 
 - **Dynamic mode indicators**: Visual indicators for `prefix mode`, `copy mode`, `command mode`, `tree mode` etc.
 - **Session information**: Current session name with icons
