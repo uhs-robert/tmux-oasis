@@ -153,17 +153,12 @@ Choose from 18 distinct desert-inspired styles, each with its own personality an
 
 ## ✨ Features
 
-- **Advanced status line**
-  - Dynamic mode indicators with color-coded states inspired by `vim` for each of tmux's modes, includes:
-    - `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
-- **18 theme styles**
-  - A rainbow of desert-inspired options; with an emphasis on warmth and readability.
-- **Automatic theme loading**
-  - Set `@oasis_flavor` and the system will handle the rest
-- **Modular design**
-  - Separate theme files and unique status line configurations (_you could just download **only** what you need_)
-- **Standalone**
-  - Zero dependencies on any other plugins
+- **Advanced status line** with dynamic mode indicators based on `vim` for each of tmux's modes.
+  - Includes: `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
+- **18 theme styles**, a rainbow of desert-inspired options
+- **Automatic theme loading**, set `@oasis_flavor` and the system will handle the rest
+- **Modular design** with separate theme and status line configurations (_download **only** what you need_)
+- **Standalone** with zero dependencies on any other plugins
 
 ## 📦 Installation
 
