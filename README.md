@@ -149,7 +149,7 @@ Choose from 18 distinct desert-inspired styles, each with its own personality an
 > [!TIP]
 > Click any card above to see the full preview example.
 >
-> [↓ Click here to view all full previews](#view-all-theme-styles).
+> [↓ Click here to view all full previews](#-view-all-theme-styles).
 >
 > The companion NeoVim colorscheme can be found here: [oasis.nvim](https://github.com/uhs-robert/oasis.nvim)
 
