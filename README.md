@@ -219,7 +219,7 @@ The status line is inspired from **lualine** in Neovim. It includes:
 > [!IMPORTANT]
 > The status line at the top is the TMUX plugin integration.
 >
-> The screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
+> All screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
 
 <details open>
   <summary><b>All styles (click to collapse)</b></summary>
