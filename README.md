@@ -61,6 +61,52 @@ Oasis provides a fully styled status line with a robust dynamic mode indicator f
 
 Choose from 13 distinct desert-inspired base styles, each with its own personality and color palette. Dual-mode themes now ship with one dark plus five fine-grained light variants.
 
+<details>
+<summary>✨ What's New / 🚨 Breaking Changes</summary>
+<br/>
+<!-- whats-new:start -->
+
+  <details>
+    <summary>🚨 v2.0: Dual Style Themes / Deprecated Themes</summary>
+    <!-- v4:start -->
+    <h3>✨ Dual Style Themes</h3>
+    Each style now has <strong>5 light theme variants</strong>.
+    <ul>
+      <li>Check out the <a href="#%EF%B8%8F-light-styles">new light theme screenshots</a>.</li>
+    </ul>
+    <h3>🚨 BREAKING CHANGE: Deprecated Light Theme Migration</h3>
+    The following standalone <strong>light themes have been deprecated</strong> in favor of the dual-mode system:
+    <table>
+      <tr>
+        <td>Dawn</td>
+        <td>Replaced with <code>night_light_1</code></td>
+      </tr>
+      <tr>
+        <td>Dawnlight</td>
+        <td>Replaced with <code>night_light_2</code></td>
+      </tr>
+      <tr>
+        <td>Day</td>
+        <td>Replaced with <code>night_light_3</code></td>
+      </tr>
+      <tr>
+        <td>Dusk</td>
+        <td>Replaced with <code>night_light_4</code></td>
+      </tr>
+      <tr>
+        <td>Dust</td>
+        <td>Replaced with <code>night_light_5</code></td>
+      </tr>
+    </table>
+    <blockquote>
+    <strong>Note:</strong> The migration table above shows direct replacements. All deprecated themes were based on the <code>night</code> style family.
+    </blockquote>
+    <br/>
+    <!-- v4:end -->
+  </details>
+<!-- whats-new:end -->
+</details>
+
 ## 🌙 Dark Styles
 
 Click any card below to view the full preview and syntax sample. [↓ Or click here to view all full previews](#view-all-theme-styles)
@@ -218,7 +264,7 @@ The status line is inspired from **lualine** in Neovim. It includes:
 
 - **Dual-mode themes**: `abyss`, `cactus`, `canyon`, `desert`, `dune`, `lagoon`, `mirage`, `midnight`, `night`, `rose`, `sol`, `starlight`, `twilight`
   - Variants: `_dark` and `_light_1` … `_light_5`
-  - Short names auto-expand: setting `set -g @oasis_flavor "lagoon"` loads `lagoon_dark`
+  - Short names auto-expand to dark: setting `set -g @oasis_flavor "lagoon"` loads `lagoon_dark`
 
 Examples:
 
@@ -396,7 +442,7 @@ set -g @oasis_flavor "night"          # resolves to night_dark
   <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
-<a id="starlight-3-light"></a>
+<a id="starlight-light"></a>
 **Starlight (Light)**
 
 ![starlight-light-3-dashboard](./assets/screenshots/starlight-light-3-dashboard.png)
@@ -468,7 +514,7 @@ set -g @oasis_flavor "night"          # resolves to night_dark
   <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
-<a id="twilight-3-light"></a>
+<a id="twilight-light"></a>
 **Twilight (Light)**
 
 ![twilight-light-3-dashboard](./assets/screenshots/twilight-light-3-dashboard.png)
