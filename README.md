@@ -5,8 +5,8 @@
 </p>
 <hr/>
 <p align="center">
-  <a href="https://github.com/uhs-robert/tmux-oasis/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/tmux-oasis?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/tmux-oasis/issues"><img src="https://img.shields.io/github/issues/uhs-robert/tmux-oasis?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/tmux-oasis?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/issues"><img src="https://img.shields.io/github/issues/uhs-robert/tmux-oasis?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
   <a href="https://github.com/uhs-robert/tmux-oasis/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/tmux-oasis?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300"></a>
   <a href="https://github.com/uhs-robert/tmux-oasis/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/tmux-oasis?colorA=192330&colorB=CFA7FF&style=for-the-badge&cacheSeconds=4300"></a>
 </p>
