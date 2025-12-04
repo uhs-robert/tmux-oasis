@@ -6,21 +6,21 @@
 <h1 align="center">Tmux Oasis</h1>
 
 <p align="center">
-  <a href="https://github.com/uhs-robert/tmux-oasis/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/tmux-oasis?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/tmux-oasis/issues"><img src="https://img.shields.io/github/issues/uhs-robert/tmux-oasis?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/tmux-oasis/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/tmux-oasis?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/tmux-oasis/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/tmux-oasis?colorA=192330&colorB=CFA7FF&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/oasis/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/oasis?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/oasis/issues"><img src="https://img.shields.io/github/issues/uhs-robert/oasis?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/oasis/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/oasis?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/oasis/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/oasis?colorA=192330&colorB=CFA7FF&style=for-the-badge&cacheSeconds=4300"></a>
 </p>
 
 <p align="center">
-A collection of <strong>18</strong> desert-inspired Tmux colorscheme status lines; warm, readable, and configurable.
+A collection of <strong>13</strong> desert-inspired Tmux colorscheme status lines; with <strong>dual light/dark modes</strong>.
 </p>
 
 ## 🎨 Status Bar with Dynamic Modes
 
 Wouldn't it be nice to know what mode you're in? And not just one mode, but for **ALL modes like in Vim**.
 
-Oasis provides a fully styled status line with a robust dynamic mode indicator for **ALL** of tmux's modes and **18 unique color schemes**.
+Oasis provides a fully styled status line with a robust dynamic mode indicator for **ALL** of tmux's modes and **13 unique color schemes**.
 
 <div align="center">
 
@@ -55,108 +55,117 @@ Oasis provides a fully styled status line with a robust dynamic mode indicator f
 </div>
 
 > [!NOTE]
-> Previews above all use the `lagoon` style.
+> Previews above all use the `lagoon_dark` style.
 
 ## 🌅 Overview
 
-Choose from 18 distinct desert-inspired styles, each with its own personality and color palette:
+Choose from 13 distinct desert-inspired base styles, each with its own personality and color palette. Dual-mode themes now ship with one dark plus five fine-grained light variants.
+
+## 🌙 Dark Styles
+
+Click any card below to view the full preview and syntax sample. [↓ Or click here to view all full previews](#view-all-theme-styles)
+
+### Dark Previews
 
 <table>
   <tr>
     <td align="center">
-      <a href="#night-purple-night-sky"><img src="./assets/screenshots/tmux-night.png" alt="Night" width="180"></a><br>
-      <strong>Night</strong><br><em>Purple Night Sky</em>
+      <a href="#night-dark"><img src="./assets/screenshots/night-dark-dashboard.png" alt="Night" width="180"></a><br>
+      <strong>Night</strong><br><em>Night Sky</em>
     </td>
     <td align="center">
-      <a href="#night-off-black"><img src="./assets/screenshots/tmux-midnight.png" alt="Midnight" width="180"></a><br>
+      <a href="#midnight-dark"><img src="./assets/screenshots/midnight-dark-dashboard.png" alt="Midnight" width="180"></a><br>
       <strong>Midnight</strong><br><em>Off Black</em>
     </td>
     <td align="center">
-      <a href="#abyss-black"><img src="./assets/screenshots/tmux-abyss.png" alt="Abyss" width="180"></a><br>
+      <a href="#abyss-dark"><img src="./assets/screenshots/abyss-dark-dashboard.png" alt="Abyss" width="180"></a><br>
       <strong>Abyss</strong><br><em>Black</em>
     </td>
     <td align="center">
-      <a href="#starlight-black-vivid"><img src="./assets/screenshots/tmux-starlight.png" alt="Starlight" width="180"></a><br>
+      <a href="#starlight-dark"><img src="./assets/screenshots/starlight-dark-dashboard.png" alt="Starlight" width="180"></a><br>
       <strong>Starlight</strong><br><em>Black Vivid</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#desert-grey"><img src="./assets/screenshots/tmux-desert.png" alt="Desert" width="180"></a><br>
+      <a href="#desert-dark"><img src="./assets/screenshots/desert-dark-dashboard.png" alt="Desert" width="180"></a><br>
       <strong>Desert</strong><br><em>Grey</em>
     </td>
     <td align="center">
-      <a href="#sol-red"><img src="./assets/screenshots/tmux-sol.png" alt="Sol" width="180"></a><br>
+      <a href="#sol-dark"><img src="./assets/screenshots/sol-dark-dashboard.png" alt="Sol" width="180"></a><br>
       <strong>Sol</strong><br><em>Red</em>
     </td>
     <td align="center">
-      <a href="#canyon-orange"><img src="./assets/screenshots/tmux-canyon.png" alt="Canyon" width="180"></a><br>
+      <a href="#canyon-dark"><img src="./assets/screenshots/canyon-dark-dashboard.png" alt="Canyon" width="180"></a><br>
       <strong>Canyon</strong><br><em>Orange</em>
     </td>
     <td align="center">
-      <a href="#dune-yellow"><img src="./assets/screenshots/tmux-dune.png" alt="Dune" width="180"></a><br>
+      <a href="#dune-dark"><img src="./assets/screenshots/dune-dark-dashboard.png" alt="Dune" width="180"></a><br>
       <strong>Dune</strong><br><em>Yellow</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#cactus-green"><img src="./assets/screenshots/tmux-cactus.png" alt="Cactus" width="180"></a><br>
+      <a href="#cactus-dark"><img src="./assets/screenshots/cactus-dark-dashboard.png" alt="Cactus" width="180"></a><br>
       <strong>Cactus</strong><br><em>Green</em>
     </td>
     <td align="center">
-      <a href="#mirage-teal"><img src="./assets/screenshots/tmux-mirage.png" alt="Mirage" width="180"></a><br>
+      <a href="#mirage-dark"><img src="./assets/screenshots/mirage-dark-dashboard.png" alt="Mirage" width="180"></a><br>
       <strong>Mirage</strong><br><em>Teal</em>
     </td>
     <td align="center">
-      <a href="#lagoon-blue"><img src="./assets/screenshots/tmux-lagoon.png" alt="Lagoon" width="180"></a><br>
+      <a href="#lagoon-dark"><img src="./assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon" width="180"></a><br>
       <strong>Lagoon (Default)</strong><br><em>Blue</em>
     </td>
     <td align="center">
-      <a href="#twilight-purple"><img src="./assets/screenshots/tmux-twilight.png" alt="Twilight" width="180"></a><br>
+      <a href="#twilight-dark"><img src="./assets/screenshots/twilight-dark-dashboard.png" alt="Twilight" width="180"></a><br>
       <strong>Twilight</strong><br><em>Purple</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="#rose-pink"><img src="./assets/screenshots/tmux-rose.png" alt="Rose" width="180"></a><br>
+      <a href="#rose-dark"><img src="./assets/screenshots/rose-dark-dashboard.png" alt="Rose" width="180"></a><br>
       <strong>Rose</strong><br><em>Pink</em>
-    </td>
-    <td align="center">
-      <a href="#dawn-beige"><img src="./assets/screenshots/tmux-dawn.png" alt="Dawn" width="180"></a><br>
-      <strong>Dawn</strong><br><em>Beige</em>
-    </td>
-    <td align="center">
-      <a href="#dawnlight-golden-beige"><img src="./assets/screenshots/tmux-dawnlight.png" alt="Dawnlight" width="180"></a><br>
-      <strong>Dawnlight</strong><br><em>Golden Beige</em>
-    </td>
-    <td align="center">
-      <a href="#day-gold"><img src="./assets/screenshots/tmux-day.png" alt="Day" width="180"></a><br>
-      <strong>Day</strong><br><em>Gold</em>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="#dusk-peach-gold"><img src="./assets/screenshots/tmux-dusk.png" alt="Susk" width="180"></a><br>
-      <strong>Dusk</strong><br><em>Peach Gold</em>
-    </td>
-    <td align="center">
-      <a href="#dust-golden-sand"><img src="./assets/screenshots/tmux-dust.png" alt="Dust" width="180"></a><br>
-      <strong>Dust</strong><br><em>Golden Sand</em>
     </td>
   </tr>
 </table>
 
-> [!TIP]
-> Click any card above to see the full preview example.
->
-> [↓ Click here to view all full previews](#view-all-theme-styles).
+## ☀️ Light Styles
+
+### Light Previews
+
+The examples below use the light style 3.
+
+<table>
+  <tr>
+    <td align="center"><a href="#night-light"><img src="assets/screenshots/night-light-3-dashboard.png" alt="Night (light)" width="auto"></a><br><strong>Night · Light</strong></td>
+    <td align="center"><a href="#midnight-light"><img src="assets/screenshots/midnight-light-3-dashboard.png" alt="Midnight (light)" width="auto"></a><br><strong>Midnight · Light</strong></td>
+    <td align="center"><a href="#abyss-light"><img src="assets/screenshots/abyss-light-3-dashboard.png" alt="Abyss (light)" width="auto"></a><br><strong>Abyss · Light</strong></td>
+    <td align="center"><a href="#starlight-light"><img src="assets/screenshots/starlight-light-3-dashboard.png" alt="Starlight (light)" width="auto"></a><br><strong>Starlight · Light</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="auto"></a><br><strong>Desert · Light</strong></td>
+    <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="auto"></a><br><strong>Sol · Light</strong></td>
+    <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="auto"></a><br><strong>Canyon · Light</strong></td>
+    <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="auto"></a><br><strong>Dune · Light</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="#cactus-light"><img src="assets/screenshots/cactus-light-3-dashboard.png" alt="Cactus (light)" width="auto"></a><br><strong>Cactus · Light</strong></td>
+    <td align="center"><a href="#mirage-light"><img src="assets/screenshots/mirage-light-3-dashboard.png" alt="Mirage (light)" width="auto"></a><br><strong>Mirage · Light</strong></td>
+    <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="auto"></a><br><strong>Lagoon · Light</strong></td>
+    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight · Light</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="auto"></a><br><strong>Rose · Light</strong></td>
+  </tr>
+</table>
 
 ## ✨ Features
 
 - **Advanced status line** with dynamic mode indicators based on `vim` for each of tmux's modes.
   - Includes: `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
-- **18 theme styles**, a rainbow of desert-inspired options
-- **Automatic theme loading**, set `@oasis_flavor` and the system will handle the rest
+- **13 base styles** with granular variants: dual-mode themes provide 1 dark + 5 light levels
+- **Automatic theme loading**, set `@oasis_flavor` and the system will handle the rest (suffixes added for you)
 - **Modular design** with separate theme and status line configurations (_download **only** what you need_)
 - **Standalone** with zero dependencies on any other plugins
 
@@ -167,8 +176,8 @@ Choose from 18 distinct desert-inspired styles, each with its own personality an
 1. Add to your `tmux.conf`:
 
 ```tmux
-set -g @plugin 'uhs-robert/tmux-oasis'
-set -g @oasis_flavor "lagoon"  # Optional: defaults to lagoon
+set -g @plugin 'uhs-robert/oasis'
+set -g @oasis_flavor "lagoon_dark"  # Optional: defaults to lagoon_dark
 ```
 
 2. Install with TPM: `prefix + I`
@@ -178,19 +187,19 @@ set -g @oasis_flavor "lagoon"  # Optional: defaults to lagoon
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/uhs-robert/tmux-oasis ~/.tmux/themes/tmux-oasis
+git clone https://github.com/uhs-robert/oasis ~/.tmux/themes/oasis
 ```
 
 2. In your `tmux.conf`, set your preferred theme style:
 
 ```tmux
-set -g @oasis_flavor "lagoon"
+set -g @oasis_flavor "lagoon_dark"
 ```
 
 3. Source the main configuration:
 
 ```tmux
-source-file "~/.tmux/themes/tmux-oasis/oasis_tmux.conf"
+source-file "~/.tmux/themes/oasis/oasis_tmux.conf"
 ```
 
 4. Reload tmux: `tmux source ~/.tmux.conf`
@@ -205,203 +214,278 @@ The status line is inspired from **lualine** in Neovim. It includes:
 - **Real-time clock**: Hours, minutes, seconds with AM/PM
 - **Color-coded states**: Different colors for all of the different tmux modes
 
+## 🎯 Picking a Theme Variant
+
+- **Dual-mode themes**: `abyss`, `cactus`, `canyon`, `desert`, `dune`, `lagoon`, `mirage`, `midnight`, `night`, `rose`, `sol`, `starlight`, `twilight`
+  - Variants: `_dark` and `_light_1` … `_light_5`
+  - Short names auto-expand: setting `set -g @oasis_flavor "lagoon"` loads `lagoon_dark`
+
+Examples:
+
+```tmux
+set -g @oasis_flavor "canyon_light_3"
+set -g @oasis_flavor "night"          # resolves to night_dark
+```
+
 ## ⚙️ (Devs) Creating New Theme Styles
 
-1. Create a new file in `themes/oasis_[name].conf`
-2. Define all the `@thm_*` color variables
-3. Use `set -g @oasis_flavor "[name]"` in your tmux.conf
+1. Add a new directory: `themes/<name>/`
+2. Place variants as `themes/<name>/oasis_<name>_<variant>.conf` (e.g., `_dark`, `_light_1` … `_light_5`)
+3. Define all the `@thm_*` color variables in each variant file
+4. Set `@oasis_flavor` to your new variant to test it
 
 > [!TIP]
-> Feel free to add your own styles by creating `themes/oasis_[style].conf` files
+> Dual-mode themes should ship with one `_dark` and five `_light_[1-5]` files for consistent UX.
 
 ## 👀 View All Theme Styles
 
 > [!IMPORTANT]
 > The status line at the top is the TMUX plugin integration.
->
-> All screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
+
+<a id="view-all-theme-styles"></a>
 
 <details open>
   <summary><b>All styles (click to collapse)</b></summary>
+  <!-- all-styles:start -->
 
-### Night (Purple Night Sky)
+### Dark previews
 
-Deep desert night sky with purple-indigo undertones, a deeper purple than twilight for those who prefer soft darkness
+<a id="night-dark"></a>
+**Night (Dark · Night Sky)**
 
-<img src="./assets/screenshots/tmux-night.png" alt="Night" width="800">
-
-<p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
-</p>
-
-### Midnight (Off Black)
-
-Deep slate and navy tones of the desert at midnight, a tinted-black lighter than abyss
-
-<img src="./assets/screenshots/tmux-midnight.png" alt="Midnight" width="800">
+![night-dark-dashboard](./assets/screenshots/night-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Abyss (Black)
+<a id="midnight-dark"></a>
+**Midnight (Dark · Off Black)**
 
-Deep, dark style with mysterious depths
-
-<img src="./assets/screenshots/tmux-abyss.png" alt="Abyss" width="800">
+![midnight-dark-dashboard](./assets/screenshots/midnight-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Starlight (Black Vivid)
+<a id="abyss-dark"></a>
+**Abyss (Dark · Black)**
 
-Desert abyss illuminated by brilliant starlight with vivid accent colors
-
-<img src="./assets/screenshots/tmux-starlight.png" alt="Starlight" width="800">
+![abyss-dark-dashboard](./assets/screenshots/abyss-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Desert (Grey)
+<a id="starlight-dark"></a>
+**Starlight (Dark · Black Vivid)**
 
-Inspired by the classic vim desert theme, neutral sand and earth tones
-
-<img src="./assets/screenshots/tmux-desert.png" alt="Desert" width="800">
+![starlight-dark-dashboard](./assets/screenshots/starlight-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Sol (Red)
+<a id="desert-dark"></a>
+**Desert (Dark · Grey)**
 
-Hot, scorching desert sun with intense red tones
-
-<img src="./assets/screenshots/tmux-sol.png" alt="Sol" width="800">
+![desert-dark-dashboard](./assets/screenshots/desert-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Canyon (Orange)
+<a id="sol-dark"></a>
+**Sol (Dark · Red)**
 
-Rich oranges of desert canyon walls
-
-<img src="./assets/screenshots/tmux-canyon.png" alt="Canyon" width="800">
+![sol-dark-dashboard](./assets/screenshots/sol-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Dune (Yellow)
+<a id="canyon-dark"></a>
+**Canyon (Dark · Orange)**
 
-Sandy beiges and warm yellow earth tones
-
-<img src="./assets/screenshots/tmux-dune.png" alt="Dune" width="800">
+![canyon-dark-dashboard](./assets/screenshots/canyon-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Cactus (Green)
+<a id="dune-dark"></a>
+**Dune (Dark · Yellow)**
 
-Fresh greens of desert vegetation
-
-<img src="./assets/screenshots/tmux-cactus.png" alt="Cactus" width="800">
+![dune-dark-dashboard](./assets/screenshots/dune-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Mirage (Teal)
+<a id="cactus-dark"></a>
+**Cactus (Dark · Green)**
 
-Cool teals of shimmering desert mirages
-
-<img src="./assets/screenshots/tmux-mirage.png" alt="Mirage" width="800">
+![cactus-dark-dashboard](./assets/screenshots/cactus-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Lagoon (Blue)
+<a id="mirage-dark"></a>
+**Mirage (Dark · Teal)**
 
-The original Oasis theme, cool blues of the oasis lagoon
-
-<img src="./assets/screenshots/tmux-lagoon.png" alt="Lagoon" width="800">
+![mirage-dark-dashboard](./assets/screenshots/mirage-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Twilight (Purple)
+<a id="lagoon-dark"></a>
+**Lagoon (Dark · Default)**
 
-Evening desert with purple and indigo hues
-
-<img src="./assets/screenshots/tmux-twilight.png" alt="Twilight" width="800">
+![lagoon-dark-dashboard](./assets/screenshots/lagoon-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Rose (Pink)
+<a id="twilight-dark"></a>
+**Twilight (Dark · Purple)**
 
-Soft pinks of the warm desert rose
-
-<img src="./assets/screenshots/tmux-rose.png" alt="Rose" width="800">
+![twilight-dark-dashboard](./assets/screenshots/twilight-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Dawn (Beige)
+<a id="rose-dark"></a>
+**Rose (Dark · Pink)**
 
-Ah, the morning sun. Don't forget your sunglasses! (`Lightness = 91`)
-
-<img src="./assets/screenshots/tmux-dawn.png" alt="Dawn" width="800">
+![rose-dark-dashboard](./assets/screenshots/rose-dark-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
-### Dawnlight (Golden Beige)
+### Light previews
 
-Slightly warmer than dawn, a golden morning glow (`Lightness = 88`)
+<a id="night-light"></a>
+**Night (Light)**
 
-<img src="./assets/screenshots/tmux-dawnlight.png" alt="Dawnlight" width="800">
+![night-light-3-dashboard](./assets/screenshots/night-light-3-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
-### Day (Gold)
+<a id="midnight-light"></a>
+**Midnight (Light)**
 
-Full daylight warmth with rich golden saturation - the default light style (`Lightness = 85`)
-
-<img src="./assets/screenshots/tmux-day.png" alt="Day" width="800">
+![midnight-light-3-dashboard](./assets/screenshots/midnight-light-3-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
-### Dusk (Peach Gold)
+<a id="abyss-light"></a>
+**Abyss (Light)**
 
-Warm sky at sunset, peachy-golden tones for extended coding sessions (`Lightness = 77`)
-
-<img src="./assets/screenshots/tmux-dusk.png" alt="Dusk" width="800">
+![abyss-light-3-dashboard](./assets/screenshots/abyss-light-3-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
-### Dust (Golden Sand)
+<a id="starlight-3-light"></a>
+**Starlight (Light)**
 
-From dusk to dust, warmest golden-sand tones with earthy richness (`Lightness = 70`)
-
-<img src="./assets/screenshots/tmux-dust.png" alt="Dust" width="800">
+![starlight-light-3-dashboard](./assets/screenshots/starlight-light-3-dashboard.png)
 
 <p align="center">
-  <a href="#-overview">↑ Back to Overview</a>
+  <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
+<a id="desert-light"></a>
+**Desert (Light)**
+
+![desert-light-3-dashboard](./assets/screenshots/desert-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="sol-light"></a>
+**Sol (Light)**
+
+![sol-light-3-dashboard](./assets/screenshots/sol-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="canyon-light"></a>
+**Canyon (Light)**
+
+![canyon-light-3-dashboard](./assets/screenshots/canyon-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="dune-light"></a>
+**Dune (Light)**
+
+![dune-light-3-dashboard](./assets/screenshots/dune-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="cactus-light"></a>
+**Cactus (Light)**
+
+![cactus-light-3-dashboard](./assets/screenshots/cactus-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="mirage-light"></a>
+**Mirage (Light)**
+
+![mirage-light-3-dashboard](./assets/screenshots/mirage-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="lagoon-light"></a>
+**Lagoon (Light)**
+
+![lagoon-light-3-dashboard](./assets/screenshots/lagoon-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="twilight-3-light"></a>
+**Twilight (Light)**
+
+![twilight-light-3-dashboard](./assets/screenshots/twilight-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="rose-light"></a>
+**Rose (Light)**
+
+![rose-light-3-dashboard](./assets/screenshots/rose-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+  <!-- all-styles:end -->
 </details>
+> All screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
