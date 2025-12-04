@@ -6,10 +6,10 @@
 <h1 align="center">Tmux Oasis</h1>
 
 <p align="center">
-  <a href="https://github.com/uhs-robert/oasis/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/oasis?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/oasis/issues"><img src="https://img.shields.io/github/issues/uhs-robert/oasis?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/oasis/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/oasis?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300"></a>
-  <a href="https://github.com/uhs-robert/oasis/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/oasis?colorA=192330&colorB=CFA7FF&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/stargazers"><img src="https://img.shields.io/github/stars/uhs-robert/oasis?colorA=192330&colorB=skyblue&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/issues"><img src="https://img.shields.io/github/issues/uhs-robert/oasis?colorA=192330&colorB=khaki&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/contributors"><img src="https://img.shields.io/github/contributors/uhs-robert/oasis?colorA=192330&colorB=8FD1C7&style=for-the-badge&cacheSeconds=4300"></a>
+  <a href="https://github.com/uhs-robert/tmux-oasis/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/oasis?colorA=192330&colorB=CFA7FF&style=for-the-badge&cacheSeconds=4300"></a>
 </p>
 
 <p align="center">
@@ -285,6 +285,8 @@ set -g @oasis_flavor "night"          # resolves to night_dark
 
 ## 👀 View All Theme Styles
 
+> All screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
+
 > [!IMPORTANT]
 > The status line at the top is the TMUX plugin integration.
 
@@ -534,4 +536,3 @@ set -g @oasis_flavor "night"          # resolves to night_dark
 
   <!-- all-styles:end -->
 </details>
-> All screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
