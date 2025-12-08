@@ -220,7 +220,7 @@ The examples below use the light style 3.
 1. Add to your `tmux.conf`:
 
 ```tmux
-set -g @plugin 'uhs-robert/oasis'
+set -g @plugin 'uhs-robert/tmux-oasis'
 set -g @oasis_flavor "lagoon_dark"  # Optional: defaults to lagoon_dark
 ```
 
@@ -231,7 +231,7 @@ set -g @oasis_flavor "lagoon_dark"  # Optional: defaults to lagoon_dark
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/uhs-robert/oasis ~/.tmux/themes/oasis
+git clone https://github.com/uhs-robert/tmux-oasis ~/.tmux/themes/oasis
 ```
 
 2. In your `tmux.conf`, set your preferred theme style:
