@@ -273,8 +273,8 @@ set -g @oasis_flavor "night"          # resolves to night_dark
 
 ## ⚙️ (Devs) Creating New Theme Styles
 
-1. Add a new directory: `themes/<name>/`
-2. Place variants as `themes/<name>/oasis_<name>_<variant>.conf` (e.g., `_dark`, `_light_1` … `_light_5`)
+1. Dark variant: Create `themes/dark/oasis_<name>_dark.conf`
+2. Light variants: Create `themes/light/[1-5]/oasis_<name>_light_[1-5].conf` (5 brightness levels)
 3. Define all the `@thm_*` color variables in each variant file
 4. Set `@oasis_flavor` to your new variant to test it
 
