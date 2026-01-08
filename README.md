@@ -207,10 +207,11 @@ The examples below use the light style 3.
 ## ✨ Features
 
 - **Advanced status line** with dynamic mode indicators based on `vim` for each of tmux's modes.
-  - Includes: `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, and `OPTIONS` modes.
+  - Includes: `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, `OPTIONS`, and `ZOOM` modes.
+  - **Customizable mode formats**: Choose between `short` (single letter), `full` (complete word), `icon` (Nerd Font icons), or `custom` (user-defined labels)
 - **13 base styles** with granular variants: dual-mode themes provide 1 dark + 5 light levels
 - **Automatic theme loading**, set `@oasis_flavor` and the system will handle the rest (suffixes added for you)
-- **Modular design** with separate theme and status line configurations (_download **only** what you need_)
+- **Modular design** with separate theme and status line module configurations (_download **only** what you need_)
 - **Standalone** with zero dependencies on any other plugins
 
 ## 📦 Installation
@@ -270,6 +271,47 @@ Examples:
 set -g @oasis_flavor "canyon_light_3"
 set -g @oasis_flavor "night"          # resolves to night_dark
 ```
+
+<details>
+  <summary>🍦 Default Options</summary>
+  <br>
+<!-- config:start -->
+
+All options below show their default values. Add any of these to your `tmux.conf` to override:
+
+```tmux
+# Theme variant (13 base styles × 6 variants each = 78 total themes)
+# Options: [style]_dark, [style]_light_1, [style]_light_2, [style]_light_3, [style]_light_4, [style]_light_5
+# Styles: abyss, cactus, canyon, desert, dune, lagoon, mirage, midnight, night, rose, sol, starlight, twilight
+set -g @oasis_flavor "lagoon_dark"
+
+# Mode indicator display format
+# Options: "short" (N, C, V), "full" (NORMAL, COPY, VIEW), "icon" (Nerd Font icons), "custom" (see below)
+set -g @oasis_mode_format "full"
+
+# Custom mode labels (only used when @oasis_mode_format is "custom")
+set -g @oasis_mode_custom_normal "NORMAL"
+set -g @oasis_mode_custom_command "COMMAND"
+set -g @oasis_mode_custom_copy "COPY"
+set -g @oasis_mode_custom_view "VIEW"
+set -g @oasis_mode_custom_choose "CHOOSE"
+set -g @oasis_mode_custom_options "OPTIONS"
+set -g @oasis_mode_custom_clock "CLOCK"
+set -g @oasis_mode_custom_zoom "ZOOM"
+
+# Clock module settings
+set -g @oasis_clock_24h "on"      # "on" for 24-hour format, "off" for 12-hour AM/PM
+set -g @oasis_clock_icon "󰥔 "     # Icon/text shown before time
+
+# Folder/directory module settings
+set -g @oasis_folder_icon " "    # Icon/text shown before directory path
+
+# Session module settings
+set -g @oasis_session_icon "󰍹 "  # Icon/text shown before session name
+```
+
+<!-- config:end -->
+</details>
 
 ## ⚙️ (Devs) Creating New Theme Styles
 
