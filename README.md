@@ -42,13 +42,17 @@ Oasis provides a fully styled status line with a robust dynamic mode indicator f
 <br>
 <img src="./assets/screenshots/statusbar/mode-choose.png" alt="Choose Mode">
 
-**Clock Mode**
+**Zoom Mode**
 <br>
-<img src="./assets/screenshots/statusbar/mode-clock.png" alt="Clock Mode">
+<img src="./assets/screenshots/statusbar/mode-zoom.png" alt="Zoom Mode">
 
 **Options Mode**
 <br>
 <img src="./assets/screenshots/statusbar/mode-options.png" alt="Options Mode">
+
+**Clock Mode**
+<br>
+<img src="./assets/screenshots/statusbar/mode-clock.png" alt="Clock Mode">
 
 </div>
 
