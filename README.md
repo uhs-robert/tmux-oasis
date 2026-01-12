@@ -212,13 +212,15 @@ The examples below use the light style 3.
 
 - **Advanced status line** with dynamic mode indicators based on `vim` for each of tmux's modes.
   - Includes: `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, `OPTIONS`, and `ZOOM` modes.
-  - **Customizable mode formats**: Choose between `short` (single letter), `full` (complete word), `icon` (Nerd Font icons), or `custom` (user-defined labels)
+  - **Customizable mode formats**: Set `@oasis_mode_format` to `short` (single letter), `full` (complete word), `icon` (Nerd Font icons), or `custom` (user-defined labels)
 - **13 base styles** with granular variants: dual-mode themes provide 1 dark + 5 light levels
 - **Automatic theme loading**, set `@oasis_flavor` and the system will handle the rest (suffixes added for you)
 - **Modular design** with separate theme and status line module configurations (_download **only** what you need_)
 - **Standalone** with zero dependencies on any other plugins
 
 ## 📦 Installation
+
+For customization options, please see [all configuration options](#config-options).
 
 ### Method 1: Tmux Plugin Manager (TPM) - Recommended
 
@@ -253,17 +255,9 @@ source-file "~/.tmux/themes/oasis/oasis_tmux.conf"
 
 4. Reload tmux: `tmux source ~/.tmux.conf`
 
-## 🚀 Status Line Features
+## ⚙️ Configuration
 
-The status line is inspired from **lualine** in Neovim. It includes:
-
-- **Dynamic mode indicators**: Visual indicators for `prefix mode`, `copy mode`, `command mode`, `tree mode` etc.
-- **Session information**: Current session name with icons
-- **Current directory**: Abbreviated path display
-- **Real-time clock**: Hours, minutes, seconds with AM/PM
-- **Color-coded states**: Different colors for all of the different tmux modes
-
-## 🎯 Picking a Theme Variant
+Oasis offers _many_ different styles to choose from. First, pick a theme!
 
 - **Dual-mode themes**: `abyss`, `cactus`, `canyon`, `desert`, `dune`, `lagoon`, `mirage`, `midnight`, `night`, `rose`, `sol`, `starlight`, `twilight`
   - Variants: `_dark` and `_light_1` … `_light_5`
@@ -272,12 +266,16 @@ The status line is inspired from **lualine** in Neovim. It includes:
 Examples:
 
 ```tmux
-set -g @oasis_flavor "canyon_light_3"
-set -g @oasis_flavor "night"          # resolves to night_dark
+set -g @oasis_flavor "canyon_light_3"   # For light variant 3
+set -g @oasis_flavor "night"            # Resolves to night_dark
 ```
 
+Then set up any additional configuration options for more customization!
+
+<a id="config-options"></a>
+
 <details>
-  <summary>🍦 Default Options</summary>
+  <summary>🍦 Configuration Options & Defaults</summary>
   <br>
 <!-- config:start -->
 
