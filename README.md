@@ -11,7 +11,7 @@
   <a href="https://github.com/uhs-robert/tmux-oasis/network/members"><img src="https://img.shields.io/github/forks/uhs-robert/tmux-oasis?colorA=192330&colorB=CFA7FF&style=for-the-badge&cacheSeconds=4300"></a>
 </p>
 <p align="center">
-A collection of <strong>13</strong> desert-inspired Tmux colorscheme status lines; with <strong>dual light/dark modes</strong>.
+A collection of <strong>15</strong> desert-inspired Tmux colorscheme status lines; with <strong>dual light/dark modes</strong>.
 </p>
 
 ## 🎨 Status Bar with Dynamic Modes
@@ -144,15 +144,19 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
       <strong>Sol</strong><br><em>Red</em>
     </td>
     <td align="center">
+      <a href="#scorpion-dark"><img src="./assets/screenshots/scorpion-dark-dashboard.png" alt="scorpion" width="180"></a><br>
+      <strong>Scorpion</strong><br><em>Scorched</em>
+    </td>
+    <td align="center">
       <a href="#canyon-dark"><img src="./assets/screenshots/canyon-dark-dashboard.png" alt="Canyon" width="180"></a><br>
       <strong>Canyon</strong><br><em>Orange</em>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="#dune-dark"><img src="./assets/screenshots/dune-dark-dashboard.png" alt="Dune" width="180"></a><br>
       <strong>Dune</strong><br><em>Yellow</em>
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <a href="#cactus-dark"><img src="./assets/screenshots/cactus-dark-dashboard.png" alt="Cactus" width="180"></a><br>
       <strong>Cactus</strong><br><em>Green</em>
@@ -165,12 +169,16 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
       <a href="#lagoon-dark"><img src="./assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon" width="180"></a><br>
       <strong>Lagoon (Default)</strong><br><em>Blue</em>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="#twilight-dark"><img src="./assets/screenshots/twilight-dark-dashboard.png" alt="Twilight" width="180"></a><br>
       <strong>Twilight</strong><br><em>Purple</em>
     </td>
-  </tr>
-  <tr>
+    <td align="center">
+      <a href="#luna-dark"><img src="./assets/screenshots/luna-dark-dashboard.png" alt="Luna" width="180"></a><br>
+      <strong>Luna</strong><br><em>Indigo</em>
+    </td>
     <td align="center">
       <a href="#rose-dark"><img src="./assets/screenshots/rose-dark-dashboard.png" alt="Rose" width="180"></a><br>
       <strong>Rose</strong><br><em>Pink</em>
@@ -194,16 +202,18 @@ The examples below use the light style 3.
   <tr>
     <td align="center"><a href="#desert-light"><img src="assets/screenshots/desert-light-3-dashboard.png" alt="Desert (light)" width="auto"></a><br><strong>Desert · Light</strong></td>
     <td align="center"><a href="#sol-light"><img src="assets/screenshots/sol-light-3-dashboard.png" alt="Sol (light)" width="auto"></a><br><strong>Sol · Light</strong></td>
+    <td align="center"><a href="#scorpion-light"><img src="assets/screenshots/scorpion-light-3-dashboard.png" alt="Scorpion (light)" width="auto"></a><br><strong>Scorpion · Light</strong></td>
     <td align="center"><a href="#canyon-light"><img src="assets/screenshots/canyon-light-3-dashboard.png" alt="Canyon (light)" width="auto"></a><br><strong>Canyon · Light</strong></td>
-    <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="auto"></a><br><strong>Dune · Light</strong></td>
   </tr>
   <tr>
+    <td align="center"><a href="#dune-light"><img src="assets/screenshots/dune-light-3-dashboard.png" alt="Dune (light)" width="auto"></a><br><strong>Dune · Light</strong></td>
     <td align="center"><a href="#cactus-light"><img src="assets/screenshots/cactus-light-3-dashboard.png" alt="Cactus (light)" width="auto"></a><br><strong>Cactus · Light</strong></td>
     <td align="center"><a href="#mirage-light"><img src="assets/screenshots/mirage-light-3-dashboard.png" alt="Mirage (light)" width="auto"></a><br><strong>Mirage · Light</strong></td>
     <td align="center"><a href="#lagoon-light"><img src="assets/screenshots/lagoon-light-3-dashboard.png" alt="Lagoon (light)" width="auto"></a><br><strong>Lagoon · Light</strong></td>
-    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight · Light</strong></td>
   </tr>
   <tr>
+    <td align="center"><a href="#twilight-light"><img src="assets/screenshots/twilight-light-3-dashboard.png" alt="Twilight (light)" width="auto"></a><br><strong>Twilight · Light</strong></td>
+    <td align="center"><a href="#luna-light"><img src="assets/screenshots/luna-light-3-dashboard.png" alt="Luna (light)" width="auto"></a><br><strong>Luna · Light</strong></td>
     <td align="center"><a href="#rose-light"><img src="assets/screenshots/rose-light-3-dashboard.png" alt="Rose (light)" width="auto"></a><br><strong>Rose · Light</strong></td>
   </tr>
 </table>
@@ -259,7 +269,7 @@ source-file "~/.tmux/themes/oasis/oasis_tmux.conf"
 
 Oasis offers _many_ different styles to choose from. First, pick a theme!
 
-- **Dual-mode themes**: `abyss`, `cactus`, `canyon`, `desert`, `dune`, `lagoon`, `mirage`, `midnight`, `night`, `rose`, `sol`, `starlight`, `twilight`
+- **Dual-mode themes**: `abyss`, `cactus`, `canyon`, `desert`, `dune`, `lagoon`, `luna`, `mirage`, `midnight`, `night`, `rose`, `scorpion`, `sol`, `starlight`, `twilight`
   - Variants: `_dark` and `_light_1` … `_light_5`
   - Short names auto-expand to dark: setting `set -g @oasis_flavor "lagoon"` loads `lagoon_dark`
 
@@ -282,9 +292,9 @@ Then set up any additional configuration options for more customization!
 All options below show their default values. Add any of these to your `tmux.conf` to override:
 
 ```tmux
-# Theme variant (13 base styles × 6 variants each = 78 total themes)
+# Theme variant (15 base styles × 6 variants each = 78 total themes)
 # Options: [style]_dark, [style]_light_1, [style]_light_2, [style]_light_3, [style]_light_4, [style]_light_5
-# Styles: abyss, cactus, canyon, desert, dune, lagoon, mirage, midnight, night, rose, sol, starlight, twilight
+# Styles: abyss, cactus, canyon, desert, dune, lagoon, luna, mirage, midnight, night, rose, scorpion, sol, starlight, twilight
 set -g @oasis_flavor "lagoon_dark"
 
 # Mode indicator display format
@@ -394,6 +404,15 @@ set -g @oasis_session_icon "󰍹 "  # Icon/text shown before session name
   <a href="#dark-previews">↑ Back to Dark Styles</a>
 </p>
 
+<a id="scorpion-dark"></a>
+**Scorpion (Dark · Scorched)**
+
+![scorpion-dark-dashboard](./assets/screenshots/scorpion-dark-dashboard.png)
+
+<p align="center">
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
+</p>
+
 <a id="canyon-dark"></a>
 **Canyon (Dark · Orange)**
 
@@ -443,6 +462,15 @@ set -g @oasis_session_icon "󰍹 "  # Icon/text shown before session name
 **Twilight (Dark · Purple)**
 
 ![twilight-dark-dashboard](./assets/screenshots/twilight-dark-dashboard.png)
+
+<p align="center">
+  <a href="#dark-previews">↑ Back to Dark Styles</a>
+</p>
+
+<a id="luna-dark"></a>
+**Luna (Dark · Purple)**
+
+![luna-dark-dashboard](./assets/screenshots/luna-dark-dashboard.png)
 
 <p align="center">
   <a href="#dark-previews">↑ Back to Dark Styles</a>
@@ -513,6 +541,15 @@ set -g @oasis_session_icon "󰍹 "  # Icon/text shown before session name
   <a href="#light-previews">↑ Back to Light Styles</a>
 </p>
 
+<a id="scorpion-light"></a>
+**Scorpion (Light)**
+
+![scorpion-light-3-dashboard](./assets/screenshots/scorpion-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
 <a id="canyon-light"></a>
 **Canyon (Light)**
 
@@ -562,6 +599,15 @@ set -g @oasis_session_icon "󰍹 "  # Icon/text shown before session name
 **Twilight (Light)**
 
 ![twilight-light-3-dashboard](./assets/screenshots/twilight-light-3-dashboard.png)
+
+<p align="center">
+  <a href="#light-previews">↑ Back to Light Styles</a>
+</p>
+
+<a id="luna-light"></a>
+**Luna (Light)**
+
+![luna-light-3-dashboard](./assets/screenshots/luna-light-3-dashboard.png)
 
 <p align="center">
   <a href="#light-previews">↑ Back to Light Styles</a>
