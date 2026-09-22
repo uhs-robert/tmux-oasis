@@ -277,6 +277,9 @@ set -g @oasis_folder_icon " "    # Icon/text shown before directory path
 
 # Session module settings
 set -g @oasis_session_icon "󰍹 "  # Icon/text shown before session name
+
+# Pane settings
+set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps the terminal background
 ```
 
 <!-- config:end -->
