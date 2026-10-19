@@ -19,6 +19,8 @@ set_load 4.00
 assert_equals "factors are options" crit "$(load state opt_oasis_load_warn=0.1 opt_oasis_load_crit=0.25)"
 assert_equals "display ignores thresholds" 4.00 "$(load display opt_oasis_load_warn=0.1)"
 
+assert_equals "counts all cores, not the OMP or affinity limit" "--all" "$(load state OMP_NUM_THREADS=1 >/dev/null; cat "$stub_data/nproc.args")"
+
 printf '1\n' > "$stub_data/nproc"
 set_load 0.70; assert_equals "one core, at warn" warn "$(load state)"
 set_load 0.69; assert_equals "one core, below warn" ok "$(load state)"
@@ -32,7 +34,11 @@ assert_equals "missing loadavg has no state" "" "$(load state)"
 printf 'garbage\n' > "$stub_data/proc/loadavg"
 assert_equals "unparsable loadavg hides" "" "$(load display)"
 set_load 1.00; rm "$stub_data/nproc"
+
 assert_equals "unknown core count has no state" "" "$(load state)"
+printf '4\n' > "$stub_data/getconf._NPROCESSORS_ONLN"
+assert_equals "falls back to getconf when nproc fails" ok "$(load state)"
+rm "$stub_data/getconf._NPROCESSORS_ONLN"
 assert_equals "unknown core count still displays" 1.00 "$(load display)"
 
 macos() { run_script load "$1" OASIS_UNAME=Darwin "${@:2}"; }

@@ -11,6 +11,6 @@ export OASIS_STUB_DATA=$stub_data
 run_script() {
   local name=$1 mode=$2
   shift 2
-  env -u TMUX PATH="$fixtures_dir/bin:$PATH" OASIS_STUB_DATA="$stub_data" "$@" \
+  env -u TMUX -u XDG_RUNTIME_DIR PATH="$fixtures_dir/bin:$PATH" OASIS_STUB_DATA="$stub_data" "$@" \
     bash "$checkout_dir/status/scripts/$name.sh" "$mode"
 }

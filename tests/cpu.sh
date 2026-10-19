@@ -26,6 +26,27 @@ sample 101.05 76 125;  assert_equals "state reuses the value within half a secon
 sample 101.10 77 126;  assert_equals "display reuses it too" "75%" "$(cpu display)"
 sample 101.60 100 125; assert_equals "a later refresh recomputes" "100%" "$(cpu display)"
 
+# iowait can run backwards, which must not leave 0..100
+forget; sample 100.00 100 100; cpu display >/dev/null
+sample 101.00 200 90
+assert_equals "negative idle delta clamps to 100" "100%" "$(cpu display)"
+forget; sample 100.00 100 100; cpu display >/dev/null
+sample 101.00 90 200
+assert_equals "negative busy delta clamps to 0" "0%" "$(cpu display)"
+
+# Without XDG_RUNTIME_DIR the samples live in a private per-user directory under TMPDIR
+no_xdg() { run_script cpu display OASIS_UNAME=Linux OASIS_PROC_ROOT="$stub_data/proc" TMPDIR="$stub_data/tmp"; }
+mkdir "$stub_data/tmp"
+sample 1.00 1 1; no_xdg >/dev/null
+private_dir=$stub_data/tmp/oasis-tmux-$(id -u)
+assert_equals "private dir mode" 700 "$(stat -c %a "$private_dir" 2>/dev/null || stat -f %Lp "$private_dir")"
+sample 2.00 51 51
+assert_equals "private dir caches" "50%" "$(no_xdg)"
+rm -rf "$private_dir"; mkdir "$stub_data/elsewhere"; ln -s "$stub_data/elsewhere" "$private_dir"
+sample 1.00 1 1; no_xdg >/dev/null; sample 2.00 51 51
+assert_equals "symlinked dir is not used" "" "$(no_xdg)"
+assert_equals "and nothing is written through it" "" "$(ls "$stub_data/elsewhere")"
+
 # The refresh after a first run
 forget
 sample 100.00 0 100
@@ -70,11 +91,6 @@ printf 'nonsense\n' > "$stub_data/proc/stat"
 assert_equals "unparsable stat hides" "" "$(cpu display)"
 forget; sample 1.00 1 1; rm "$stub_data/proc/uptime"
 assert_equals "missing uptime hides" "" "$(cpu display)"
-
-# The sample directory is created, and honours TMPDIR when XDG_RUNTIME_DIR is unset
-forget; sample 1.00 1 1
-env -u XDG_RUNTIME_DIR TMPDIR="$stub_data/run" OASIS_PROC_ROOT="$stub_data/proc" OASIS_UNAME=Linux PATH="$fixtures_dir/bin:$PATH" OASIS_STUB_DATA="$stub_data" bash "$checkout_dir/status/scripts/cpu.sh" display >/dev/null
-assert_equals "TMPDIR fallback" yes "$([ -f "$stub_data/run/oasis-tmux/cpu" ] && echo yes)"
 
 macos() { run_script cpu "$1" OASIS_UNAME=Darwin "${@:2}"; }
 cp "$fixtures_dir/macos/ps" "$fixtures_dir/macos/sysctl.hw.ncpu" "$stub_data/"

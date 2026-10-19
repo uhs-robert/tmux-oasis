@@ -42,12 +42,13 @@ oasis_level() {
     }'
 }
 
-# Usage: oasis_report MODE VALUE UNIT WARN CRIT
-# The tail every metric script shares. MODE "state" prints ok, warn or crit; any other
-# mode prints VALUE with UNIT, or nothing when VALUE is empty so the module hides.
+# Usage: oasis_report MODE VALUE UNIT METRIC DEFAULT_WARN DEFAULT_CRIT
+# The tail every metric script shares. MODE "state" prints ok, warn or crit against
+# @oasis_<METRIC>_warn and _crit; any other mode prints VALUE with UNIT, or nothing
+# when VALUE is empty so the module hides, without reading the thresholds.
 oasis_report() {
   case "$1" in
-    state) oasis_level "$2" "$4" "$5" ;;
+    state) oasis_level "$2" "$(oasis_option "@oasis_$4_warn" "$5")" "$(oasis_option "@oasis_$4_crit" "$6")" ;;
     *)     [ -n "$2" ] && printf '%s%s' "$2" "$3" ;;
   esac
   return 0
