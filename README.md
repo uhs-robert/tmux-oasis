@@ -72,7 +72,7 @@ Choose from 16 distinct desert-inspired base styles, each with its own personali
     <summary>✨ v2.2: Configurable Status Line Layout</summary>
     <!-- v2.2:start -->
     <h3>✨ Configurable layout</h3>
-    Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules. See the <a href="#example-layouts">example layouts</a>.
+    Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules. Each side holds at most two groups (an accent group at the edge and one surface group); extra <code>|</code> groups are merged into the surface group with a warning. The default right side is now <code>sync folder | clock</code>. See the <a href="#example-layouts">example layouts</a>.
     <h3>✨ Window separators</h3>
     Windows get their own caps with <code>@oasis_window_separator</code> (<code>round</code>, <code>powerline</code>, <code>slant</code> or <code>flat</code>, default <code>round</code>). Override single caps with <code>@oasis_window_separator_left</code> and <code>@oasis_window_separator_right</code>.
     <h3>✨ Module states</h3>
@@ -276,19 +276,32 @@ Then set up any additional configuration options for more customization!
 
 ### Example layouts
 
-Each side is a list of groups separated by `|`, and a group holds one or more modules; see the configuration block below for all modules.
+Each side holds at most two groups separated by `|`: an accent group at the screen edge and one surface group inside it. A group holds one or more modules; see the configuration block below for all modules.
+
+**Desktop**
 
 ```tmux
-# Desktop
-set -g @oasis_status_right "sync | folder | git"
-
-# Laptop
-set -g @oasis_status_right "sync | folder | cpu ram battery"
-
-# Server
-set -g @oasis_status_left "mode | host"
-set -g @oasis_status_right "sync | load ram disk | clock"
+set -g @oasis_status_right "sync folder | git"
 ```
+
+<img src="./assets/screenshots/layouts/desktop.png" alt="Desktop layout">
+
+**Laptop**
+
+```tmux
+set -g @oasis_status_right "sync folder | cpu ram battery"
+```
+
+<img src="./assets/screenshots/layouts/laptop.png" alt="Laptop layout">
+
+**Server**
+
+```tmux
+set -g @oasis_status_left "mode | host"
+set -g @oasis_status_right "sync load ram disk | clock"
+```
+
+<img src="./assets/screenshots/layouts/server.png" alt="Server layout">
 
 <a id="config-options"></a>
 
