@@ -6,10 +6,12 @@ trap 'env -u TMUX tmux -L oasis-test-status kill-server 2>/dev/null || true' EXI
 bar() {
   local side=$1 list=$2; shift 2
   env -u TMUX tmux -L oasis-test-status kill-server 2>/dev/null || true
+  # kill-server returns before the old server is gone; a new one started then can race it
+  while env -u TMUX tmux -L oasis-test-status has-session 2>/dev/null; do sleep 0.05; done
   env -u TMUX tmux -L oasis-test-status -f /dev/null new -d -s t -x 200 -y 10
   env -u TMUX tmux -L oasis-test-status set -g @oasis_flavor moonlight_dark
   for name in a b c d; do
-    env -u TMUX tmux -L oasis-test-status set -g "@oasis_module_$name" "${name^^}"
+    env -u TMUX tmux -L oasis-test-status set -g "@oasis_module_$name" "$(printf %s "$name" | tr "[:lower:]" "[:upper:]")"
   done
   env -u TMUX tmux -L oasis-test-status set -g @oasis_status_left ""
   env -u TMUX tmux -L oasis-test-status set -g @oasis_status_right ""
