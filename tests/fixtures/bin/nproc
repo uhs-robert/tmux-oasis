@@ -1,0 +1,2 @@
+#!/bin/sh
+cat "$OASIS_STUB_DATA/nproc" 2>/dev/null

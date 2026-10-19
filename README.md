@@ -74,6 +74,7 @@ Choose from 13 distinct desert-inspired base styles, each with its own personali
     <h3>✨ Configurable Status Line Layout</h3>
     Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules.
     Modules can also show a warn or crit state with <code>@oasis_module_&lt;name&gt;_state</code>.
+    New opt-in modules: <code>load</code>, <code>ram</code>, <code>cpu</code> and <code>disk</code>.
     See <a href="#config-options">all configuration options</a>.
     <h3>🚨 Restart tmux after updating</h3>
     Reloading your config in an already-running tmux shows doubled separators. Restart tmux once (<code>tmux kill-server</code>) to clear it.
@@ -291,7 +292,7 @@ set -g @oasis_mode_custom_zoom "ZOOM"
 # "|" separates groups, spaces separate modules in the same group. Groups alternate
 # accent and surface colours, starting with accent at the screen edge.
 # Remove a module or group to hide it; an empty string hides the whole side.
-# Modules: mode, session, sync, folder, clock (or your own, see below)
+# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk (or your own, see below)
 set -g @oasis_status_left "mode | session"
 set -g @oasis_status_right "sync | folder | clock"
 
@@ -318,10 +319,11 @@ set -g @oasis_window_separator_right "" # Optional glyph override for the right 
 # _when hiding it also clears its state.
 set -g @oasis_state_warn_color "#{@thm_yellow}"
 set -g @oasis_state_crit_color "#{@thm_red}"
-# Example (Linux): load average, red above 4
-# set -g @oasis_module_load "#(cut -d' ' -f1 /proc/loadavg)"
-# set -g @oasis_module_load_state "#{?#(awk '$1 > 4' /proc/loadavg),crit,ok}"
-# set -g @oasis_status_right "load | folder | clock"
+# Example (Linux): your own module, red above a load of 4
+# set -g @oasis_module_busy "#(cut -d' ' -f1 /proc/loadavg)"
+# set -g @oasis_module_busy_state "#{?#(awk '$1 > 4' /proc/loadavg),crit,ok}"
+# set -g @oasis_status_right "busy | folder | clock"
+# The built-in load, ram, cpu and disk modules already do this: "load ram cpu disk | clock"
 
 # Where Oasis keeps the scripts its modules call, as #(bash "#{@oasis_scripts_dir}/<name>.sh").
 # Oasis sets this to its own status/scripts directory when it loads; don't change it.
@@ -336,6 +338,30 @@ set -g @oasis_folder_icon " "    # Icon/text shown before directory path
 
 # Session module settings
 set -g @oasis_session_icon "󰍹 "  # Icon/text shown before session name
+
+# Load module settings (not in the default layout): 1-minute load average, e.g. 1.23
+# warn and crit are multiples of the core count; a state shows from there up
+set -g @oasis_load_icon "󰊚 "  # Icon/text shown before the load
+set -g @oasis_load_warn "0.7"       # Warn at 0.7 x cores
+set -g @oasis_load_crit "1.0"       # Crit at 1.0 x cores
+
+# RAM module settings (not in the default layout): used memory, excluding reclaimable cache
+set -g @oasis_ram_icon " "    # Icon/text shown before the percentage
+set -g @oasis_ram_warn "80"         # Warn at this percent or more
+set -g @oasis_ram_crit "90"         # Crit at this percent or more
+
+# CPU module settings (not in the default layout): usage since the previous refresh,
+# so it shows nothing until the second refresh
+set -g @oasis_cpu_icon " "    # Icon/text shown before the percentage
+set -g @oasis_cpu_warn "70"         # Warn at this percent or more
+set -g @oasis_cpu_crit "90"         # Crit at this percent or more
+
+# Disk module settings (not in the default layout): used space of one filesystem
+# On macOS "/" is read as /System/Volumes/Data, where your files are
+set -g @oasis_disk_icon "󰋊 " # Icon/text shown before the percentage
+set -g @oasis_disk_path "/"         # Any path on the filesystem to watch
+set -g @oasis_disk_warn "80"        # Warn at this percent or more
+set -g @oasis_disk_crit "90"        # Crit at this percent or more
 
 # Pane settings
 set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps the terminal background

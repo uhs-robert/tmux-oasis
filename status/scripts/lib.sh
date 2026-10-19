@@ -41,3 +41,14 @@ oasis_level() {
       printf "%s", is_crit ? "crit" : is_warn ? "warn" : "ok"
     }'
 }
+
+# Usage: oasis_report MODE VALUE UNIT WARN CRIT
+# The tail every metric script shares. MODE "state" prints ok, warn or crit; any other
+# mode prints VALUE with UNIT, or nothing when VALUE is empty so the module hides.
+oasis_report() {
+  case "$1" in
+    state) oasis_level "$2" "$4" "$5" ;;
+    *)     [ -n "$2" ] && printf '%s%s' "$2" "$3" ;;
+  esac
+  return 0
+}

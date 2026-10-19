@@ -1,0 +1,3 @@
+#!/bin/sh
+# Option NAME reads the env var opt_<NAME without @>, so tests set options without a server
+if [ "$1 $2" = "show -gqv" ]; then name=${3#@}; eval "printf %s \"\${opt_$name:-}\""; fi

@@ -1,0 +1,2 @@
+#!/bin/sh
+cat "$OASIS_STUB_DATA/sysctl.$2" 2>/dev/null
