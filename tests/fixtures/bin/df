@@ -1,0 +1,2 @@
+#!/bin/sh
+printf "%s\n" "$*" > "$OASIS_STUB_DATA/df.args"; cat "$OASIS_STUB_DATA/df" 2>/dev/null
