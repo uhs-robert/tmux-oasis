@@ -5,10 +5,6 @@
 set -euo pipefail
 . "$(dirname "$0")/lib.sh"
 
-ref_server=oasis-compare-ref-$$
-work_server=oasis-compare-work-$$
-ref_viewer=oasis-compare-ref-view-$$
-work_viewer=oasis-compare-work-view-$$
 scenario_settle_seconds=${OASIS_DEV_SCENARIO_SETTLE:-0.5}
 
 ref=main
@@ -20,6 +16,12 @@ check_option_args "$@"
 git -C "$checkout_dir" rev-parse --verify --quiet "$ref^{commit}" >/dev/null || die "unknown ref '$ref'"
 
 scratch=$(mktemp -d)
+# $$ repeats across PID namespaces that share one tmux socket directory
+run_token=$(basename "$scratch")
+ref_server=oasis-compare-ref-$run_token
+work_server=oasis-compare-work-$run_token
+ref_viewer=oasis-compare-ref-view-$run_token
+work_viewer=oasis-compare-work-view-$run_token
 ref_checkout=$scratch/ref
 cleanup() {
   local server

@@ -4,18 +4,20 @@
 set -euo pipefail
 . "$(dirname "$0")/lib.sh"
 
-shot_server=oasis-shot-$$
-viewer_server=oasis-shot-view-$$
 bar_width=${OASIS_DEV_WIDTH:-120}
 
-out_path=${TMPDIR:-/tmp}/oasis-screenshot.png
+scratch=$(mktemp -d)
+# $$ repeats across PID namespaces that share one tmux socket directory
+run_token=$(basename "$scratch")
+shot_server=oasis-shot-$run_token
+viewer_server=oasis-shot-view-$run_token
+trap 'stop_server "$viewer_server"; stop_server "$shot_server"; rm -rf "$scratch"' EXIT
+
+out_path=${TMPDIR:-/tmp}/oasis-screenshot-$run_token.png
 case ${1:-} in
   *.png) out_path=$1; shift ;;
 esac
 check_option_args "$@"
-
-scratch=$(mktemp -d)
-trap 'stop_server "$viewer_server"; stop_server "$shot_server"; rm -rf "$scratch"' EXIT
 
 start_oasis_server "$shot_server" "$checkout_dir" "$checkout_dir" "$idle_pane_command" "$@"
 start_viewer "$viewer_server" "$shot_server"
