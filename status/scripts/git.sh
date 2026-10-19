@@ -14,6 +14,8 @@ git_text() {
     name=$(git -C "$repo_path" rev-parse --short HEAD 2>/dev/null) || return 0
   # Untracked files are skipped: scanning them is what makes status slow on big trees
   [ -n "$(git -C "$repo_path" status --porcelain --untracked-files=no 2>/dev/null)" ] && dirty=$(oasis_option @oasis_git_dirty_icon)
+  # tmux expands formats in #() output, so a branch like fix/#S-x would print the session name
+  name=${name//#/##}
   printf '%s %s%s' "$(oasis_option @oasis_git_icon)" "$name" "$dirty"
 }
 

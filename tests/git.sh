@@ -38,20 +38,29 @@ spaced="$scratch/with space"
 git init -q -b feature "$spaced"
 assert_equals "path with a space, unborn branch" "I feature" "$(show "$spaced")"
 
+unset -f tmux # the servers below and their #() jobs must reach real tmux
+
+# Usage: draw_git_bar DIR -- the text of a status bar showing only the git module, drawn in DIR
+draw_git_bar() {
+  env -u TMUX tmux -L oasis-gitbat-draw kill-server 2>/dev/null || true
+  env -u TMUX tmux -L oasis-gitbat-draw -f /dev/null new -d -s t -x 100 -y 10 -c "$1"
+  env -u TMUX tmux -L oasis-gitbat-draw set -g status-interval 1
+  env -u TMUX tmux -L oasis-gitbat-draw set -g @oasis_git_icon 'I I'
+  env -u TMUX tmux -L oasis-gitbat-draw set -g @oasis_status_right git
+  env -u TMUX tmux -L oasis-gitbat-draw source-file "$checkout_dir/oasis_tmux.conf"
+  (env -u TMUX timeout 4 script -qfc "stty cols 100 rows 10; env -u TMUX tmux -L oasis-gitbat-draw attach -t t" "$scratch/term.log" >/dev/null 2>&1 || true)
+  env -u TMUX tmux -L oasis-gitbat-draw kill-server 2>/dev/null || true
+  sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$scratch/term.log"
+}
+
 # A directory name is untrusted input to the shell that runs the module's #()
 hostile=$scratch/"a \$(touch $scratch/pwned) \"b'c \`touch $scratch/pwned2\`"
 git init -q -b injected "$hostile"
-unset -f tmux # the server and its #() jobs must reach real tmux
-env -u TMUX tmux -L oasis-gitbat-inject kill-server 2>/dev/null || true
-env -u TMUX tmux -L oasis-gitbat-inject -f /dev/null new -d -s t -x 100 -y 10 -c "$hostile"
-env -u TMUX tmux -L oasis-gitbat-inject source-file "$checkout_dir/oasis_tmux.conf"
-env -u TMUX tmux -L oasis-gitbat-inject set -g status-interval 1
-env -u TMUX tmux -L oasis-gitbat-inject set -g @oasis_git_icon 'I I'
-env -u TMUX tmux -L oasis-gitbat-inject set -g @oasis_status_right git
-env -u TMUX tmux -L oasis-gitbat-inject source-file "$checkout_dir/oasis_tmux.conf"
-(env -u TMUX timeout 4 script -qfc "stty cols 100 rows 10; env -u TMUX tmux -L oasis-gitbat-inject attach -t t" "$scratch/term.log" >/dev/null 2>&1 || true)
-env -u TMUX tmux -L oasis-gitbat-inject kill-server 2>/dev/null || true
-drawn=$(sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$scratch/term.log")
-case $drawn in *"I I injected"*) shown=yes ;; *) shown=no ;; esac
+case $(draw_git_bar "$hostile") in *"I I injected"*) shown=yes ;; *) shown=no ;; esac
 assert_equals "hostile directory name still shows its branch" yes "$shown"
 assert_equals "hostile directory name ran nothing" "" "$(ls "$scratch" | grep '^pwned')"
+
+# tmux would expand #S in a branch name to the session name
+git init -q -b 'fix/#S-x' "$scratch/hash_branch"
+case $(draw_git_bar "$scratch/hash_branch") in *"I I fix/#S-x"*) shown=yes ;; *) shown=no ;; esac
+assert_equals "branch name with a format code is shown literally" yes "$shown"
