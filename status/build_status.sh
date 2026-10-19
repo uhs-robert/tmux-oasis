@@ -31,6 +31,22 @@ right_override=$(option @oasis_separator_right)
 [ -n "$right_override" ] && right_glyph=$right_override
 module_separator=$(option @oasis_separator_module)
 
+# Each window is its own pill on the middle colour, so its caps never depend on a neighbour
+window_separator=$(option @oasis_window_separator)
+case "$window_separator" in
+  flat)      window_left_glyph='';              window_right_glyph='' ;;
+  powerline) window_left_glyph=$'\xee\x82\xb0'; window_right_glyph=$'\xee\x82\xb0' ;;
+  slant)     window_left_glyph=$'\xee\x82\xba'; window_right_glyph=$'\xee\x82\xbc' ;;
+  *)         window_left_glyph=$'\xee\x82\xb6'; window_right_glyph=$'\xee\x82\xb4' ;;
+esac
+# powerline's left cap is cut out of the pill, drawn in the middle colour on top of it
+window_left_is_notch=false
+[ "$window_separator" = powerline ] && window_left_is_notch=true
+window_left_override=$(option @oasis_window_separator_left)
+window_right_override=$(option @oasis_window_separator_right)
+[ -n "$window_left_override" ] && window_left_glyph=$window_left_override && window_left_is_notch=false
+[ -n "$window_right_override" ] && window_right_glyph=$window_right_override
+
 # Conditions are tmux formats; an empty condition means "always shown"
 any_of() {
   local result="" condition
@@ -159,3 +175,23 @@ tmux set -g status-left "$(build_left)"
 
 parse_groups "$(option @oasis_status_right)" right
 tmux set -g status-right "$(build_right)"
+
+window_format() {
+  local pill_colour=$1 text_style=$2 module=$3 output=""
+  if [ -n "$window_left_glyph" ]; then
+    if $window_left_is_notch; then
+      output+="#[fg=$MIDDLE_COLOUR]#[bg=$pill_colour]$window_left_glyph"
+    else
+      output+="#[fg=$pill_colour]#[bg=$MIDDLE_COLOUR]$window_left_glyph"
+    fi
+  fi
+  output+="#[bg=$pill_colour]$text_style#{E:@oasis_module_$module}"
+  [ -n "$window_right_glyph" ] && output+="#[fg=$pill_colour]#[bg=$MIDDLE_COLOUR]$window_right_glyph"
+  printf '%s' "$output"
+}
+
+# Inactive windows change text colour while the prefix key table is active
+inactive_text_style='#{?#{==:#{client_key_table},prefix},#[fg=#{@thm_secondary}],#[fg=#{@thm_primary_strong}]}'
+active_text_style='#[fg=#{@thm_core}]#[bold]'
+tmux set -g window-status-format "$(window_format "$SURFACE_COLOUR" "$inactive_text_style" window_inactive)"
+tmux set -g window-status-current-format "$(window_format '#{@thm_secondary}' "$active_text_style" window_active)"

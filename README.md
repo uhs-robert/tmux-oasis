@@ -298,6 +298,11 @@ set -g @oasis_separator_left ""    # Optional glyph override for the left side
 set -g @oasis_separator_right ""   # Optional glyph override for the right side
 set -g @oasis_separator_module " " # Placed between modules in the same group
 
+# Caps around each window in the window list: "round", "powerline", "slant" or "flat"
+set -g @oasis_window_separator "round"
+set -g @oasis_window_separator_left ""  # Optional glyph override for the left cap
+set -g @oasis_window_separator_right "" # Optional glyph override for the right cap
+
 # Custom modules: define @oasis_module_<name> as a tmux format, then use <name> in a layout.
 # @oasis_module_<name>_when optionally hides it while the format is false.
 # set -g @oasis_module_host "#H"
