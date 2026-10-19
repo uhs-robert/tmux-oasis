@@ -276,18 +276,18 @@ Then set up any additional configuration options for more customization!
 
 ### Example layouts
 
-Each side is a list of groups separated by `|`; see the configuration block below for all modules.
+Each side is a list of groups separated by `|`, and a group holds one or more modules; see the configuration block below for all modules.
 
 ```tmux
 # Desktop
-set -g @oasis_status_right "sync | folder git"
+set -g @oasis_status_right "sync | folder | git"
 
 # Laptop
-set -g @oasis_status_right "sync | folder git | cpu ram battery"
+set -g @oasis_status_right "sync | folder | cpu ram battery"
 
 # Server
-set -g @oasis_status_left "mode | host session"
-set -g @oasis_status_right "ssh sync | folder git | load ram disk"
+set -g @oasis_status_left "mode | host"
+set -g @oasis_status_right "sync | load ram disk | clock"
 ```
 
 <a id="config-options"></a>
