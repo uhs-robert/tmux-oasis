@@ -4,7 +4,7 @@ scratch=$(mktemp -d)
 trap 'rm -rf "$scratch"' EXIT
 export GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null
 git_in() { git -C "$1" -c user.name=t -c user.email=t@t "${@:2}"; }
-show() { bash "$script" text "$1" I D; }
+show() { bash "$script" text "x$1" xI xD; }
 
 repo=$scratch/repo
 git init -q -b main "$repo"
@@ -34,3 +34,20 @@ assert_equals "empty path" "" "$(show "")"
 spaced="$scratch/with space"
 git init -q -b feature "$spaced"
 assert_equals "path with a space, unborn branch" "I feature" "$(show "$spaced")"
+
+# A directory name is untrusted input to the shell that runs the module's #()
+hostile=$scratch/"a \$(touch $scratch/pwned) \"b'c \`touch $scratch/pwned2\`"
+git init -q -b injected "$hostile"
+env -u TMUX tmux -L oasis-gitbat-inject kill-server 2>/dev/null || true
+env -u TMUX tmux -L oasis-gitbat-inject -f /dev/null new -d -s t -x 100 -y 10 -c "$hostile"
+env -u TMUX tmux -L oasis-gitbat-inject source-file "$checkout_dir/oasis_tmux.conf"
+env -u TMUX tmux -L oasis-gitbat-inject set -g status-interval 1
+env -u TMUX tmux -L oasis-gitbat-inject set -g @oasis_git_icon 'I I'
+env -u TMUX tmux -L oasis-gitbat-inject set -g @oasis_status_right git
+env -u TMUX tmux -L oasis-gitbat-inject source-file "$checkout_dir/oasis_tmux.conf"
+(env -u TMUX timeout 4 script -qfc "stty cols 100 rows 10; env -u TMUX tmux -L oasis-gitbat-inject attach -t t" "$scratch/term.log" >/dev/null 2>&1 || true)
+env -u TMUX tmux -L oasis-gitbat-inject kill-server 2>/dev/null || true
+drawn=$(sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$scratch/term.log")
+case $drawn in *"I I injected"*) shown=yes ;; *) shown=no ;; esac
+assert_equals "hostile directory name still shows its branch" yes "$shown"
+assert_equals "hostile directory name ran nothing" "" "$(ls "$scratch" | grep '^pwned')"

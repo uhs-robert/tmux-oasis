@@ -2,8 +2,8 @@
 script=$checkout_dir/status/scripts/battery.sh
 icons=$'a b c d e'
 bat() { OASIS_SYS_ROOT=$fixtures_dir/$1 bash "$script" "${@:2}"; }
-text() { bat "$1" text "$icons" P; }
-state() { bat "$1" state 50 20; }
+text() { bat "$1" text "x$icons" xP; }
+state() { bat "$1" state x50 x20; }
 
 assert_equals "full real laptop is hidden" "" "$(text sys_laptop)"
 assert_equals "full real laptop has no state" "" "$(state sys_laptop)"
@@ -30,14 +30,14 @@ assert_equals "state at 51" ok "$(state sys_level_51)"
 assert_equals "state at 50" warn "$(state sys_level_50)"
 assert_equals "state at 21" warn "$(state sys_level_21)"
 assert_equals "state at 20" crit "$(state sys_level_20)"
-assert_equals "custom thresholds" crit "$(bat sys_level_50 state 60 50)"
+assert_equals "custom thresholds" crit "$(bat sys_level_50 state x60 x50)"
 
 mac() { OASIS_UNAME=Darwin OASIS_PMSET_OUTPUT=$(cat "$fixtures_dir/pmset/$1.txt") bash "$script" "${@:2}"; }
-assert_equals "macos discharging" "e 85%" "$(mac discharging text "$icons" P)"
-assert_equals "macos discharging state" ok "$(mac discharging state 50 20)"
-assert_equals "macos charging" "P 85%" "$(mac charging text "$icons" P)"
-assert_equals "macos charging state" ok "$(mac charging state 90 50)"
-assert_equals "macos AC attached, not charging" "d 78%" "$(mac held text "$icons" P)"
-assert_equals "macos charged is hidden" "" "$(mac charged text "$icons" P)"
-assert_equals "macos without battery is hidden" "" "$(mac none text "$icons" P)"
-assert_equals "unsupported system is hidden" "" "$(OASIS_UNAME=FreeBSD bash "$script" text "$icons" P)"
+assert_equals "macos discharging" "e 85%" "$(mac discharging text "x$icons" xP)"
+assert_equals "macos discharging state" ok "$(mac discharging state x50 x20)"
+assert_equals "macos charging" "P 85%" "$(mac charging text "x$icons" xP)"
+assert_equals "macos charging state" ok "$(mac charging state x90 x50)"
+assert_equals "macos AC attached, not charging" "d 78%" "$(mac held text "x$icons" xP)"
+assert_equals "macos charged is hidden" "" "$(mac charged text "x$icons" xP)"
+assert_equals "macos without battery is hidden" "" "$(mac none text "x$icons" xP)"
+assert_equals "unsupported system is hidden" "" "$(OASIS_UNAME=FreeBSD bash "$script" text "x$icons" xP)"

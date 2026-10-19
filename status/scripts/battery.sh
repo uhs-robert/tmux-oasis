@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Usage: battery.sh text ICONS CHARGING_ICON
-#        battery.sh state WARN CRIT
+# Usage: battery.sh text xICONS xCHARGING_ICON
+#        battery.sh state xWARN xCRIT
+# Each argument carries a leading "x" that is stripped here: tmux drops an empty
+# #{q:...} value entirely, which would shift the arguments after it.
 # ICONS is five space-separated icons, empty to full. Both modes print nothing
 # without a system battery (a desktop, or only a wireless mouse) and while fully charged.
 # Runs on macOS's bash 3.2.
@@ -90,6 +92,6 @@ battery_state() {
 }
 
 case "${1:-}" in
-  text)  battery_text "${2:-}" "${3:-}" ;;
-  state) battery_state "${2:-50}" "${3:-20}" ;;
+  text)  battery_text "${2#x}" "${3#x}" ;;
+  state) battery_state "${2#x}" "${3#x}" ;;
 esac
