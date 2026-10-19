@@ -1,3 +1,5 @@
+set positional-arguments
+
 # List available recipes
 default:
     just --list
@@ -21,3 +23,31 @@ theme name:
     @conf=$(find themes -name "oasis_{{name}}.conf" | head -1); \
     if [ -z "$conf" ]; then echo "Theme not found: {{name}}"; exit 1; fi; \
     tmux set -gq @oasis_flavor "{{name}}" && tmux source-file "$conf" && echo "Loaded: $conf"
+
+# Start the isolated tmux server oasis-dev with this checkout loaded (args: option=value ...)
+sandbox *args:
+    @bash dev/sandbox.sh start "$@"
+
+# Kill the oasis-dev sandbox server
+sandbox-stop:
+    @bash dev/sandbox.sh stop
+
+# Print the sandbox's drawn status bar as cells, glyphs as U+XXXX
+render:
+    @bash dev/render.sh
+
+# Check the drawn bar matches ref cell by cell (args: [ref] [option=value ...], ref defaults to main)
+compare *args:
+    @bash dev/compare.sh "$@"
+
+# Draw the status bar to a PNG (args: [out.png] [option=value ...])
+screenshot *args:
+    @bash dev/screenshot.sh "$@"
+
+# Print commands for the owner to preview this checkout on their own tmux (args: option=value ...)
+preview *args:
+    @bash dev/owner_commands.sh preview "$@"
+
+# Print commands to undo `just preview` (args: the same option=value ... given to preview)
+restore *args:
+    @bash dev/owner_commands.sh restore "$@"

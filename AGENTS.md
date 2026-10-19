@@ -15,25 +15,21 @@ A tmux theme (16 styles, each with one dark and five light variants) with a stat
 
 ## Testing
 
-**Never touch the owner's tmux server.** Agent shells usually run inside it, with `$TMUX` pointing at it. Every tmux call must be `env -u TMUX tmux -L <literal-unique-name> ...`, finishing with `kill-server` on that name.
+**Never touch the owner's tmux server.** Agent shells usually run inside it, with `$TMUX` pointing at it. Every tmux call must be `env -u TMUX tmux -L <literal-unique-name> ...`, finishing with `kill-server` on that name. The recipes below do this for you, on fixed server names (`oasis-dev`, `oasis-shot`, `oasis-compare-*` and their `-view` viewers).
 
-```sh
-env -u TMUX tmux -L oasis-test -f /dev/null new -d -s t -x 200 -y 20 -c "$PWD"
-env -u TMUX tmux -L oasis-test source-file "$PWD/oasis_tmux.conf"
-env -u TMUX tmux -L oasis-test display -p '#{T:status-right}'
-env -u TMUX tmux -L oasis-test kill-server
-```
+| Recipe | Does |
+|---|---|
+| `just sandbox [option=value ...]` / `just sandbox-stop` | Isolated server `oasis-dev` with this checkout loaded. Prints how to attach. |
+| `just render` | The sandbox's drawn bar as cells (fg, bg, bold, glyphs as `U+XXXX`), with `#()` output. |
+| `just compare [ref] [option=value ...]` | Draws `ref` (default `main`) and the working tree in every scenario and compares cell by cell. |
+| `just screenshot [out.png] [option=value ...]` | PNG of the bar in JetBrainsMono Nerd Font (Pillow; `OASIS_FONT` overrides the font). Open it to check contrast and glyphs. |
+| `just preview [option=value ...]` / `just restore [option=value ...]` | Prints commands for the owner to preview this checkout on their own tmux, and to undo it. |
 
-`display -p` does not run `#()` jobs, so script-backed content is empty there. To see the drawn bar, set `status-interval 1`, attach a headless client and read its output, allowing one refresh before results appear:
+Options are `@oasis_*` names with or without the prefix (`separator=round`). The dev recipes default to the `moonlight_dark` flavour; pass `flavor=...` for another.
 
-```sh
-(env -u TMUX timeout 5 script -qfc "stty cols 200 rows 20; env -u TMUX tmux -L oasis-test attach -t t" "$scratch/term.log" >/dev/null 2>&1 &)
-sleep 4.5; sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$scratch/term.log"
-```
+**Changes to `build_status.sh`, a module or `windows.conf` must keep the default bar identical: run `just compare`.** It covers synchronize-panes and the prefix key table off and on, with the active window custom-named or named "Window".
 
-**Changes to `build_status.sh`, a module or `windows.conf` must keep the default bar identical.** Render `main` and the branch on separate isolated servers, with synchronize-panes off and on and the prefix key active. Compare cell by cell (glyph, fg, bg), treating a space and a full block (U+2588) in the same colour as equal.
-
-To let the owner preview on their own server, give them commands to run themselves. Their tmux loads Oasis from TPM (`~/.tmux/plugins/tmux-oasis`). A preview is `tmux set -gu @oasis_module_<name>` for each built-in module, then `tmux source-file <checkout>/oasis_tmux.conf`. This drops tmux-continuum's autosave hook until they restore with `tmux source-file ~/.tmux.conf`.
+To let the owner try a change on their own server, run `just preview` and give them its output to run themselves. The preview drops tmux-continuum's autosave hook until they run the output of `just restore` (given the same options).
 
 ## Footguns
 
@@ -41,6 +37,7 @@ To let the owner preview on their own server, give them commands to run themselv
 - **Commas inside `#{?cond,a,b}` branches split them**, including commas inside `#[...]`. Use one style attribute per `#[...]`, and reference anything with commas through `#{E:@option}`.
 - **`set -ogq` values survive reloads.** Changing a built-in module's content needs `tmux set -gu @oasis_module_<name>` first. Users upgrading must restart tmux once.
 - **Private-use glyphs (Nerd Font and powerline icons) can vanish from an agent's output**, including when a `\uXXXX` escape gets turned into the glyph by a heredoc or a file-writing tool. Store them as byte escapes that stay escapes, e.g. `$'\xee\x82\xb0'` in bash, which also works on macOS's bash 3.2. Verify with a codepoint dump.
+- **`display -p` does not run `#()` jobs**, so script-backed content is empty there. `just render` shows the drawn bar.
 - **`#()` runs every `status-interval` per client.** Scripts must return in well under 100 ms and never sleep.
 - **`run-shell` expands formats**, so a `#(...)` passed through it runs instead of being stored.
 
