@@ -35,6 +35,7 @@ To let the owner try a change on their own server, run `just preview` and give t
 
 - **`%` in a status format is a date code**: `printf "%s"` inside `#()` prints the epoch. Format inside scripts, or write `%%`.
 - **Commas inside `#{?cond,a,b}` branches split them**, including commas inside `#[...]`. Use one style attribute per `#[...]`, and reference anything with commas through `#{E:@option}`.
+- **A `}` inside a `#()` that sits inside `#{?...}` ends the conditional early**: keep braces out of such commands (`awk '$1 > 4'`, not `awk '$1 > 4 {print 1}'`).
 - **`set -ogq` values survive reloads.** Changing a built-in module's content needs `tmux set -gu @oasis_module_<name>` first. Users upgrading must restart tmux once.
 - **Private-use glyphs (Nerd Font and powerline icons) can vanish from an agent's output**, including when a `\uXXXX` escape gets turned into the glyph by a heredoc or a file-writing tool. Store them as byte escapes that stay escapes, e.g. `$'\xee\x82\xb0'` in bash, which also works on macOS's bash 3.2. Verify with a codepoint dump.
 - **`display -p` does not run `#()` jobs**, so script-backed content is empty there. `just render` shows the drawn bar.
