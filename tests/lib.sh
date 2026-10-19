@@ -27,6 +27,11 @@ assert_equals "non-numeric value" "" "$(oasis_level abc 70 90)"
 assert_equals "number with unit" "" "$(oasis_level 50% 70 90)"
 assert_equals "non-numeric threshold" "" "$(oasis_level 50 x 90)"
 
+assert_equals "padded value" warn "$(oasis_level '   70' 70 90)"
+assert_equals "padded value, trailing" crit "$(oasis_level ' 95 ' ' 70' '90 ')"
+assert_equals "blank value" "" "$(oasis_level '   ' 70 90)"
+assert_equals "equal thresholds are high-is-bad" crit "$(oasis_level 5 5 5)"
+
 assert_equals "linux" linux "$(OASIS_UNAME=Linux oasis_platform)"
 assert_equals "macos" macos "$(OASIS_UNAME=Darwin oasis_platform)"
 assert_equals "other systems" unsupported "$(OASIS_UNAME=FreeBSD oasis_platform)"

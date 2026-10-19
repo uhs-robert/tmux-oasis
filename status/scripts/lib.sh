@@ -25,12 +25,15 @@ oasis_option() {
 # Usage: oasis_level VALUE WARN CRIT
 # Prints ok, warn or crit; prints nothing if any argument is not a plain number.
 # CRIT >= WARN means high is bad (value >= threshold trips it), CRIT < WARN means
-# low is bad (value <= threshold). Boundaries trip. awk does the comparing because
+# low is bad (value <= threshold); equal thresholds count as high is bad. Boundaries
+# trip, and surrounding whitespace is ignored (macOS wc pads its numbers). awk does the comparing because
 # bash has no decimals.
 oasis_level() {
   awk -v value="${1:-}" -v warn="${2:-}" -v crit="${3:-}" '
+    function trim(text) { gsub(/^[ \t]+|[ \t]+$/, "", text); return text }
     function number(text) { return text ~ /^-?[0-9]+(\.[0-9]+)?$/ }
     BEGIN {
+      value = trim(value); warn = trim(warn); crit = trim(crit)
       if (!number(value) || !number(warn) || !number(crit)) exit
       value += 0; warn += 0; crit += 0
       if (crit >= warn) { is_crit = value >= crit; is_warn = value >= warn }

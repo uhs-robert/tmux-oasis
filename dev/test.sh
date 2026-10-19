@@ -32,7 +32,13 @@ fi
 for test_file in "${test_files[@]}"; do
   [ -f "$test_file" ] || { echo "no such test file: $test_file" >&2; exit 1; }
   test_name=$(basename "$test_file" .sh)
-  ( . "$checkout_dir/status/scripts/lib.sh"; . "$test_file" )
+  # set -e so a command that fails or doesn't exist stops the file. It only takes
+  # effect when the subshell isn't the left side of ||, hence the separate $?.
+  ( set -e; . "$checkout_dir/status/scripts/lib.sh"; . "$test_file" )
+  if [ $? -ne 0 ]; then
+    printf 'FAIL\n' >> "$results"
+    printf 'FAIL %s: the file stopped with a non-zero exit\n' "$test_name" >&2
+  fi
 done
 
 passed=$(grep -c '^ok$' "$results")
