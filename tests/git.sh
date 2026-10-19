@@ -4,7 +4,10 @@ scratch=$(mktemp -d)
 trap 'rm -rf "$scratch"' EXIT
 export GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null
 git_in() { git -C "$1" -c user.name=t -c user.email=t@t "${@:2}"; }
-show() { bash "$script" text "x$1" xI xD; }
+# Scripts read their icons with `tmux show`, which would reach the owner's server from here
+tmux() { case $3 in @oasis_git_icon) printf I ;; @oasis_git_dirty_icon) printf D ;; esac; }
+export -f tmux
+show() { bash "$script" text "$1"; }
 
 repo=$scratch/repo
 git init -q -b main "$repo"
@@ -38,6 +41,7 @@ assert_equals "path with a space, unborn branch" "I feature" "$(show "$spaced")"
 # A directory name is untrusted input to the shell that runs the module's #()
 hostile=$scratch/"a \$(touch $scratch/pwned) \"b'c \`touch $scratch/pwned2\`"
 git init -q -b injected "$hostile"
+unset -f tmux # the server and its #() jobs must reach real tmux
 env -u TMUX tmux -L oasis-gitbat-inject kill-server 2>/dev/null || true
 env -u TMUX tmux -L oasis-gitbat-inject -f /dev/null new -d -s t -x 100 -y 10 -c "$hostile"
 env -u TMUX tmux -L oasis-gitbat-inject source-file "$checkout_dir/oasis_tmux.conf"

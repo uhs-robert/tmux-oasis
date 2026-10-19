@@ -1,9 +1,13 @@
 # Cases for status/scripts/battery.sh
 script=$checkout_dir/status/scripts/battery.sh
-icons=$'a b c d e'
+fake_icons=$'a b c d e'
+# Scripts read their options with `tmux show`, which would reach the owner's server from here
+tmux() { case $3 in @oasis_battery_icons) printf '%s' "$fake_icons" ;; @oasis_battery_charging_icon) printf P ;; @oasis_battery_warn) printf '%s' "${fake_warn:-50}" ;; @oasis_battery_crit) printf '%s' "${fake_crit:-20}" ;; esac; }
+export -f tmux
+export fake_icons
 bat() { OASIS_SYS_ROOT=$fixtures_dir/$1 bash "$script" "${@:2}"; }
-text() { bat "$1" text "x$icons" xP; }
-state() { bat "$1" state x50 x20; }
+text() { bat "$1" text; }
+state() { bat "$1" state; }
 
 assert_equals "full real laptop is hidden" "" "$(text sys_laptop)"
 assert_equals "full real laptop has no state" "" "$(state sys_laptop)"
@@ -30,14 +34,14 @@ assert_equals "state at 51" ok "$(state sys_level_51)"
 assert_equals "state at 50" warn "$(state sys_level_50)"
 assert_equals "state at 21" warn "$(state sys_level_21)"
 assert_equals "state at 20" crit "$(state sys_level_20)"
-assert_equals "custom thresholds" crit "$(bat sys_level_50 state x60 x50)"
+assert_equals "custom thresholds" crit "$(fake_warn=60 fake_crit=50 bat sys_level_50 state)"
 
 mac() { OASIS_UNAME=Darwin OASIS_PMSET_OUTPUT=$(cat "$fixtures_dir/pmset/$1.txt") bash "$script" "${@:2}"; }
-assert_equals "macos discharging" "e 85%" "$(mac discharging text "x$icons" xP)"
-assert_equals "macos discharging state" ok "$(mac discharging state x50 x20)"
-assert_equals "macos charging" "P 85%" "$(mac charging text "x$icons" xP)"
-assert_equals "macos charging state" ok "$(mac charging state x90 x50)"
-assert_equals "macos AC attached, not charging" "d 78%" "$(mac held text "x$icons" xP)"
-assert_equals "macos charged is hidden" "" "$(mac charged text "x$icons" xP)"
-assert_equals "macos without battery is hidden" "" "$(mac none text "x$icons" xP)"
-assert_equals "unsupported system is hidden" "" "$(OASIS_UNAME=FreeBSD bash "$script" text "x$icons" xP)"
+assert_equals "macos discharging" "e 85%" "$(mac discharging text)"
+assert_equals "macos discharging state" ok "$(mac discharging state)"
+assert_equals "macos charging" "P 85%" "$(mac charging text)"
+assert_equals "macos charging state" ok "$(fake_warn=90 fake_crit=50 mac charging state)"
+assert_equals "macos AC attached, not charging" "d 78%" "$(mac held text)"
+assert_equals "macos charged is hidden" "" "$(mac charged text)"
+assert_equals "macos without battery is hidden" "" "$(mac none text)"
+assert_equals "unsupported system is hidden" "" "$(OASIS_UNAME=FreeBSD bash "$script" text)"
