@@ -61,7 +61,12 @@ def load_fonts(size):
             "ansi_to_png: %s not found in %s.\nInstall JetBrainsMono Nerd Font, or set %s (and %s) to a .ttf file."
             % (FONT_FILES["regular"], ", ".join(FONT_DIRS), FONT_ENV["regular"], FONT_ENV["bold"])
         )
-    bold_path = find_font("bold") or regular_path
+    regular_overridden_alone = os.environ.get(FONT_ENV["regular"]) and not os.environ.get(FONT_ENV["bold"])
+    if regular_overridden_alone:
+        # Searching would pair the chosen font with JetBrainsMono's bold
+        bold_path = regular_path
+    else:
+        bold_path = find_font("bold") or regular_path
     return ImageFont.truetype(regular_path, size), ImageFont.truetype(bold_path, size)
 
 

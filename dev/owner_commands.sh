@@ -32,7 +32,7 @@ case $action in
     for assignment in "$@"; do
       echo "tmux set -g $(option_name "${assignment%%=*}") $(single_quoted "${assignment#*=}")"
     done
-    echo "tmux source-file $checkout_dir/oasis_tmux.conf"
+    echo "tmux source-file $(single_quoted "$checkout_dir/oasis_tmux.conf")"
     ;;
   restore)
     for assignment in "$@"; do

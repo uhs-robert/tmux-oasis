@@ -337,6 +337,8 @@ set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps th
 > [!TIP]
 > Dual-mode themes should ship with one `_dark` and five `_light_[1-5]` files for consistent UX.
 
+To try changes in an isolated tmux server, compare the status bar against `main` or take a screenshot, see the dev recipes in `just --list`.
+
 # 👀 View All Theme Styles
 
 > All screenshots below show how the theme looks [with the companion theme in neovim](https://github.com/uhs-robert/oasis.nvim)
