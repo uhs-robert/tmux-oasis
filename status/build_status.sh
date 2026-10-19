@@ -81,8 +81,9 @@ separator() {
   local from_tone=$1 to_tone=$2 glyph=$3 from_colour=${4:-} to_colour=${5:-}
   [ -z "$from_colour" ] && from_colour=$(colour_of_tone "$from_tone")
   [ -z "$to_colour" ] && to_colour=$(colour_of_tone "$to_tone")
-  # Same tones meet only when a conditional group between them is hidden; they merge
-  if [ "$from_tone" = "$to_tone" ] || [ -z "$glyph" ]; then return; fi
+  # Same colours meet only when a conditional group between them is hidden; they merge.
+  # Accent groups in different states share a tone but not a colour, so they keep a cap.
+  if [ "$from_colour" = "$to_colour" ] || [ -z "$glyph" ]; then return; fi
   printf '#[nobold]#[fg=%s]#[bg=%s]%s' "$from_colour" "$to_colour" "$glyph"
 }
 
@@ -207,6 +208,11 @@ build_right() {
   [ -n "$output" ] && output=" $output"
   printf '%s' "$output"
 }
+
+# Layouts change between reloads, so drop group colours a new layout no longer sets
+for stale_option in $(tmux show -g | awk '$1 ~ /^@oasis_group_colour_/ {print $1}'); do
+  tmux set -gu "$stale_option"
+done
 
 parse_groups "$(option @oasis_status_left)" left
 tmux set -g status-left "$(build_left)"

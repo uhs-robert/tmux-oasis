@@ -73,6 +73,7 @@ Choose from 13 distinct desert-inspired base styles, each with its own personali
     <!-- v2.2:start -->
     <h3>✨ Configurable Status Line Layout</h3>
     Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules.
+    Modules can also show a warn or crit state with <code>@oasis_module_&lt;name&gt;_state</code>.
     See <a href="#config-options">all configuration options</a>.
     <h3>🚨 Restart tmux after updating</h3>
     Reloading your config in an already-running tmux shows doubled separators. Restart tmux once (<code>tmux kill-server</code>) to clear it.
