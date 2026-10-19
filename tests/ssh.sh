@@ -22,3 +22,22 @@ assert_equals "host with dots" db.example.com "$(destination ssh alice@db.exampl
 assert_equals "no destination" "" "$(destination ssh -v)"
 assert_equals "no arguments" "" "$(destination ssh)"
 assert_equals "empty tty" "" "$(bash "$ssh_script" host "")"
+
+# The ps path: ps is stubbed, /proc is a fixture
+stub_dir=$(mktemp -d)
+mkdir -p "$stub_dir/proc/222"
+printf 'ssh\0-o\0ProxyCommand=ssh -W %%h:%%p jump\0target.example\0' > "$stub_dir/proc/222/cmdline"
+mkdir -p "$stub_dir/bin"
+cat > "$stub_dir/bin/ps" <<'STUB'
+#!/bin/sh
+cat <<'OUT'
+Ss    100 -bash
+T     111 ssh suspended.example
+S+    222 ssh -p 22 from-ps.example
+OUT
+STUB
+chmod +x "$stub_dir/bin/ps"
+on_tty() { PATH="$stub_dir/bin:$PATH" OASIS_PROC_ROOT=$1 bash "$ssh_script" host pts/9; }
+assert_equals "foreground ssh wins over a suspended one, argv from /proc preferred" target.example "$(on_tty "$stub_dir/proc")"
+assert_equals "without /proc the ps args are used, still the foreground ssh" from-ps.example "$(on_tty "$stub_dir/no-proc")"
+rm -rf "$stub_dir"
