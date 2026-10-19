@@ -20,7 +20,8 @@ assert_equals "two batteries are capacity-weighted" "d 80%" "$(text sys_two_batt
 assert_equals "capacity file is the fallback" "d 73%" "$(text sys_capacity_only)"
 assert_equals "charging shows the charging icon" "P 50%" "$(text sys_charging)"
 assert_equals "charging is always ok" ok "$(state sys_charging)"
-assert_equals "full with status Full is hidden" "" "$(text sys_full)"
+assert_equals "status Full below 100 percent is hidden" "" "$(text sys_full_97)"
+assert_equals "one full battery does not hide the other" "d 75%" "$(text sys_one_full)"
 
 assert_equals "icon at 20" "a 20%" "$(text sys_level_20)"
 assert_equals "icon at 21" "b 21%" "$(text sys_level_21)"

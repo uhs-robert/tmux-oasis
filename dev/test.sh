@@ -34,7 +34,8 @@ for test_file in "${test_files[@]}"; do
   test_name=$(basename "$test_file" .sh)
   # set -e so a command that fails or doesn't exist stops the file. It only takes
   # effect when the subshell isn't the left side of ||, hence the separate $?.
-  ( set -e; . "$checkout_dir/status/scripts/lib.sh"; . "$test_file" )
+  # TMUX points nowhere so a test that forgets its tmux stub fails instead of reaching the owner's server
+  ( set -e; export TMUX=/nonexistent,0,0; . "$checkout_dir/status/scripts/lib.sh"; . "$test_file" )
   if [ $? -ne 0 ]; then
     printf 'FAIL\n' >> "$results"
     printf 'FAIL %s: the file stopped with a non-zero exit\n' "$test_name" >&2
