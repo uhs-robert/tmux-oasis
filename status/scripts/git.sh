@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Usage: git.sh text PATH ICON DIRTY_ICON
+# Usage: git.sh text xPATH xICON xDIRTY_ICON
+# Each argument carries a leading "x" that is stripped here: tmux drops an empty
+# #{q:...} value entirely, which would shift the arguments after it.
 # Prints "ICON branch" plus DIRTY_ICON when tracked files have changes; the short
 # SHA stands in for the branch on a detached HEAD. Prints nothing outside a repo.
 . "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
@@ -18,5 +20,5 @@ git_text() {
 }
 
 case "${1:-}" in
-  text) git_text "${2:-}" "${3:-}" "${4:-}" ;;
+  text) git_text "${2#x}" "${3#x}" "${4#x}" ;;
 esac
