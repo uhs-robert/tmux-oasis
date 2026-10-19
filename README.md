@@ -79,6 +79,8 @@ Choose from 13 distinct desert-inspired base styles, each with its own personali
     <blockquote>
     <strong>Note:</strong> If you overrode a built-in module such as <code>@oasis_module_clock</code>, it should now contain only its text. Separators and colours are added for you.
     </blockquote>
+    <h3>✨ Moonlight is the new default style</h3>
+    To keep the previous look, set <code>@oasis_flavor "lagoon_dark"</code>.
     <br/>
     <!-- v2.2:end -->
   </details>
@@ -133,7 +135,7 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
 <table>
   <tr>
     <td align="center"><a href="#night-dark"><img src="assets/screenshots/night-dark-dashboard.png" alt="Night (dark)" width="auto"></a><br><strong>Night</strong><br><em>Desert Night</em></td>
-    <td align="center"><a href="#moonlight-dark"><img src="assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight (dark)" width="auto"></a><br><strong>Moonlight</strong><br><em>Moonlit Night</em></td>
+    <td align="center"><a href="#moonlight-dark"><img src="assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight (dark)" width="auto"></a><br><strong>Moonlight (Default)</strong><br><em>Moonlit Night</em></td>
     <td align="center"><a href="#midnight-dark"><img src="assets/screenshots/midnight-dark-dashboard.png" alt="Midnight (dark)" width="auto"></a><br><strong>Midnight</strong><br><em>Dark Desert</em></td>
     <td align="center"><a href="#abyss-dark"><img src="assets/screenshots/abyss-dark-dashboard.png" alt="Abyss (dark)" width="auto"></a><br><strong>Abyss</strong><br><em>Black Desert</em></td>
   </tr>
@@ -150,7 +152,7 @@ Click any card below to view the full preview and syntax sample. [↓ Or click h
     <td align="center"><a href="#mirage-dark"><img src="assets/screenshots/mirage-dark-dashboard.png" alt="Mirage (dark)" width="auto"></a><br><strong>Mirage</strong><br><em>Teal</em></td>
   </tr>
   <tr>
-    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon (Default)</strong><br><em>Blue</em></td>
+    <td align="center"><a href="#lagoon-dark"><img src="assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon (dark)" width="auto"></a><br><strong>Lagoon</strong><br><em>Blue</em></td>
     <td align="center"><a href="#luna-dark"><img src="assets/screenshots/luna-dark-dashboard.png" alt="Luna (dark)" width="auto"></a><br><strong>Luna</strong><br><em>Indigo</em></td>
     <td align="center"><a href="#twilight-dark"><img src="assets/screenshots/twilight-dark-dashboard.png" alt="Twilight (dark)" width="auto"></a><br><strong>Twilight</strong><br><em>Sunset</em></td>
     <td align="center"><a href="#rose-dark"><img src="assets/screenshots/rose-dark-dashboard.png" alt="Rose (dark)" width="auto"></a><br><strong>Rose</strong><br><em>Pink</em></td>
@@ -211,7 +213,7 @@ Add to your `tmux.conf`:
 
 ```tmux
 set -g @plugin 'uhs-robert/tmux-oasis'
-set -g @oasis_flavor "lagoon_dark"  # Optional: defaults to lagoon_dark
+set -g @oasis_flavor "moonlight_dark"  # Optional: defaults to moonlight_dark
 ```
 
 Install with TPM: `prefix + I`
@@ -227,7 +229,7 @@ git clone https://github.com/uhs-robert/tmux-oasis ~/.tmux/themes/oasis
 In your `tmux.conf`, set your preferred theme style:
 
 ```tmux
-set -g @oasis_flavor "lagoon_dark"
+set -g @oasis_flavor "moonlight_dark"
 ```
 
 Source the main configuration:
@@ -268,7 +270,7 @@ All options below show their default values. Add any of these to your `tmux.conf
 # Theme variant (16 base styles × 6 variants each)
 # Options: [style]_dark, [style]_light_1, [style]_light_2, [style]_light_3, [style]_light_4, [style]_light_5
 # Styles: "night", "moonlight", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "luna", "twilight", "rose"
-set -g @oasis_flavor "lagoon_dark"
+set -g @oasis_flavor "moonlight_dark"
 
 # Mode indicator display format
 # Options: "short" (N, C, V), "full" (NORMAL, COPY, VIEW), "icon" (Nerd Font icons), "custom" (see below)
@@ -354,7 +356,7 @@ set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps th
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="moonlight-dark"></a>
-    <h3>Moonlight (Dark · Moonlit Night)</h3>
+    <h3>Moonlight (Dark · Moonlit Night · Default)</h3>
     <img src="./assets/screenshots/moonlight-dark-dashboard.png" alt="Moonlight dark mode dashboard"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
@@ -420,7 +422,7 @@ set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps th
       <a href="#dark-previews">↑ Back to Dark Styles</a>
     </p>
     <a id="lagoon-dark"></a>
-    <h3>Lagoon (Dark · Default)</h3>
+    <h3>Lagoon (Dark · Blue)</h3>
     <img src="./assets/screenshots/lagoon-dark-dashboard.png" alt="Lagoon dark mode dashboard"></img>
     <p align="center">
       <a href="#dark-previews">↑ Back to Dark Styles</a>
