@@ -298,6 +298,7 @@ set -g @oasis_status_right "sync folder | cpu ram battery"
 
 ```tmux
 set -g @oasis_status_left "mode | host"
+set -g @oasis_mode_format "icon"
 set -g @oasis_status_right "sync load ram disk | clock"
 ```
 
