@@ -75,6 +75,7 @@ Choose from 13 distinct desert-inspired base styles, each with its own personali
     Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules.
     Modules can also show a warn or crit state with <code>@oasis_module_&lt;name&gt;_state</code>.
     New opt-in modules: <code>load</code>, <code>ram</code>, <code>cpu</code> and <code>disk</code>.
+    New opt-in <code>host</code> (hostname, coloured by <code>@oasis_host_states</code>) and <code>ssh</code> (remote host of the active pane's ssh) modules.
     See <a href="#config-options">all configuration options</a>.
     <h3>🚨 Restart tmux after updating</h3>
     Reloading your config in an already-running tmux shows doubled separators. Restart tmux once (<code>tmux kill-server</code>) to clear it.
@@ -292,7 +293,7 @@ set -g @oasis_mode_custom_zoom "ZOOM"
 # "|" separates groups, spaces separate modules in the same group. Groups alternate
 # accent and surface colours, starting with accent at the screen edge.
 # Remove a module or group to hide it; an empty string hides the whole side.
-# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk (or your own, see below)
+# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh (or your own, see below)
 set -g @oasis_status_left "mode | session"
 set -g @oasis_status_right "sync | folder | clock"
 
@@ -335,6 +336,13 @@ set -g @oasis_clock_icon "󰥔 "     # Icon/text shown before time
 
 # Folder/directory module settings
 set -g @oasis_folder_icon " "    # Icon/text shown before directory path
+
+# Host module settings (opt-in: add "host" to a layout)
+set -g @oasis_host_icon "󰒋 "  # Icon/text shown before the short hostname
+set -g @oasis_host_states ""          # Space-separated glob=state pairs, e.g. "prod-*=crit staging-*=warn"; first match wins, no match is ok
+
+# SSH module settings (opt-in: add "ssh" to a layout). Shows the remote host while the active pane runs ssh
+set -g @oasis_ssh_icon "󰣀 "   # Icon/text shown before the remote host
 
 # Session module settings
 set -g @oasis_session_icon "󰍹 "  # Icon/text shown before session name
