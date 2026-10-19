@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Usage: host.sh state HOST [STATES]
 # Prints ok, warn or crit for HOST. STATES is space-separated glob=state pairs
-# (default: tmux's @oasis_host_states); the first matching glob wins.
+# (default: read from tmux's @oasis_host_states); the first matching glob wins.
 set -u
 . "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
