@@ -78,17 +78,39 @@ colour_of_tone() {
 }
 
 separator() {
-  local from_tone=$1 to_tone=$2 glyph=$3
+  local from_tone=$1 to_tone=$2 glyph=$3 from_colour=${4:-} to_colour=${5:-}
+  [ -z "$from_colour" ] && from_colour=$(colour_of_tone "$from_tone")
+  [ -z "$to_colour" ] && to_colour=$(colour_of_tone "$to_tone")
   # Same tones meet only when a conditional group between them is hidden; they merge
   if [ "$from_tone" = "$to_tone" ] || [ -z "$glyph" ]; then return; fi
-  printf '#[nobold]#[fg=%s]#[bg=%s]%s' "$(colour_of_tone "$from_tone")" "$(colour_of_tone "$to_tone")" "$glyph"
+  printf '#[nobold]#[fg=%s]#[bg=%s]%s' "$from_colour" "$to_colour" "$glyph"
 }
 
-# Fills group_modules, group_conditions and group_tones for one side
+# Background of an accent group holding stateful modules: crit if a shown module is
+# crit, else warn if one is warn, else the accent colour. Prints nothing when no
+# module has a _state. Stored in a generated option and referenced through #{E:},
+# because its commas would otherwise split the #{?} branches it is used inside.
+accent_group_colour() {
+  local modules=$1 side=$2 index=$3 name condition state
+  local -a crit_terms=() warn_terms=()
+  for name in $modules; do
+    [ -z "$(option "@oasis_module_${name}_state")" ] && continue
+    condition=$(option "@oasis_module_${name}_when")
+    state="#{E:@oasis_module_${name}_state}"
+    crit_terms+=("$(both_of "$condition" "#{==:$state,crit}")")
+    warn_terms+=("$(both_of "$condition" "#{==:$state,warn}")")
+  done
+  [ ${#crit_terms[@]} -eq 0 ] && return
+  tmux set -g "@oasis_group_colour_${side}_${index}" \
+    "#{?$(any_of "${crit_terms[@]}"),#{E:@oasis_state_crit_color},#{?$(any_of "${warn_terms[@]}"),#{E:@oasis_state_warn_color},$ACCENT_COLOUR}}"
+  printf '%s' "#{E:@oasis_group_colour_${side}_${index}}"
+}
+
+# Fills group_modules, group_conditions, group_tones and group_colours for one side
 parse_groups() {
-  local list=$1 side=$2 group name modules count i edge_distance
+  local list=$1 side=$2 group name modules count i edge_distance colour
   local -a raw_groups names conditions
-  group_modules=(); group_conditions=(); group_tones=()
+  group_modules=(); group_conditions=(); group_tones=(); group_colours=()
   IFS='|' read -ra raw_groups <<< "$list"
   for group in "${raw_groups[@]}"; do
     read -ra names <<< "$group"
@@ -109,12 +131,14 @@ parse_groups() {
   for ((i = 0; i < count; i++)); do
     if [ "$side" = left ]; then edge_distance=$i; else edge_distance=$((count - 1 - i)); fi
     if ((edge_distance % 2 == 0)); then group_tones+=(accent); else group_tones+=(surface); fi
+    colour=""
+    [ "${group_tones[$i]}" = accent ] && colour=$(accent_group_colour "${group_modules[$i]}" "$side" "$i")
+    group_colours+=("${colour:-$(colour_of_tone "${group_tones[$i]}")}")
   done
 }
 
-# Colours a module's text by its _state format: crit and warn pick their option's
-# colour, anything else keeps the group's text colour. Only the foreground changes,
-# so the group keeps its background and separators never need to know about states.
+# Surface groups: colours a module's text by its _state format. crit and warn pick
+# their option's colour, anything else keeps the group's text colour.
 # One attribute per #[...] because commas inside #{?} branches split them.
 with_state_colour() {
   local name=$1 text_colour=$2 state
@@ -124,7 +148,7 @@ with_state_colour() {
 }
 
 group_body() {
-  local tone=$1 modules=$2 name condition body="" text_tone=surface text
+  local tone=$1 modules=$2 colour=$3 name condition body="" text_tone=surface text
   local -a earlier_conditions=()
   [ "$tone" = surface ] && text_tone=accent
   for name in $modules; do
@@ -133,27 +157,28 @@ group_body() {
       body+=$(shown_when "$(both_of "$condition" "$(any_of "${earlier_conditions[@]}")")" "$module_separator")
     fi
     text="#{E:@oasis_module_$name}"
-    [ -n "$(option "@oasis_module_${name}_state")" ] && text=$(with_state_colour "$name" "$(colour_of_tone "$text_tone")")
+    # Accent groups show state in their background instead, see accent_group_colour
+    [ "$tone" = surface ] && [ -n "$(option "@oasis_module_${name}_state")" ] && text=$(with_state_colour "$name" "$(colour_of_tone "$text_tone")")
     body+=$(shown_when "$condition" "$text")
     earlier_conditions+=("$condition")
   done
-  printf '#[bg=%s]#[fg=%s]#[bold] %s ' "$(colour_of_tone "$tone")" "$(colour_of_tone "$text_tone")" "$body"
+  printf '#[bg=%s]#[fg=%s]#[bold] %s ' "$colour" "$(colour_of_tone "$text_tone")" "$body"
 }
 
 # Takes the indices of the groups between this one and the middle, nearest first.
 # The nearest visible one decides the separator's colour, else the middle does.
 separator_toward_middle() {
-  local own_tone=$1 glyph=$2; shift 2
+  local own_tone=$1 own_colour=$2 glyph=$3; shift 3
   local condition separator_to_nearest
   if [ $# -eq 0 ]; then
-    separator "$own_tone" middle "$glyph"
+    separator "$own_tone" middle "$glyph" "$own_colour"
     return
   fi
   condition=${group_conditions[$1]}
-  separator_to_nearest=$(separator "$own_tone" "${group_tones[$1]}" "$glyph")
+  separator_to_nearest=$(separator "$own_tone" "${group_tones[$1]}" "$glyph" "$own_colour" "${group_colours[$1]}")
   shift
   if [ -z "$condition" ]; then printf '%s' "$separator_to_nearest"; return; fi
-  printf '#{?%s,%s,%s}' "$condition" "$separator_to_nearest" "$(separator_toward_middle "$own_tone" "$glyph" "$@")"
+  printf '#{?%s,%s,%s}' "$condition" "$separator_to_nearest" "$(separator_toward_middle "$own_tone" "$own_colour" "$glyph" "$@")"
 }
 
 build_left() {
@@ -163,7 +188,7 @@ build_left() {
     groups_toward_middle=()
     for ((j = i + 1; j < count; j++)); do groups_toward_middle+=("$j"); done
     output+=$(shown_when "${group_conditions[$i]}" \
-      "$(group_body "${group_tones[$i]}" "${group_modules[$i]}")$(separator_toward_middle "${group_tones[$i]}" "$left_glyph" ${groups_toward_middle[@]+"${groups_toward_middle[@]}"})")
+      "$(group_body "${group_tones[$i]}" "${group_modules[$i]}" "${group_colours[$i]}")$(separator_toward_middle "${group_tones[$i]}" "${group_colours[$i]}" "$left_glyph" ${groups_toward_middle[@]+"${groups_toward_middle[@]}"})")
   done
   # One cell of gap before the window list
   [ -n "$output" ] && output+="#[nobold]#[bg=$MIDDLE_COLOUR] "
@@ -177,7 +202,7 @@ build_right() {
     groups_toward_middle=()
     for ((j = i - 1; j >= 0; j--)); do groups_toward_middle+=("$j"); done
     output+=$(shown_when "${group_conditions[$i]}" \
-      "$(separator_toward_middle "${group_tones[$i]}" "$right_glyph" ${groups_toward_middle[@]+"${groups_toward_middle[@]}"})$(group_body "${group_tones[$i]}" "${group_modules[$i]}")")
+      "$(separator_toward_middle "${group_tones[$i]}" "${group_colours[$i]}" "$right_glyph" ${groups_toward_middle[@]+"${groups_toward_middle[@]}"})$(group_body "${group_tones[$i]}" "${group_modules[$i]}" "${group_colours[$i]}")")
   done
   [ -n "$output" ] && output=" $output"
   printf '%s' "$output"

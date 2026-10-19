@@ -311,9 +311,10 @@ set -g @oasis_window_separator_right "" # Optional glyph override for the right 
 # set -g @oasis_module_host_when "#{!=:#{client_session},main}"
 
 # Module states: @oasis_module_<name>_state is a format that evaluates to "ok", "warn" or "crit"
-# (empty or anything else means "ok"). Warn and crit colour the module's icon and text; the
-# group keeps its background, and "ok" adds no colour. They read best on a surface group,
-# so put stateful modules in the second or later group of a side, not at the screen edge.
+# (empty or anything else means "ok"; "ok" adds no colour). In a surface group, warn/crit
+# colour that module's icon and text. In an accent group, the whole group turns the warn/crit
+# colour (crit wins over warn) while a stateful module in it is shown, so a module's
+# _when hiding it also clears its state.
 set -g @oasis_state_warn_color "#{@thm_yellow}"
 set -g @oasis_state_crit_color "#{@thm_red}"
 # Example (Linux): load average, red above 4
