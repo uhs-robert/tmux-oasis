@@ -69,6 +69,21 @@ Choose from 13 distinct desert-inspired base styles, each with its own personali
 <!-- whats-new:start -->
 
   <details>
+    <summary>✨ v2.2: Configurable Status Line Layout</summary>
+    <!-- v2.2:start -->
+    <h3>✨ Configurable Status Line Layout</h3>
+    Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules.
+    See <a href="#config-options">all configuration options</a>.
+    <h3>🚨 Restart tmux after updating</h3>
+    Reloading your config in an already-running tmux shows doubled separators. Restart tmux once (<code>tmux kill-server</code>) to clear it.
+    <blockquote>
+    <strong>Note:</strong> If you overrode a built-in module such as <code>@oasis_module_clock</code>, it should now contain only its text. Separators and colours are added for you.
+    </blockquote>
+    <br/>
+    <!-- v2.2:end -->
+  </details>
+
+  <details>
     <summary>🚨 v2.0: Dual Style Themes / Deprecated Themes</summary>
     <!-- v4:start -->
     <h3>✨ Dual Style Themes</h3>
@@ -183,6 +198,7 @@ The examples below use the light style 3.
 - **13 base styles** with granular variants: dual-mode themes provide 1 dark + 5 light levels
 - **Automatic theme loading**, set `@oasis_flavor` and the system will handle the rest (suffixes added for you)
 - **Modular design** with separate theme and status line module configurations (_download **only** what you need_)
+- **Configurable status line layout**: hide, regroup or reorder modules, pick a separator style, or add your own modules
 - **Standalone** with zero dependencies on any other plugins
 
 ## 📦 Installation
@@ -267,6 +283,25 @@ set -g @oasis_mode_custom_choose "CHOOSE"
 set -g @oasis_mode_custom_options "OPTIONS"
 set -g @oasis_mode_custom_clock "CLOCK"
 set -g @oasis_mode_custom_zoom "ZOOM"
+
+# Status line layout
+# "|" separates groups, spaces separate modules in the same group. Groups alternate
+# accent and surface colours, starting with accent at the screen edge.
+# Remove a module or group to hide it; an empty string hides the whole side.
+# Modules: mode, session, sync, folder, clock (or your own, see below)
+set -g @oasis_status_left "mode | session"
+set -g @oasis_status_right "sync | folder | clock"
+
+# Separators between groups: "powerline", "round", "slant" or "flat"
+set -g @oasis_separator "powerline"
+set -g @oasis_separator_left ""    # Optional glyph override for the left side
+set -g @oasis_separator_right ""   # Optional glyph override for the right side
+set -g @oasis_separator_module " " # Placed between modules in the same group
+
+# Custom modules: define @oasis_module_<name> as a tmux format, then use <name> in a layout.
+# @oasis_module_<name>_when optionally hides it while the format is false.
+# set -g @oasis_module_host "#H"
+# set -g @oasis_module_host_when "#{!=:#{client_session},main}"
 
 # Clock module settings
 set -g @oasis_clock_24h "on"      # "on" for 24-hour format, "off" for 12-hour AM/PM
