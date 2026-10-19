@@ -5,10 +5,10 @@
 set -euo pipefail
 . "$(dirname "$0")/lib.sh"
 
-ref_server=oasis-compare-ref
-work_server=oasis-compare-work
-ref_viewer=oasis-compare-ref-view
-work_viewer=oasis-compare-work-view
+ref_server=oasis-compare-ref-$$
+work_server=oasis-compare-work-$$
+ref_viewer=oasis-compare-ref-view-$$
+work_viewer=oasis-compare-work-view-$$
 scenario_settle_seconds=${OASIS_DEV_SCENARIO_SETTLE:-0.5}
 
 ref=main

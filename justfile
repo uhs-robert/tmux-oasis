@@ -28,11 +28,11 @@ theme name:
 test *args:
     @bash dev/test.sh "$@"
 
-# Start the isolated tmux server oasis-dev with this checkout loaded (args: option=value ...)
+# Start the isolated tmux server (oasis-dev, or $OASIS_DEV_SERVER) with this checkout loaded (args: option=value ...)
 sandbox *args:
     @bash dev/sandbox.sh start "$@"
 
-# Kill the oasis-dev sandbox server
+# Kill the sandbox server
 sandbox-stop:
     @bash dev/sandbox.sh stop
 
