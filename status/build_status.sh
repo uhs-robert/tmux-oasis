@@ -112,8 +112,19 @@ parse_groups() {
   done
 }
 
+# Colours a module's text by its _state format: crit and warn pick their option's
+# colour, anything else keeps the group's text colour. Only the foreground changes,
+# so the group keeps its background and separators never need to know about states.
+# One attribute per #[...] because commas inside #{?} branches split them.
+with_state_colour() {
+  local name=$1 text_colour=$2 state
+  state="#{E:@oasis_module_${name}_state}"
+  printf '#{?#{==:%s,crit},#[fg=#{E:@oasis_state_crit_color}],#{?#{==:%s,warn},#[fg=#{E:@oasis_state_warn_color}],#[fg=%s]}}#{E:@oasis_module_%s}#[fg=%s]' \
+    "$state" "$state" "$text_colour" "$name" "$text_colour"
+}
+
 group_body() {
-  local tone=$1 modules=$2 name condition body="" text_tone=surface
+  local tone=$1 modules=$2 name condition body="" text_tone=surface text
   local -a earlier_conditions=()
   [ "$tone" = surface ] && text_tone=accent
   for name in $modules; do
@@ -121,7 +132,9 @@ group_body() {
     if [ ${#earlier_conditions[@]} -gt 0 ]; then
       body+=$(shown_when "$(both_of "$condition" "$(any_of "${earlier_conditions[@]}")")" "$module_separator")
     fi
-    body+=$(shown_when "$condition" "#{E:@oasis_module_$name}")
+    text="#{E:@oasis_module_$name}"
+    [ -n "$(option "@oasis_module_${name}_state")" ] && text=$(with_state_colour "$name" "$(colour_of_tone "$text_tone")")
+    body+=$(shown_when "$condition" "$text")
     earlier_conditions+=("$condition")
   done
   printf '#[bg=%s]#[fg=%s]#[bold] %s ' "$(colour_of_tone "$tone")" "$(colour_of_tone "$text_tone")" "$body"

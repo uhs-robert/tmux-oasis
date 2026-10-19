@@ -310,6 +310,21 @@ set -g @oasis_window_separator_right "" # Optional glyph override for the right 
 # set -g @oasis_module_host "#H"
 # set -g @oasis_module_host_when "#{!=:#{client_session},main}"
 
+# Module states: @oasis_module_<name>_state is a format that evaluates to "ok", "warn" or "crit"
+# (empty or anything else means "ok"). Warn and crit colour the module's icon and text; the
+# group keeps its background, and "ok" adds no colour. They read best on a surface group,
+# so put stateful modules in the second or later group of a side, not at the screen edge.
+set -g @oasis_state_warn_color "#{@thm_yellow}"
+set -g @oasis_state_crit_color "#{@thm_red}"
+# Example (Linux): load average, red above 4
+# set -g @oasis_module_load "#(cut -d' ' -f1 /proc/loadavg)"
+# set -g @oasis_module_load_state "#{?#(awk '$1 > 4' /proc/loadavg),crit,ok}"
+# set -g @oasis_status_right "load | folder | clock"
+
+# Where Oasis keeps the scripts its modules call, as #(bash "#{@oasis_scripts_dir}/<name>.sh").
+# Oasis sets this to its own status/scripts directory when it loads; don't change it.
+# set -g @oasis_scripts_dir "<oasis checkout>/status/scripts"
+
 # Clock module settings
 set -g @oasis_clock_24h "on"      # "on" for 24-hour format, "off" for 12-hour AM/PM
 set -g @oasis_clock_icon "󰥔 "     # Icon/text shown before time

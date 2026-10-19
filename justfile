@@ -24,6 +24,10 @@ theme name:
     if [ -z "$conf" ]; then echo "Theme not found: {{name}}"; exit 1; fi; \
     tmux set -gq @oasis_flavor "{{name}}" && tmux source-file "$conf" && echo "Loaded: $conf"
 
+# Run the status script tests in tests/ (args: [name ...])
+test *args:
+    @bash dev/test.sh "$@"
+
 # Start the isolated tmux server oasis-dev with this checkout loaded (args: option=value ...)
 sandbox *args:
     @bash dev/sandbox.sh start "$@"
