@@ -177,7 +177,7 @@ parse_groups "$(option @oasis_status_right)" right
 tmux set -g status-right "$(build_right)"
 
 window_format() {
-  local pill_colour=$1 text_style=$2 module=$3 output=""
+  local pill_colour=$1 text_style=$2 module=$3 text_padding=${4:-} output=""
   if [ -n "$window_left_glyph" ]; then
     if $window_left_is_notch; then
       output+="#[fg=$MIDDLE_COLOUR]#[bg=$pill_colour]$window_left_glyph"
@@ -185,7 +185,7 @@ window_format() {
       output+="#[fg=$pill_colour]#[bg=$MIDDLE_COLOUR]$window_left_glyph"
     fi
   fi
-  output+="#[bg=$pill_colour]$text_style#{E:@oasis_module_$module}"
+  output+="#[bg=$pill_colour]$text_style#{E:@oasis_module_$module}$text_padding"
   [ -n "$window_right_glyph" ] && output+="#[fg=$pill_colour]#[bg=$MIDDLE_COLOUR]$window_right_glyph"
   printf '%s' "$output"
 }
@@ -193,5 +193,8 @@ window_format() {
 # Inactive windows change text colour while the prefix key table is active
 inactive_text_style='#{?#{==:#{client_key_table},prefix},#[fg=#{@thm_secondary}],#[fg=#{@thm_primary_strong}]}'
 active_text_style='#[fg=#{@thm_core}]#[bold]'
-tmux set -g window-status-format "$(window_format "$SURFACE_COLOUR" "$inactive_text_style" window_inactive)"
+# The inactive text has no trailing space; a right cap pads it, so only a capless pill needs one
+inactive_text_padding=''
+[ -z "$window_right_glyph" ] && inactive_text_padding=' '
+tmux set -g window-status-format "$(window_format "$SURFACE_COLOUR" "$inactive_text_style" window_inactive "$inactive_text_padding")"
 tmux set -g window-status-current-format "$(window_format '#{@thm_secondary}' "$active_text_style" window_active)"
