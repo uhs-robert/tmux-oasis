@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Usage: battery.sh text xICONS xCHARGING_ICON
-#        battery.sh state xWARN xCRIT
-# Each argument carries a leading "x" that is stripped here: tmux drops an empty
-# #{q:...} value entirely, which would shift the arguments after it.
-# ICONS is five space-separated icons, empty to full. Both modes print nothing
-# without a system battery (a desktop, or only a wireless mouse) and while fully charged.
+# Usage: battery.sh text|state
+# Reads @oasis_battery_icons (five space-separated icons, empty to full),
+# @oasis_battery_charging_icon, @oasis_battery_warn and @oasis_battery_crit.
+# Both modes print nothing without a system battery (a desktop, or only a wireless mouse)
+# and while fully charged.
 # Runs on macOS's bash 3.2.
 . "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
@@ -66,13 +65,19 @@ read_battery() {
   esac
 }
 
-battery_text() {
-  local icons=$1 charging_icon=$2 percent charging icon
+# Usage: read_unfinished_charge -- sets percent and charging; fails while there is nothing to show
+read_unfinished_charge() {
   read -r percent charging <<< "$(read_battery)"
-  [ -n "$percent" ] && [ "$percent" -lt 100 ] || return 0
+  [ -n "$percent" ] && [ "$percent" -lt 100 ]
+}
+
+battery_text() {
+  local icons percent charging icon
+  read_unfinished_charge || return 0
   if [ "$charging" = 1 ]; then
-    icon=$charging_icon
+    icon=$(oasis_option @oasis_battery_charging_icon)
   else
+    icons=$(oasis_option @oasis_battery_icons)
     set -- $icons
     if   [ "$percent" -le 20 ]; then icon=$1
     elif [ "$percent" -le 40 ]; then icon=$2
@@ -85,13 +90,15 @@ battery_text() {
 }
 
 battery_state() {
-  local percent charging
-  read -r percent charging <<< "$(read_battery)"
-  [ -n "$percent" ] && [ "$percent" -lt 100 ] || return 0
-  if [ "$charging" = 1 ]; then printf ok; else oasis_level "$percent" "$1" "$2"; fi
+  local percent charging warn crit
+  read_unfinished_charge || return 0
+  if [ "$charging" = 1 ]; then printf ok; return 0; fi
+  warn=$(oasis_option @oasis_battery_warn 50)
+  crit=$(oasis_option @oasis_battery_crit 20)
+  oasis_level "$percent" "$warn" "$crit"
 }
 
 case "${1:-}" in
-  text)  battery_text "${2#x}" "${3#x}" ;;
-  state) battery_state "${2#x}" "${3#x}" ;;
+  text)  battery_text ;;
+  state) battery_state ;;
 esac
