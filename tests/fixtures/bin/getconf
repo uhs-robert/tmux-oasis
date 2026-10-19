@@ -1,0 +1,2 @@
+#!/bin/sh
+cat "$OASIS_STUB_DATA/getconf.$1" 2>/dev/null

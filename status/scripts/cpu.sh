@@ -13,12 +13,22 @@ reuse_window=0.5
 
 # Prints the percent, or nothing without a usable previous sample.
 linux_percent() {
-  local dir=${XDG_RUNTIME_DIR:-${TMPDIR:-/tmp}}/oasis-tmux
+  local dir
+  if [ -n "${XDG_RUNTIME_DIR:-}" ]; then
+    dir=$XDG_RUNTIME_DIR/oasis-tmux
+    mkdir -p "$dir" 2>/dev/null || return 0
+  else
+    # A shared temp dir: only use a private directory this user owns, else another
+    # user could plant a symlink or feed us samples. Without one there is no cache,
+    # so the module stays hidden.
+    dir=${TMPDIR:-/tmp}/oasis-tmux-$(id -u)
+    mkdir -m 700 "$dir" 2>/dev/null
+    [ -O "$dir" ] && [ ! -L "$dir" ] || return 0
+  fi
   local file=$dir/cpu
   local now cpu_line
   read -r now _ 2>/dev/null < "$OASIS_PROC_ROOT/uptime" || return 0
   read -r cpu_line 2>/dev/null < "$OASIS_PROC_ROOT/stat" || return 0
-  mkdir -p "$dir" 2>/dev/null || return 0
 
   # The file is "uptime busy_plus_idle idle percent". Uptime restarting at boot reads as no sample.
   local result
@@ -34,8 +44,11 @@ linux_percent() {
       if (has_previous && age >= 0 && age < window) { print "keep", previous[4]; exit }
       percent = "-"
       busy_delta = total - previous[2]
-      if (has_previous && age >= 0 && busy_delta > 0)
-        percent = sprintf("%d", (busy_delta - (idle - previous[3])) * 100 / busy_delta + 0.5)
+      if (has_previous && age >= 0 && busy_delta > 0) {
+        percent = (busy_delta - (idle - previous[3])) * 100 / busy_delta
+        # iowait is not strictly monotonic, so a delta can leave the range
+        percent = sprintf("%d", (percent < 0 ? 0 : percent > 100 ? 100 : percent) + 0.5)
+      }
       print "store", percent, now, total, idle
     }' "$file" 2>/dev/null)
 
@@ -59,4 +72,4 @@ case "$(oasis_platform)" in
   *) exit 0 ;;
 esac
 
-oasis_report "${1:-}" "$used" "%" "$(oasis_option @oasis_cpu_warn 70)" "$(oasis_option @oasis_cpu_crit 90)"
+oasis_report "${1:-}" "$used" "%" cpu 70 90

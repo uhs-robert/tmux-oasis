@@ -19,6 +19,8 @@ set_capacity 0%;   assert_equals "empty" "0%" "$(disk display)"
 set_capacity 50%
 assert_equals "thresholds are options" crit "$(disk state opt_oasis_disk_warn=10 opt_oasis_disk_crit=50)"
 
+printf 'Filesystem 1024-blocks Used Available Capacity Mounted on\n//srv/My Share 100 1 1 5%% /mnt/x\n' > "$stub_data/df"
+assert_equals "device name with spaces" "5%" "$(disk display)"
 set_capacity "-"
 assert_equals "no capacity hides" "" "$(disk display)"
 printf 'df: /nope: No such file or directory\n' > "$stub_data/df"

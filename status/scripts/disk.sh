@@ -11,5 +11,7 @@ if [ "$(oasis_platform)" = macos ] && [ "$path" = / ] && [ -d "$OASIS_MACOS_DATA
   path=$OASIS_MACOS_DATA_VOLUME
 fi
 
-used=$(df -P "$path" 2>/dev/null | awk 'NR == 2 && $5 ~ /^[0-9]+%$/ { sub(/%/, "", $5); print $5 }')
-oasis_report "${1:-}" "$used" "%" "$(oasis_option @oasis_disk_warn 80)" "$(oasis_option @oasis_disk_crit 90)"
+used=$(df -P "$path" 2>/dev/null | awk '
+  # The first column can hold spaces, so find the capacity instead of counting to it
+  NR == 2 { for (i = 2; i <= NF; i++) if ($i ~ /^[0-9]+%$/) { sub(/%/, "", $i); print $i; exit } }')
+oasis_report "${1:-}" "$used" "%" disk 80 90

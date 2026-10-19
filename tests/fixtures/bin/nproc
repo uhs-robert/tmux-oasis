@@ -1,2 +1,2 @@
 #!/bin/sh
-cat "$OASIS_STUB_DATA/nproc" 2>/dev/null
+printf "%s\n" "$*" > "$OASIS_STUB_DATA/nproc.args"; cat "$OASIS_STUB_DATA/nproc" 2>/dev/null

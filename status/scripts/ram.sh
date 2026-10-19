@@ -25,4 +25,4 @@ case "$(oasis_platform)" in
   *) exit 0 ;;
 esac
 
-oasis_report "${1:-}" "$used" "%" "$(oasis_option @oasis_ram_warn 80)" "$(oasis_option @oasis_ram_crit 90)"
+oasis_report "${1:-}" "$used" "%" ram 80 90
