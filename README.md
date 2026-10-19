@@ -76,6 +76,7 @@ Choose from 13 distinct desert-inspired base styles, each with its own personali
     Modules can also show a warn or crit state with <code>@oasis_module_&lt;name&gt;_state</code>.
     New opt-in modules: <code>load</code>, <code>ram</code>, <code>cpu</code> and <code>disk</code>.
     New opt-in <code>host</code> (hostname, coloured by <code>@oasis_host_states</code>) and <code>ssh</code> (remote host of the active pane's ssh) modules.
+    New opt-in <code>git</code> and <code>battery</code> modules show the branch of the active pane and the battery level, e.g. <code>set -g @oasis_status_right "git | battery | clock"</code>.
     See <a href="#config-options">all configuration options</a>.
     <h3>🚨 Restart tmux after updating</h3>
     Reloading your config in an already-running tmux shows doubled separators. Restart tmux once (<code>tmux kill-server</code>) to clear it.
@@ -293,7 +294,8 @@ set -g @oasis_mode_custom_zoom "ZOOM"
 # "|" separates groups, spaces separate modules in the same group. Groups alternate
 # accent and surface colours, starting with accent at the screen edge.
 # Remove a module or group to hide it; an empty string hides the whole side.
-# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh (or your own, see below)
+# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery (or your own, see below)
+# git and battery are not in the default layout; add them to try them, e.g. "git | battery | clock"
 set -g @oasis_status_left "mode | session"
 set -g @oasis_status_right "sync | folder | clock"
 
@@ -370,6 +372,15 @@ set -g @oasis_disk_icon "󰋊 " # Icon/text shown before the percentage
 set -g @oasis_disk_path "/"         # Any path on the filesystem to watch
 set -g @oasis_disk_warn "80"        # Warn at this percent or more
 set -g @oasis_disk_crit "90"        # Crit at this percent or more
+# Git module settings (hidden outside a repository)
+set -g @oasis_git_icon ""        # Icon/text shown before the branch
+set -g @oasis_git_dirty_icon "*"   # Appended while tracked files have uncommitted changes
+
+# Battery module settings (hidden without a laptop battery and while fully charged)
+set -g @oasis_battery_icons "    "  # Five icons, empty to full, separated by spaces
+set -g @oasis_battery_charging_icon ""  # Shown instead of the level icon while charging
+set -g @oasis_battery_warn "50"    # warn state at or below this percent (not while charging)
+set -g @oasis_battery_crit "20"    # crit state at or below this percent (not while charging)
 
 # Pane settings
 set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps the terminal background
