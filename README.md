@@ -95,7 +95,7 @@ Choose from 16 distinct desert-inspired base styles, each with its own personali
     <h3>🚨 Restart tmux after updating</h3>
     Reloading your config in an already-running tmux shows doubled separators. Restart tmux once (<code>tmux kill-server</code>) to clear it.
     <blockquote>
-    <strong>Note:</strong> If you overrode a built-in module such as <code>@oasis_module_clock</code>, it should now contain only its text. Separators and colours are added for you.
+    <strong>Note:</strong> If you overrode a built-in module such as <code>@oasis_module_clock</code>, <code>@oasis_module_window_active</code> or <code>@oasis_module_window_inactive</code>, it should now contain only its text. Separators and colours are added for you.
     </blockquote>
     <!-- v2.2:end -->
   </details>
@@ -259,7 +259,7 @@ Reload tmux: `tmux source ~/.tmux.conf`
 
 Oasis offers _many_ different styles to choose from. First, pick a theme!
 
-- **Dual-mode themes**: `abyss`, `cactus`, `canyon`, `desert`, `dune`, `lagoon`, `luna`, `mirage`, `midnight`, `night`, `rose`, `scorpion`, `sol`, `starlight`, `twilight`
+- **Dual-mode themes**: `abyss`, `cactus`, `canyon`, `desert`, `dune`, `lagoon`, `luna`, `mirage`, `midnight`, `moonlight`, `night`, `rose`, `scorpion`, `sol`, `starlight`, `twilight`
   - Variants: `_dark` and `_light_1` … `_light_5`
   - Short names auto-expand to dark: setting `set -g @oasis_flavor "lagoon"` loads `lagoon_dark`
 
@@ -302,7 +302,7 @@ All options below show their default values. Add any of these to your `tmux.conf
 ```tmux
 # Theme variant (16 base styles × 6 variants each)
 # Options: [style]_dark, [style]_light_1, [style]_light_2, [style]_light_3, [style]_light_4, [style]_light_5
-# Styles: "night", "moonlight", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "luna", "twilight", "rose"
+# Styles: "night", "moonlight", "midnight", "abyss", "starlight", "desert", "sol", "canyon", "dune", "cactus", "mirage", "lagoon", "luna", "twilight", "rose", "scorpion"
 set -g @oasis_flavor "moonlight_dark"
 
 # Mode indicator display format
