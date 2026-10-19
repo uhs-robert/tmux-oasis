@@ -2,10 +2,12 @@
 # Builds status-left and status-right from @oasis_status_left / @oasis_status_right.
 #
 # A list is groups split by "|", each holding space-separated module names, e.g.
-# "sync | folder | clock". Groups alternate accent and surface tones starting
-# with accent at the screen edge, and separators are drawn between neighbouring
-# groups. tmux formats can't split strings, so the lists are parsed here at load
-# time; the output is still a format, so colours follow the mode at draw time.
+# "sync folder | clock". A side has at most two groups: the one at the screen edge
+# (first on the left, last on the right) in the accent tone, and a surface group
+# inside it. Any further groups are merged, in order, into the surface group, with
+# a warning at load. Separators are drawn between the two groups. tmux formats can't
+# split strings, so the lists are parsed here at load time; the output is still a
+# format, so colours follow the mode at draw time.
 #
 # Inside #{?cond,a,b} tmux splits on every top-level comma and doesn't skip #[...],
 # so styles are emitted one attribute per #[...] block.
@@ -107,6 +109,39 @@ accent_group_colour() {
   printf '%s' "#{E:@oasis_group_colour_${side}_${index}}"
 }
 
+# At server start no client exists and display-message would go nowhere, so the
+# message waits in a hook that fires on the first attach and removes itself. The
+# fixed hook index per side keeps repeated loads from queueing duplicates.
+show_warning_when_possible() {
+  local message=$1 side=$2 hook_index=9201
+  if [ -n "$(tmux list-clients 2>/dev/null)" ]; then
+    tmux display-message "$message"
+    return
+  fi
+  [ "$side" = right ] && hook_index=9202
+  tmux set-hook -g "client-attached[$hook_index]" "display-message '$message' ; set-hook -gu 'client-attached[$hook_index]'"
+}
+
+# Keeps the edge group and merges every other group into one inner group. Runs once
+# per side per load, so the warning can't repeat.
+fold_into_inner_group() {
+  local side=$1 count=${#group_modules[@]} first_inner last_inner i inner_modules="" inner_conditions=()
+  [ "$count" -le 2 ] && return
+  show_warning_when_possible "oasis: @oasis_status_${side} has more than two groups; extras were merged into the inner group" "$side"
+  if [ "$side" = left ]; then first_inner=1; last_inner=$((count - 1)); else first_inner=0; last_inner=$((count - 2)); fi
+  for ((i = first_inner; i <= last_inner; i++)); do
+    inner_modules+="${group_modules[$i]}"
+    inner_conditions+=("${group_conditions[$i]}")
+  done
+  if [ "$side" = left ]; then
+    group_modules=("${group_modules[0]}" "$inner_modules")
+    group_conditions=("${group_conditions[0]}" "$(any_of "${inner_conditions[@]}")")
+  else
+    group_modules=("$inner_modules" "${group_modules[$((count - 1))]}")
+    group_conditions=("$(any_of "${inner_conditions[@]}")" "${group_conditions[$((count - 1))]}")
+  fi
+}
+
 # Fills group_modules, group_conditions, group_tones and group_colours for one side
 parse_groups() {
   local list=$1 side=$2 group name modules count i edge_distance colour
@@ -128,6 +163,7 @@ parse_groups() {
     group_modules+=("$modules")
     group_conditions+=("$(any_of "${conditions[@]}")")
   done
+  fold_into_inner_group "$side"
   count=${#group_modules[@]}
   for ((i = 0; i < count; i++)); do
     if [ "$side" = left ]; then edge_distance=$i; else edge_distance=$((count - 1 - i)); fi
@@ -213,6 +249,10 @@ build_right() {
 for stale_option in $(tmux show -g | awk '$1 ~ /^@oasis_group_colour_/ {print $1}'); do
   tmux set -gu "$stale_option"
 done
+
+# A warning still waiting for a first client is stale if the layout changed
+tmux set-hook -gu 'client-attached[9201]'
+tmux set-hook -gu 'client-attached[9202]'
 
 parse_groups "$(option @oasis_status_left)" left
 tmux set -g status-left "$(build_left)"

@@ -1,44 +1,52 @@
-# Cases for the built status line: separators between groups when a middle group is hidden
+# Cases for the built status line: at most two groups per side, extras merged into the inner one
 
-server=oasis-test-status
 trap 'env -u TMUX tmux -L oasis-test-status kill-server 2>/dev/null || true' EXIT
-powerline_left_cap=$'\xee\x82\xb2'
 
-# Usage: right_bar [option=value ...] -- the unexpanded status-right built for "a | b | c", b hidden
-right_bar() {
+# Usage: bar SIDE LIST [option=value ...] -- the expanded bar for SIDE built from LIST over modules a, b, c, d
+bar() {
+  local side=$1 list=$2; shift 2
   env -u TMUX tmux -L oasis-test-status kill-server 2>/dev/null || true
   env -u TMUX tmux -L oasis-test-status -f /dev/null new -d -s t -x 200 -y 10
   env -u TMUX tmux -L oasis-test-status set -g @oasis_flavor moonlight_dark
-  env -u TMUX tmux -L oasis-test-status set -g @oasis_module_a "A"
-  env -u TMUX tmux -L oasis-test-status set -g @oasis_module_b "B"
-  env -u TMUX tmux -L oasis-test-status set -g @oasis_module_b_when "0"
-  env -u TMUX tmux -L oasis-test-status set -g @oasis_module_c "C"
+  for name in a b c d; do
+    env -u TMUX tmux -L oasis-test-status set -g "@oasis_module_$name" "${name^^}"
+  done
   env -u TMUX tmux -L oasis-test-status set -g @oasis_status_left ""
-  env -u TMUX tmux -L oasis-test-status set -g @oasis_status_right "a | b | c"
+  env -u TMUX tmux -L oasis-test-status set -g @oasis_status_right ""
+  env -u TMUX tmux -L oasis-test-status set -g "@oasis_status_$side" "$list"
   for assignment in "$@"; do
     env -u TMUX tmux -L oasis-test-status set -g "${assignment%%=*}" "${assignment#*=}"
   done
   env -u TMUX tmux -L oasis-test-status source-file "$checkout_dir/oasis_tmux.conf"
-  env -u TMUX tmux -L oasis-test-status display -p '#{T:status-right}'
+  env -u TMUX tmux -L oasis-test-status display -p "#{T:status-$side}"
 }
 
-# Output is the expanded bar, a's group first. The cap between a and c is drawn by c.
-cap_between_a_and_c() {
-  case $1 in
-    *" A "*"$powerline_left_cap"*" C"*) printf yes ;;
-    *) printf no ;;
-  esac
+# Prints each drawn group's modules, groups in drawn order joined by "|": "A B|C".
+# A group body starts after "#[bold] " and ends at the next style or the end.
+groups_of() {
+  printf '%s' "$1" | grep -o '#\[bold\] [^#]*' | sed -E 's/^#\[bold\] //; s/ +$//' | paste -sd '|'
 }
 
-# a and c are both accent groups with b hidden between them, so they only merge if their colours match
-with_state=$(right_bar @oasis_module_a_state=crit)
-assert_equals "crit accent group keeps a cap against a normal accent group" yes "$(cap_between_a_and_c "$with_state")"
-case $with_state in
-  *"#[bg=#ff7979]$powerline_left_cap"*) found=yes ;;
-  *) found=no ;;
-esac
-assert_equals "that cap starts from the crit colour" yes "$found"
+assert_equals "right, one group" "A B" "$(groups_of "$(bar right 'a b')")"
+assert_equals "right, two groups" "A|B" "$(groups_of "$(bar right 'a | b')")"
+assert_equals "right, three groups: the inner groups merge, the edge group stays" "A B|C" "$(groups_of "$(bar right 'a | b | c')")"
+assert_equals "right, four groups" "A B C|D" "$(groups_of "$(bar right 'a | b | c | d')")"
 
-without_state=$(right_bar)
-assert_equals "same-coloured accent groups merge without a cap" no "$(cap_between_a_and_c "$without_state")"
+assert_equals "left, one group" "A B" "$(groups_of "$(bar left 'a b')")"
+assert_equals "left, two groups" "A|B" "$(groups_of "$(bar left 'a | b')")"
+assert_equals "left, three groups: the edge group stays, the rest merge" "A|B C" "$(groups_of "$(bar left 'a | b | c')")"
+assert_equals "left, four groups" "A|B C D" "$(groups_of "$(bar left 'a | b | c | d')")"
+
+assert_equals "a hidden module in the merged group leaves the others" "A|C" "$(groups_of "$(bar left 'a | b | c' @oasis_module_b_when=0)")"
+
+# The warning is queued as a hook while no client is attached
+warns() {
+  env -u TMUX tmux -L oasis-test-status show-hooks -g | grep -c 'more than two groups' || true
+}
+bar right 'a | b | c' >/dev/null
+assert_equals "three groups queue the warning" 1 "$(warns)"
+bar right 'a | b' >/dev/null
+assert_equals "two groups queue no warning" 0 "$(warns)"
+bar left 'a | b | c | d' >/dev/null
+assert_equals "four groups queue one warning, not one per extra" 1 "$(warns)"
 env -u TMUX tmux -L oasis-test-status kill-server 2>/dev/null || true

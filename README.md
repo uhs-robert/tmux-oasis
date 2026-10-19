@@ -291,13 +291,14 @@ set -g @oasis_mode_custom_clock "CLOCK"
 set -g @oasis_mode_custom_zoom "ZOOM"
 
 # Status line layout
-# "|" separates groups, spaces separate modules in the same group. Groups alternate
-# accent and surface colours, starting with accent at the screen edge.
+# "|" separates groups, spaces separate modules in the same group. Each side has at
+# most two groups: accent at the screen edge, surface inside it. Extra groups are
+# merged into the inner one, with a warning at load.
 # Remove a module or group to hide it; an empty string hides the whole side.
 # Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery (or your own, see below)
-# git and battery are not in the default layout; add them to try them, e.g. "git | battery | clock"
+# git and battery are not in the default layout; add them to try them, e.g. "git battery | clock"
 set -g @oasis_status_left "mode | session"
-set -g @oasis_status_right "sync | folder | clock"
+set -g @oasis_status_right "sync folder | clock"
 
 # Separators between groups: "powerline", "round", "slant" or "flat"
 set -g @oasis_separator "powerline"
@@ -325,7 +326,7 @@ set -g @oasis_state_crit_color "#{@thm_red}"
 # Example (Linux): your own module, red above a load of 4
 # set -g @oasis_module_busy "#(cut -d' ' -f1 /proc/loadavg)"
 # set -g @oasis_module_busy_state "#{?#(awk '$1 > 4' /proc/loadavg),crit,ok}"
-# set -g @oasis_status_right "busy | folder | clock"
+# set -g @oasis_status_right "busy folder | clock"
 # The built-in load, ram, cpu and disk modules already do this: "load ram cpu disk | clock"
 
 # Where Oasis keeps the scripts its modules call, as #(bash "#{@oasis_scripts_dir}/<name>.sh").
