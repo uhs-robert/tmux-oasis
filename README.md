@@ -18,7 +18,7 @@ A collection of <strong>16</strong> desert-inspired Tmux colorscheme status line
 
 Wouldn't it be nice to know what mode you're in? And not just one mode, but for **ALL modes like in Vim**.
 
-Oasis provides a fully styled status line with a robust dynamic mode indicator for **ALL** of tmux's modes and **13 unique color schemes**.
+Oasis provides a fully styled status line with a robust dynamic mode indicator for **ALL** of tmux's modes and **16 unique color schemes**.
 
 <div align="center">
 
@@ -57,11 +57,11 @@ Oasis provides a fully styled status line with a robust dynamic mode indicator f
 </div>
 
 > [!NOTE]
-> Previews above all use the `lagoon_dark` style.
+> Previews above all use the `moonlight_dark` style with the default layout.
 
 ## 🌅 Overview
 
-Choose from 13 distinct desert-inspired base styles, each with its own personality and color palette. Dual-mode themes now ship with one dark plus five fine-grained light variants.
+Choose from 16 distinct desert-inspired base styles, each with its own personality and color palette. Dual-mode themes now ship with one dark plus five fine-grained light variants.
 
 <details>
 <summary>✨ What's New / 🚨 Breaking Changes</summary>
@@ -71,21 +71,32 @@ Choose from 13 distinct desert-inspired base styles, each with its own personali
   <details>
     <summary>✨ v2.2: Configurable Status Line Layout</summary>
     <!-- v2.2:start -->
-    <h3>✨ Configurable Status Line Layout</h3>
-    Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules.
-    Modules can also show a warn or crit state with <code>@oasis_module_&lt;name&gt;_state</code>.
-    New opt-in modules: <code>load</code>, <code>ram</code>, <code>cpu</code> and <code>disk</code>.
-    New opt-in <code>host</code> (hostname, coloured by <code>@oasis_host_states</code>) and <code>ssh</code> (remote host of the active pane's ssh) modules.
-    New opt-in <code>git</code> and <code>battery</code> modules show the branch of the active pane and the battery level, e.g. <code>set -g @oasis_status_right "git | battery | clock"</code>.
+    <h3>✨ Configurable layout</h3>
+    Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules. See the <a href="#example-layouts">example layouts</a>.
+    <h3>✨ Window separators</h3>
+    Windows get their own caps with <code>@oasis_window_separator</code> (<code>round</code>, <code>powerline</code>, <code>slant</code> or <code>flat</code>, default <code>round</code>). Override single caps with <code>@oasis_window_separator_left</code> and <code>@oasis_window_separator_right</code>.
+    <h3>✨ Module states</h3>
+    A module can show a warn or crit state through <code>@oasis_module_&lt;name&gt;_state</code>, coloured by <code>@oasis_state_warn_color</code> and <code>@oasis_state_crit_color</code>.
+    <h3>✨ New opt-in modules</h3>
+    Not in the default layout; add them to <code>@oasis_status_left</code> or <code>@oasis_status_right</code>.
+    <table>
+      <tr><td><code>git</code></td><td>Branch of the active pane, marked while there are uncommitted changes</td></tr>
+      <tr><td><code>battery</code></td><td>Battery level, hidden without a battery and while fully charged</td></tr>
+      <tr><td><code>host</code></td><td>Short hostname, coloured by <code>@oasis_host_states</code></td></tr>
+      <tr><td><code>ssh</code></td><td>Remote host while the active pane runs ssh</td></tr>
+      <tr><td><code>load</code></td><td>1-minute load average</td></tr>
+      <tr><td><code>ram</code></td><td>Used memory in percent</td></tr>
+      <tr><td><code>cpu</code></td><td>CPU usage in percent</td></tr>
+      <tr><td><code>disk</code></td><td>Used space of one filesystem (<code>@oasis_disk_path</code>)</td></tr>
+    </table>
     See <a href="#config-options">all configuration options</a>.
+    <h3>✨ Moonlight is the new default style</h3>
+    To keep the previous look, set <code>@oasis_flavor "lagoon_dark"</code>.
     <h3>🚨 Restart tmux after updating</h3>
     Reloading your config in an already-running tmux shows doubled separators. Restart tmux once (<code>tmux kill-server</code>) to clear it.
     <blockquote>
     <strong>Note:</strong> If you overrode a built-in module such as <code>@oasis_module_clock</code>, it should now contain only its text. Separators and colours are added for you.
     </blockquote>
-    <h3>✨ Moonlight is the new default style</h3>
-    To keep the previous look, set <code>@oasis_flavor "lagoon_dark"</code>.
-    <br/>
     <!-- v2.2:end -->
   </details>
 
@@ -201,7 +212,7 @@ The examples below use the light style 3.
 - **Advanced status line** with dynamic mode indicators based on `vim` for each of tmux's modes.
   - Includes: `NORMAL`, `COMMAND`, `COPY`, `VIEW`, `CHOOSE`, `CLOCK`, `OPTIONS`, and `ZOOM` modes.
   - **Customizable mode formats**: Set `@oasis_mode_format` to `short` (single letter), `full` (complete word), `icon` (Nerd Font icons), or `custom` (user-defined labels)
-- **13 base styles** with granular variants: dual-mode themes provide 1 dark + 5 light levels
+- **16 base styles** with granular variants: dual-mode themes provide 1 dark + 5 light levels
 - **Automatic theme loading**, set `@oasis_flavor` and the system will handle the rest (suffixes added for you)
 - **Modular design** with separate theme and status line module configurations (_download **only** what you need_)
 - **Configurable status line layout**: hide, regroup or reorder modules, pick a separator style, or add your own modules
@@ -260,6 +271,24 @@ set -g @oasis_flavor "night"            # Resolves to night_dark
 ```
 
 Then set up any additional configuration options for more customization!
+
+<a id="example-layouts"></a>
+
+### Example layouts
+
+Each side is a list of groups separated by `|`; see the configuration block below for all modules.
+
+```tmux
+# Desktop
+set -g @oasis_status_right "sync | folder git"
+
+# Laptop
+set -g @oasis_status_right "sync | folder git | cpu ram battery"
+
+# Server
+set -g @oasis_status_left "mode | host session"
+set -g @oasis_status_right "ssh sync | folder git | load ram disk"
+```
 
 <a id="config-options"></a>
 
