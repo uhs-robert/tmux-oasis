@@ -15,11 +15,11 @@ A tmux theme (16 styles, each with one dark and five light variants) with a stat
 
 ## Testing
 
-**Never touch the owner's tmux server.** Agent shells usually run inside it, with `$TMUX` pointing at it. Every tmux call must be `env -u TMUX tmux -L <literal-unique-name> ...`, finishing with `kill-server` on that name. The recipes below do this for you, on fixed server names (`oasis-dev`, `oasis-shot`, `oasis-compare-*` and their `-view` viewers).
+**Never touch the owner's tmux server.** Agent shells usually run inside it, with `$TMUX` pointing at it. Every tmux call must be `env -u TMUX tmux -L <literal-unique-name> ...`, finishing with `kill-server` on that name. The recipes below do this for you. `compare` and `screenshot` use per-run server names and are safe to run in parallel. `sandbox`, `sandbox-stop` and `render` share one server across invocations, `oasis-dev` unless `OASIS_DEV_SERVER` is set: parallel agents each set their own.
 
 | Recipe | Does |
 |---|---|
-| `just sandbox [option=value ...]` / `just sandbox-stop` | Isolated server `oasis-dev` with this checkout loaded. Prints how to attach. |
+| `just sandbox [option=value ...]` / `just sandbox-stop` | Isolated server with this checkout loaded. Prints how to attach. |
 | `just render` | The sandbox's drawn bar as cells (fg, bg, bold, glyphs as `U+XXXX`), with `#()` output. |
 | `just compare [ref] [option=value ...]` | Draws `ref` (default `main`) and the working tree in every scenario and compares cell by cell. |
 | `just screenshot [out.png] [option=value ...]` | PNG of the bar in JetBrainsMono Nerd Font (Pillow; `OASIS_FONT` overrides the font). Open it to check contrast and glyphs. |

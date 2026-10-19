@@ -3,8 +3,8 @@
 set -euo pipefail
 . "$(dirname "$0")/lib.sh"
 
-sandbox_server=oasis-dev
-viewer_server=oasis-dev-view
+sandbox_server=${OASIS_DEV_SERVER:-oasis-dev}
+viewer_server=$sandbox_server-view
 
 on_server "$sandbox_server" has-session -t "$session_name" 2>/dev/null ||
   die "no sandbox running; start one with \`just sandbox\`"

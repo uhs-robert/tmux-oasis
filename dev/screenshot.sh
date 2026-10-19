@@ -4,8 +4,8 @@
 set -euo pipefail
 . "$(dirname "$0")/lib.sh"
 
-shot_server=oasis-shot
-viewer_server=oasis-shot-view
+shot_server=oasis-shot-$$
+viewer_server=oasis-shot-view-$$
 bar_width=${OASIS_DEV_WIDTH:-120}
 
 out_path=${TMPDIR:-/tmp}/oasis-screenshot.png

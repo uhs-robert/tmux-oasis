@@ -3,7 +3,7 @@
 set -euo pipefail
 . "$(dirname "$0")/lib.sh"
 
-sandbox_server=oasis-dev
+sandbox_server=${OASIS_DEV_SERVER:-oasis-dev}
 
 case ${1:-} in
   start)

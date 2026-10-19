@@ -1,6 +1,6 @@
 # Shared helpers for the dev/ scripts. Sourced, not run.
 #
-# Every tmux call goes through on_server with a fixed -L name and TMUX unset:
+# Every tmux call goes through on_server with an explicit -L name and TMUX unset:
 # agent shells run inside the owner's tmux, and a bare `tmux` would reach it.
 #
 # The drawn bar is read by attaching a client to the themed server from inside a
