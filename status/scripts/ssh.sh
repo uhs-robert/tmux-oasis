@@ -49,17 +49,25 @@ ssh_destination() {
 }
 
 # Usage: ssh_host_on_tty TTY
+# Only the foreground ssh counts: a suspended or backgrounded one on the same tty has no "+" in its stat.
+# Where /proc has the process, its NUL-separated cmdline gives exact arguments; ps joins them with
+# spaces, so on macOS an option value containing spaces (-o "ProxyCommand=ssh -W %h:%p jump") is misread.
 ssh_host_on_tty() {
-  local tty=${1#/dev/} line command_words
+  local tty=${1#/dev/} stat pid line argv word
   [ -n "$tty" ] || return 0
-  # Word-split on purpose: ps joins the arguments with spaces, quoting is lost
-  while IFS= read -r line; do
-    set -f
-    command_words=($line)
-    case ${command_words[0]-} in
-      ssh|*/ssh) ssh_destination "${command_words[@]}"; return ;;
+  while read -r stat pid line; do
+    case $stat in *+*) ;; *) continue ;; esac
+    argv=()
+    if [ -r "$OASIS_PROC_ROOT/$pid/cmdline" ]; then
+      while IFS= read -r -d '' word; do argv+=("$word"); done < "$OASIS_PROC_ROOT/$pid/cmdline"
+    else
+      set -f
+      argv=($line)
+    fi
+    case ${argv[0]-} in
+      ssh|*/ssh) ssh_destination "${argv[@]}"; return ;;
     esac
-  done < <(ps -o args= -t "$tty" 2>/dev/null)
+  done < <(ps -o stat=,pid=,args= -t "$tty" 2>/dev/null)
 }
 
 case ${1:-} in
