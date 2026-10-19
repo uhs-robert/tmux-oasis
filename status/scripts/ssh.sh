@@ -45,7 +45,8 @@ ssh_destination() {
       esac ;;
     *) destination=${destination##*@} ;;
   esac
-  printf '%s' "$destination"
+  # tmux format-expands #() output, so a literal # (an ssh_config alias such as box#S) is doubled
+  printf '%s' "${destination//#/##}"
 }
 
 # Usage: ssh_host_on_tty TTY
