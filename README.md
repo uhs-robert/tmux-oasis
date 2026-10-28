@@ -72,7 +72,7 @@ Choose from 16 distinct desert-inspired base styles, each with its own personali
     <summary>✨ Pane header bars</summary>
     <!-- pane-headers:start -->
     <h3>✨ Header bars replace the border arrow</h3>
-    With two or more panes in a window, each pane gets a header bar showing its index and command (<code>@oasis_pane_border_format</code>). The focused pane's header and border are in the accent colour, unfocused ones in a dim colour that stays visible with <code>@oasis_dim_inactive</code> on. Lone and zoomed panes have no header. To keep the previous arrow instead:
+    With two or more panes in a window, each pane gets a header bar showing its index and command (<code>@oasis_pane_border_format</code>). The focused pane's header and border are in the primary colour, unfocused ones in a dim colour that stays visible with <code>@oasis_dim_inactive</code> on. Lone and zoomed panes have no header. To keep the previous arrow instead:
     <pre>set -g @oasis_pane_borders "arrows"</pre>
     <!-- pane-headers:end -->
   </details>
