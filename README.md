@@ -69,6 +69,15 @@ Choose from 16 distinct desert-inspired base styles, each with its own personali
 <!-- whats-new:start -->
 
   <details>
+    <summary>✨ Pane header bars</summary>
+    <!-- pane-headers:start -->
+    <h3>✨ Header bars replace the border arrow</h3>
+    With two or more panes in a window, each pane gets a header bar showing its index and command (<code>@oasis_pane_border_format</code>). The focused pane's header and border are in the accent colour, unfocused ones in a dim colour that stays visible with <code>@oasis_dim_inactive</code> on. Lone and zoomed panes have no header. To keep the previous arrow instead:
+    <pre>set -g @oasis_pane_borders "arrows"</pre>
+    <!-- pane-headers:end -->
+  </details>
+
+  <details>
     <summary>✨ v2.2: Configurable Status Line Layout</summary>
     <!-- v2.2:start -->
     <h3>✨ Configurable layout</h3>
@@ -428,6 +437,8 @@ set -g @oasis_battery_crit "20"    # crit state at or below this percent (not wh
 
 # Pane settings
 set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps the terminal background
+set -g @oasis_pane_borders "header" # "header" gives each pane a title bar, accented on the focused one; "arrows" points an arrow into it
+set -g @oasis_pane_border_format " #{pane_index} #{pane_current_command} " # Header text (tmux format), only in "header" mode
 ```
 
 <!-- config:end -->
