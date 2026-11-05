@@ -13,7 +13,7 @@ Every new module needs:
 - an icon option, `@oasis_<name>_icon`: a Nerd Font codepoint checked against the cheat sheet, stored as an escape;
 - an entry in the README configuration block, and a line in the next What's New;
 - Linux and macOS paths, with the macOS path flagged in the PR as untested unless a Mac was available;
-- an empty result, and so a hidden module, wherever it does not apply;
+- an `@oasis_module_<name>_when` condition that hides the module, its group and its separators wherever it does not apply (see `status/modules/git.conf`): an empty result alone leaves the separators drawn;
 - tests in `tests/<name>.sh`, run by `just test`.
 
 Scripts read their own options with `oasis_option`, not through arguments. The owner ruled out these modules: catppuccin's `weather`, `clima` and `pomodoro_plus` (plugins or network calls from the bar), `clients`, `netspeed`, and anything too slow for `#()` or needing hooks (docker, GPU, venv, exit status, pending updates, music).
