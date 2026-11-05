@@ -6,10 +6,23 @@ A tmux theme (16 styles, each with one dark and five light variants) with a stat
 - The status line is built at config load by `status/build_status.sh` from `@oasis_status_left` / `@oasis_status_right`. Its header comment explains groups, tones and separators. The module contract (`@oasis_module_<name>`, optional `_when`) is in the README's configuration section.
 - Built-in modules live in `status/modules/<name>.conf` and use `set -ogq` so users can override them. New modules are opt-in: don't change the default layout lists, and so the default look, without the owner deciding it.
 
+## New modules
+
+Every new module needs:
+
+- an icon option, `@oasis_<name>_icon`: a Nerd Font codepoint checked against the cheat sheet, stored as an escape;
+- an entry in the README configuration block, and a line in the next What's New;
+- Linux and macOS paths, with the macOS path flagged in the PR as untested unless a Mac was available;
+- an empty result, and so a hidden module, wherever it does not apply;
+- tests in `tests/<name>.sh`, run by `just test`.
+
+Scripts read their own options with `oasis_option`, not through arguments. The owner ruled out these modules: catppuccin's `weather`, `clima` and `pomodoro_plus` (plugins or network calls from the bar), `clients`, `netspeed`, and anything too slow for `#()` or needing hooks (docker, GPU, venv, exit status, pending updates, music).
+
 ## Conventions
 
 - Shell variables use `snake_case`. No emojis in code (README headings are fine). Comments only say what names can't.
 - Conventional Commits with scopes from history (`status`, `theme`, `panes`); bodies explain why. Short, reviewer-focused PR bodies.
+- README screenshots of layouts and modes are 120-column native renders (1200x22) of a neutral fixture: session "Config", windows yazi and nvim, folder "statusbar", host "oasis-server", git on a clean `main`. Each example group shows one text module. Number and icon modules may share one.
 - The owner merges PRs. Don't merge without their approval.
 - Every user-facing option goes in the README configuration block (`<!-- config:start -->` to `<!-- config:end -->`) with its default. Notable or breaking changes get an entry in What's New.
 
@@ -37,11 +50,9 @@ To let the owner try a change on their own server, run `just preview` and give t
 - **Commas inside `#{?cond,a,b}` branches split them**, including commas inside `#[...]`. Use one style attribute per `#[...]`, and reference anything with commas through `#{E:@option}`.
 - **A `}` inside a `#()` that sits inside `#{?...}` ends the conditional early**: keep braces out of such commands (`awk '$1 > 4'`, not `awk '$1 > 4 {print 1}'`).
 - **`set -ogq` values survive reloads.** Changing a built-in module's content needs `tmux set -gu @oasis_module_<name>` first. Users upgrading must restart tmux once.
-- **Private-use glyphs (Nerd Font and powerline icons) can vanish from an agent's output**, including when a `\uXXXX` escape gets turned into the glyph by a heredoc or a file-writing tool. Store them as byte escapes that stay escapes, e.g. `$'\xee\x82\xb0'` in bash, which also works on macOS's bash 3.2. Verify with a codepoint dump.
+- **Every value put into a `#()` command must go through `#{q:...}`**: a directory named `$(...)` ran as a command. Script output must double each `#`, because tmux expands formats in `#()` output.
+- **`flock ... just sandbox` hands the lock to the tmux server, which never releases it.** Use `flock -o` if a lock is ever needed.
+- **Private-use glyphs (Nerd Font and powerline icons) can vanish from an agent's output**, including when a `\uXXXX` escape gets turned into the glyph by a heredoc or a file-writing tool. Store them as byte escapes that stay escapes, e.g. `$'\xee\x82\xb0'` in bash, which also works on macOS's bash 3.2. In `.conf` files, use tmux octal escapes, e.g. `"\356\202\266"`. Verify with a codepoint dump.
 - **`display -p` does not run `#()` jobs**, so script-backed content is empty there. `just render` shows the drawn bar.
 - **`#()` runs every `status-interval` per client.** Scripts must return in well under 100 ms and never sleep.
 - **`run-shell` expands formats**, so a `#(...)` passed through it runs instead of being stored.
-
-## Planning files
-
-Root-level Markdown files other than `README.md`, `AGENTS.md` and `CLAUDE.md` are gitignored for the owner's notes (`ROADMAP.md`, `todo.md`, ...). Check for them when picking up work. They exist only in the main checkout, not in worktrees or clones.

@@ -4,8 +4,5 @@ assets/screenshots/raw/*
 # Logs
 *.log
 
-# Local planning notes (ROADMAP.md, todo.md, ...)
-/*.md
-!/README.md
-!/AGENTS.md
-!/CLAUDE.md
+# Local plan docs
+/.plans/
