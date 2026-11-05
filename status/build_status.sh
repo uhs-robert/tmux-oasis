@@ -261,7 +261,7 @@ parse_groups "$(option @oasis_status_right)" right
 tmux set -g status-right "$(build_right)"
 
 window_format() {
-  local pill_colour=$1 text_style=$2 module=$3 text_padding=${4:-} agent_marker=${5:-} output=""
+  local pill_colour=$1 text_style=$2 module=$3 text_padding=${4:-} agent_marker=${5:-} right_cap_colour=${6:-$1} output=""
   if [ -n "$window_left_glyph" ]; then
     if $window_left_is_notch; then
       output+="#[fg=$MIDDLE_COLOUR]#[bg=$pill_colour]$window_left_glyph"
@@ -270,7 +270,7 @@ window_format() {
     fi
   fi
   output+="#[bg=$pill_colour]$text_style#{E:@oasis_module_$module}$agent_marker$text_padding"
-  [ -n "$window_right_glyph" ] && output+="#[fg=$pill_colour]#[bg=$MIDDLE_COLOUR]$window_right_glyph"
+  [ -n "$window_right_glyph" ] && output+="#[fg=$right_cap_colour]#[bg=$MIDDLE_COLOUR]$window_right_glyph"
   printf '%s' "$output"
 }
 
@@ -282,17 +282,18 @@ inactive_text_padding=''
 [ -z "$window_right_glyph" ] && inactive_text_padding=' '
 
 # Agent icon after the window name, from the state keeptabs pushes into each window.
-# The active text ends in a space and the inactive text does not, so the icon's
-# space goes on the other side.
-inactive_agent_marker='' active_agent_marker='' keeptabs_tick=''
+# On the active pill the state colours have too little contrast as text, so there the
+# icon is a badge in the state colour that runs into the right cap.
+active_pill_colour='#{@thm_secondary}'
+inactive_agent_marker='' active_agent_marker='' active_right_cap_colour=$active_pill_colour keeptabs_tick=''
 if [ "$(option @oasis_window_agents)" = on ]; then
-  agent_icon='#[fg=#{E:@oasis_window_agent_colour}]#{E:@oasis_window_agent_glyph}'
-  inactive_agent_marker="#{?#{@keeptabs_state}, $agent_icon,}"
-  active_agent_marker="#{?#{@keeptabs_state},$agent_icon ,}"
+  inactive_agent_marker='#{?#{@keeptabs_state}, #[fg=#{E:@oasis_window_agent_colour}]#{E:@oasis_window_agent_glyph},}'
+  active_agent_marker='#{?#{@keeptabs_state},#[bg=#{E:@oasis_window_agent_colour}] #{E:@oasis_window_agent_glyph} ,}'
+  active_right_cap_colour="#{?#{@keeptabs_state},#{E:@oasis_window_agent_colour},$active_pill_colour}"
   # Only in the active tab, so it runs once per client per refresh rather than once per tab.
   # The grep keeps an older keeptabs-status, which ignores --once and never exits, from starting.
   # Backticks, not $(): tmux ends the #() at the first ")".
   keeptabs_tick='#(tick=`command -v keeptabs-status` && grep -q -e --once "$tick" && "$tick" --once >/dev/null 2>&1)'
 fi
 tmux set -g window-status-format "$(window_format "$SURFACE_COLOUR" "$inactive_text_style" window_inactive "$inactive_text_padding" "$inactive_agent_marker")"
-tmux set -g window-status-current-format "$keeptabs_tick$(window_format '#{@thm_secondary}' "$active_text_style" window_active '' "$active_agent_marker")"
+tmux set -g window-status-current-format "$keeptabs_tick$(window_format "$active_pill_colour" "$active_text_style" window_active '' "$active_agent_marker" "$active_right_cap_colour")"

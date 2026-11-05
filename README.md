@@ -72,7 +72,7 @@ Choose from 16 distinct desert-inspired base styles, each with its own personali
     <summary>✨ AI agent state on window tabs</summary>
     <!-- window-agents:start -->
     <h3>✨ See which windows need you</h3>
-    With <a href="https://github.com/uhs-robert/keeptabs">keeptabs</a> and its Claude Code or Codex hooks installed, each window that runs an agent shows an icon after its name: in the primary colour while running, green when done, yellow while it waits for you, muted when idle. It is off by default. To turn it on:
+    With <a href="https://github.com/uhs-robert/keeptabs">keeptabs</a> and its Claude Code or Codex hooks installed, each window that runs an agent shows an icon after its name: in the primary colour while running, green when done, yellow while it waits for you, muted when idle. On the active tab the icon sits on a badge in that colour. It is off by default. To turn it on:
     <pre>set -g @oasis_window_agents "on"
 set -g status-interval 1</pre>
     The one-second interval makes the running icon animate smoothly. See <a href="#config-options">all configuration options</a>.
@@ -376,11 +376,11 @@ set -g @oasis_window_separator_right "" # Optional glyph override for the right 
 
 # AI agent state on window tabs (opt-in). Needs keeptabs (https://github.com/uhs-robert/keeptabs)
 # and its Claude Code or Codex hooks, which set @keeptabs_state on each window that runs an agent.
-# Windows without an agent show nothing extra. While on, the active tab runs `keeptabs-status --once`
+# On the active tab the icon sits on a badge in the state colour. Windows without an agent show nothing extra. While on, the active tab runs `keeptabs-status --once`
 # on each refresh if it is installed; `set -g status-interval 1` makes the running icon animate smoothly.
 set -g @oasis_window_agents "off"
 set -g @oasis_agent_icon "󰚩"                       # Shown after the window name
-set -g @oasis_agent_icon_alt "󰛣"                   # Alternates with the icon while an agent runs
+set -g @oasis_agent_icon_alt "󱚣"                   # Alternates with the icon while an agent runs
 set -g @oasis_agent_running_color "#{@thm_primary}"
 set -g @oasis_agent_done_color "#{@thm_green}"
 set -g @oasis_agent_waiting_color "#{@thm_yellow}" # Waiting for your input
