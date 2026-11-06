@@ -287,8 +287,15 @@ set -g @oasis_window_separator_right "" # Optional glyph override for the right 
 # On the active tab the icon sits on a badge in the state colour. Windows without an agent show nothing extra. While on, the active tab runs `keeptabs-status --once`
 # on each refresh if it is installed; `set -g status-interval 1` makes the running icon animate smoothly.
 set -g @oasis_window_agents "off"
-set -g @oasis_agent_icon "󰚩"                       # Shown after the window name
-set -g @oasis_agent_icon_alt "󱚣"                   # Alternates with the icon while an agent runs
+set -g @oasis_agent_running_icon "󰚩"               # md-robot
+set -g @oasis_agent_done_icon "󰗠"                  # md-check_circle
+set -g @oasis_agent_waiting_icon "󰂞"               # md-bell_ring
+set -g @oasis_agent_idle_icon "󱙺"                  # md-robot_outline
+# Optional second frame per state, shown while @keeptabs_frame is 1. Empty keeps the icon still.
+set -g @oasis_agent_running_icon_alt "󱚣"           # md-robot_excited
+set -g @oasis_agent_done_icon_alt ""
+set -g @oasis_agent_waiting_icon_alt ""
+set -g @oasis_agent_idle_icon_alt ""
 set -g @oasis_agent_running_color "#{@thm_primary}"
 set -g @oasis_agent_done_color "#{@thm_green}"
 set -g @oasis_agent_waiting_color "#{@thm_yellow}" # Waiting for your input

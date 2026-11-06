@@ -287,7 +287,11 @@ inactive_text_padding=''
 active_pill_colour='#{@thm_secondary}'
 inactive_agent_marker='' active_agent_marker='' active_right_cap_colour=$active_pill_colour keeptabs_tick=''
 if [ "$(option @oasis_window_agents)" = on ]; then
-  inactive_agent_marker='#{?#{@keeptabs_state}, #[fg=#{E:@oasis_window_agent_colour}]#{E:@oasis_window_agent_glyph},}'
+  # kitty draws an icon two cells wide only when a space follows it, as in the active badge.
+  # A capless pill already pads the text with one.
+  inactive_icon_padding=' '
+  [ -z "$window_right_glyph" ] && inactive_icon_padding=''
+  inactive_agent_marker="#{?#{@keeptabs_state}, #[fg=#{E:@oasis_window_agent_colour}]#{E:@oasis_window_agent_glyph}$inactive_icon_padding,}"
   active_agent_marker='#{?#{@keeptabs_state},#[bg=#{E:@oasis_window_agent_colour}] #{E:@oasis_window_agent_glyph} ,}'
   active_right_cap_colour="#{?#{@keeptabs_state},#{E:@oasis_window_agent_colour},$active_pill_colour}"
   # Only in the active tab, so it runs once per client per refresh rather than once per tab.
