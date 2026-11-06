@@ -63,103 +63,11 @@ Oasis provides a fully styled status line with a robust dynamic mode indicator f
 
 Choose from 16 distinct desert-inspired base styles, each with its own personality and color palette. Dual-mode themes now ship with one dark plus five fine-grained light variants.
 
-<details>
-<summary>✨ What's New / 🚨 Breaking Changes</summary>
-<br/>
-<!-- whats-new:start -->
+> [!NOTE]
+> News and breaking changes for each version are in [Releases](https://github.com/uhs-robert/tmux-oasis/releases). TPM installs from `main`, so breaking changes that are on `main` but not yet released are listed here.
 
-  <details>
-    <summary>✨ AI agent state on window tabs</summary>
-    <!-- window-agents:start -->
-    <h3>✨ See which windows need you</h3>
-    With <a href="https://github.com/uhs-robert/keeptabs">keeptabs</a> and its Claude Code or Codex hooks installed, each window that runs an agent shows an icon after its name: in the primary colour while running, green when done, yellow while it waits for you, muted when idle. On the active tab the icon sits on a badge in that colour. It is off by default. To turn it on:
-    <pre>set -g @oasis_window_agents "on"
-set -g status-interval 1</pre>
-    The one-second interval makes the running icon animate smoothly. See <a href="#config-options">all configuration options</a>.
-    <!-- window-agents:end -->
-  </details>
-
-  <details>
-    <summary>✨ Pane header bars</summary>
-    <!-- pane-headers:start -->
-    <h3>✨ Header bars replace the border arrow</h3>
-    With two or more panes in a window, each pane gets a header bar showing its command (<code>@oasis_pane_border_format</code>). The focused pane's header and border are in the primary colour, unfocused ones in a dim colour that stays visible with <code>@oasis_dim_inactive</code> on. Lone and zoomed panes have no header. To keep the previous arrow instead:
-    <pre>set -g @oasis_pane_borders "arrows"</pre>
-    <!-- pane-headers:end -->
-  </details>
-
-  <details>
-    <summary>✨ v2.2: Configurable Status Line Layout</summary>
-    <!-- v2.2:start -->
-    <h3>✨ Configurable layout</h3>
-    Hide, regroup or reorder status line modules with <code>@oasis_status_left</code> and <code>@oasis_status_right</code>, pick a separator style with <code>@oasis_separator</code>, or add your own modules. Each side holds at most two groups (an accent group at the edge and one surface group); extra <code>|</code> groups are merged into the surface group with a warning. The default right side is now <code>sync folder | clock</code>. See the <a href="#example-layouts">example layouts</a>.
-    <h3>✨ Window separators</h3>
-    Windows get their own caps with <code>@oasis_window_separator</code> (<code>round</code>, <code>powerline</code>, <code>slant</code> or <code>flat</code>, default <code>round</code>). Override single caps with <code>@oasis_window_separator_left</code> and <code>@oasis_window_separator_right</code>.
-    <h3>✨ Module states</h3>
-    A module can show a warn or crit state through <code>@oasis_module_&lt;name&gt;_state</code>, coloured by <code>@oasis_state_warn_color</code> and <code>@oasis_state_crit_color</code>.
-    <h3>✨ New opt-in modules</h3>
-    Not in the default layout; add them to <code>@oasis_status_left</code> or <code>@oasis_status_right</code>.
-    <table>
-      <tr><td><code>git</code></td><td>Branch of the active pane, marked while there are uncommitted changes</td></tr>
-      <tr><td><code>battery</code></td><td>Battery level, hidden without a battery and while fully charged</td></tr>
-      <tr><td><code>host</code></td><td>Short hostname, coloured by <code>@oasis_host_states</code></td></tr>
-      <tr><td><code>ssh</code></td><td>Remote host while the active pane runs ssh</td></tr>
-      <tr><td><code>load</code></td><td>1-minute load average</td></tr>
-      <tr><td><code>ram</code></td><td>Used memory in percent</td></tr>
-      <tr><td><code>cpu</code></td><td>CPU usage in percent</td></tr>
-      <tr><td><code>disk</code></td><td>Used space of one filesystem (<code>@oasis_disk_path</code>)</td></tr>
-    </table>
-    See <a href="#config-options">all configuration options</a>.
-    <h3>✨ Moonlight is the new default style</h3>
-    To keep the previous look, set <code>@oasis_flavor "lagoon_dark"</code>.
-    <h3>🚨 Restart tmux after updating</h3>
-    Reloading your config in an already-running tmux shows doubled separators. Restart tmux once (<code>tmux kill-server</code>) to clear it.
-    <blockquote>
-    <strong>Note:</strong> If you overrode a built-in module such as <code>@oasis_module_clock</code>, <code>@oasis_module_window_active</code> or <code>@oasis_module_window_inactive</code>, it should now contain only its text. Separators and colours are added for you.
-    </blockquote>
-    <!-- v2.2:end -->
-  </details>
-
-  <details>
-    <summary>🚨 v2.0: Dual Style Themes / Deprecated Themes</summary>
-    <!-- v4:start -->
-    <h3>✨ Dual Style Themes</h3>
-    Each style now has <strong>5 light theme variants</strong>.
-    <ul>
-      <li>Check out the <a href="#%EF%B8%8F-light-styles">new light theme screenshots</a>.</li>
-    </ul>
-    <h3>🚨 BREAKING CHANGE: Deprecated Light Theme Migration</h3>
-    The following standalone <strong>light themes have been deprecated</strong> in favor of the dual-mode system:
-    <table>
-      <tr>
-        <td>Dawn</td>
-        <td>Replaced with <code>night_light_1</code></td>
-      </tr>
-      <tr>
-        <td>Dawnlight</td>
-        <td>Replaced with <code>night_light_2</code></td>
-      </tr>
-      <tr>
-        <td>Day</td>
-        <td>Replaced with <code>night_light_3</code></td>
-      </tr>
-      <tr>
-        <td>Dusk</td>
-        <td>Replaced with <code>night_light_4</code></td>
-      </tr>
-      <tr>
-        <td>Dust</td>
-        <td>Replaced with <code>night_light_5</code></td>
-      </tr>
-    </table>
-    <blockquote>
-    <strong>Note:</strong> The migration table above shows direct replacements. All deprecated themes were based on the <code>night</code> style family.
-    </blockquote>
-    <br/>
-    <!-- v4:end -->
-  </details>
-<!-- whats-new:end -->
-</details>
+<!-- unreleased-breaking:start -->
+<!-- unreleased-breaking:end -->
 
 ## 🌙 Dark Styles
 

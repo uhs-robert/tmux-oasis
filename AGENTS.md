@@ -11,7 +11,7 @@ A tmux theme (16 styles, each with one dark and five light variants) with a stat
 Every new module needs:
 
 - an icon option, `@oasis_<name>_icon`: a Nerd Font codepoint checked against the cheat sheet, stored as an escape;
-- an entry in the README configuration block, and a line in the next What's New;
+- an entry in the README configuration block, and a line in the draft release notes;
 - Linux and macOS paths, with the macOS path flagged in the PR as untested unless a Mac was available;
 - an `@oasis_module_<name>_when` condition that hides the module, its group and its separators wherever it does not apply (see `status/modules/git.conf`): an empty result alone leaves the separators drawn;
 - tests in `tests/<name>.sh`, run by `just test`.
@@ -24,7 +24,8 @@ Scripts read their own options with `oasis_option`, not through arguments. The o
 - Conventional Commits with scopes from history (`status`, `theme`, `panes`); bodies explain why. Short, reviewer-focused PR bodies.
 - README screenshots of layouts and modes are 120-column native renders (1200x22) of a neutral fixture: session "Config", windows yazi and nvim, folder "statusbar", host "oasis-server", git on a clean `main`. Each example group shows one text module. Number and icon modules may share one.
 - The owner merges PRs. Don't merge without their approval.
-- Every user-facing option goes in the README configuration block (`<!-- config:start -->` to `<!-- config:end -->`) with its default. Notable or breaking changes get an entry in What's New.
+- Every user-facing option goes in the README configuration block (`<!-- config:start -->` to `<!-- config:end -->`) with its default.
+- News lives in GitHub Releases, not the README. A PR with a notable change adds a line to the draft release for the next version. Small fixes go there too, as one line. `gh release edit <tag> --notes-file` replaces the whole body, so save the current body first (`gh release view <tag> --json body -q .body`), append the line to that file, then pass the whole file. With no draft yet, create one with `gh release create <tag> --draft`. Contributors without write access put the line under "Release note" in the PR body, and the owner adds it to the draft. TPM installs from `main`, so a breaking change also goes in the README between `<!-- unreleased-breaking:start -->` and `<!-- unreleased-breaking:end -->`, and that entry moves out when the release ships.
 
 ## Testing
 
