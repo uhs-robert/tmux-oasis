@@ -1,0 +1,13 @@
+contexts:
+  - context:
+      cluster: a
+      namespace: payments
+    name: dev
+  - name: other
+    context:
+      namespace: elsewhere
+      extensions:
+        - name: ext
+          extension:
+            namespace: not-this
+current-context: other
