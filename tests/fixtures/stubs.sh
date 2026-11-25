@@ -1,8 +1,9 @@
 # Helpers for the metric script tests. Sourced after status/scripts/lib.sh.
 # The scripts run with tests/fixtures/bin first on PATH: stand-ins for tmux, nproc,
-# df, sysctl, vm_stat, ps, ip, route, ipconfig and ifconfig that print files from $stub_data. That keeps the tests
+# df, sysctl, vm_stat and ps that print files from $stub_data. That keeps the tests
 # off the real tmux server (a bare tmux would read the owner's options) and lets
 # Linux hosts exercise the macOS parsing.
+# ip, route, ipconfig and ifconfig do the same for the network script.
 stub_data=$(mktemp -d)
 trap 'rm -rf "$stub_data"' EXIT
 export OASIS_STUB_DATA=$stub_data

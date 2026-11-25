@@ -2,7 +2,8 @@
 . "$fixtures_dir/stubs.sh"
 sys_root=$stub_data/sys
 wireguard_dir=$stub_data/wireguard
-mkdir -p "$sys_root/class/net" "$wireguard_dir"
+proc_root=$stub_data/proc
+mkdir -p "$sys_root/class/net" "$wireguard_dir" "$proc_root/net"
 
 # Usage: add_interface NAME FLAGS [UEVENT_LINE]
 add_interface() {
@@ -13,7 +14,7 @@ add_interface() {
 reset() { rm -rf "$sys_root/class/net"/* "$wireguard_dir"/* "$stub_data"/{ip,route,ifconfig,ipconfig.*}; }
 lan_route() { echo "1.1.1.1 via 192.168.1.1 dev wlan0 src 192.168.1.170 uid 1000" > "$stub_data/ip"; }
 net() {
-  run_script network text OASIS_UNAME=${uname_name:-Linux} OASIS_SYS_ROOT="$sys_root" OASIS_WIREGUARD_RUN_DIR="$wireguard_dir" \
+  run_script network text OASIS_UNAME=${uname_name:-Linux} OASIS_SYS_ROOT="$sys_root" OASIS_PROC_ROOT="$proc_root" OASIS_WIREGUARD_RUN_DIR="$wireguard_dir" \
     opt_oasis_network_icon="I " opt_oasis_network_vpn_icon=V "$@"
 }
 
@@ -37,9 +38,14 @@ add_interface home0 0x80d1 DEVTYPE=wireguard
 assert_equals "wireguard by devtype under any name" "I 192.168.1.170 V" "$(net)"
 rm -rf "$sys_root/class/net/home0"
 add_interface tailscale0 0x1091
-assert_equals "tailscale up" "I 192.168.1.170 V" "$(net)"
+assert_equals "tailscale up flag without if_inet6 is trusted" "I 192.168.1.170 V" "$(net)"
+cp "$fixtures_dir/linux/if_inet6_tailscale_down" "$proc_root/net/if_inet6"
+assert_equals "tailscale0 up but without a global address (tailscale down)" "I 192.168.1.170" "$(net)"
+cp "$fixtures_dir/linux/if_inet6_tailscale_up" "$proc_root/net/if_inet6"
+assert_equals "tailscale up with its global address" "I 192.168.1.170 V" "$(net)"
 add_interface tailscale0 0x1090
-assert_equals "tailscale down" "I 192.168.1.170" "$(net)"
+assert_equals "tailscale interface down" "I 192.168.1.170" "$(net)"
+rm "$proc_root/net/if_inet6"
 add_interface tun0 0x1091 DEVTYPE=tun
 assert_equals "other tunnels are not VPNs" "I 192.168.1.170" "$(net)"
 

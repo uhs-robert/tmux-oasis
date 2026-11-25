@@ -267,7 +267,7 @@ set -g @oasis_mode_custom_zoom "ZOOM"
 # merged into the inner one, with a warning at load.
 # Remove a module or group to hide it; an empty string hides the whole side.
 # Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery, user, uptime, application, kube, temp, network (or your own, see below)
-# git, battery and network are not in the default layout; add them to try them, e.g. "git battery | clock"
+# git and battery are not in the default layout; add them to try them, e.g. "git battery | clock"
 set -g @oasis_status_left "mode | session"
 set -g @oasis_status_right "sync folder | clock"
 
@@ -381,7 +381,7 @@ set -g @oasis_kube_icon "󱃾"         # Icon/text shown before the context
 set -g @oasis_kube_namespace "auto"  # "auto" shows context/namespace unless it is "default", "always" shows it, "never" hides it
 
 # Network module settings (main IPv4 address from the default route; hidden without one)
-set -g @oasis_network_icon "󰀀 "  # Icon/text shown before the address
+set -g @oasis_network_icon " "  # Icon/text shown before the address
 set -g @oasis_network_vpn_icon ""  # Shown after the address while a WireGuard or Tailscale interface is up; text or empty for none
 set -g @oasis_network_show_interface "off"  # "on" adds the interface name after the address
 
