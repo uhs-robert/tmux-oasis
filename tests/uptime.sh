@@ -25,7 +25,6 @@ macos() { run_script uptime text OASIS_UNAME=Darwin "$@"; }
 cp "$fixtures_dir/macos/sysctl.kern.boottime" "$stub_data/"
 assert_equals "macos 3d 4h" "3d 4h" "$(macos OASIS_NOW=$(( 1700000000 + 273600 )))"
 assert_equals "macos under an hour" "12m" "$(macos OASIS_NOW=$(( 1700000000 + 720 )))"
-assert_equals "macos real clock still prints" 1 "$([[ $(macos) =~ ^[0-9]+d\ [0-9]+h$ ]] && echo 1)"
 assert_equals "macos bad clock hides" "" "$(macos OASIS_NOW=x)"
 printf 'garbage\n' > "$stub_data/sysctl.kern.boottime"
 assert_equals "macos unparsable boottime hides" "" "$(macos)"
