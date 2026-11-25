@@ -1,0 +1,9 @@
+contexts:
+- context:
+    namespace: first
+  name: one
+# a comment at column 0 inside the list
+- context:
+    namespace: payments # trailing comment
+  name: dev # trailing comment
+current-context: dev # was prod

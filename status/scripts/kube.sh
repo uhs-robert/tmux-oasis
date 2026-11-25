@@ -6,42 +6,63 @@
 # so does the first file that defines the context entry. #() jobs see the tmux server's environment.
 . "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-# Strips the key, surrounding whitespace (CR included) and one pair of quotes from a "key: value" line
+# Usage: yaml_value LINE. Sets yaml_result to the value of a "key: value" line: surrounding
+# whitespace (CR included), one pair of quotes and a trailing comment are dropped.
+# It sets a variable instead of printing because a $() per line made big files slow.
 yaml_value() {
   local value=${1#*:}
   value=${value#"${value%%[![:space:]]*}"}
-  value=${value%"${value##*[![:space:]]}"}
   case $value in
-    \"*\") value=${value#\"}; value=${value%\"} ;;
-    \'*\') value=${value#\'}; value=${value%\'} ;;
+    \"*) value=${value#\"}; value=${value%%\"*} ;;
+    \'*) value=${value#\'}; value=${value%%\'*} ;;
+    *)
+      value=${value%%[[:space:]]#*}
+      value=${value%"${value##*[![:space:]]}"} ;;
   esac
-  printf '%s' "$value"
+  yaml_result=$value
 }
 
 # Usage: scan_file FILE WANTED_CONTEXT
-# Sets file_current from the top-level current-context key. With WANTED_CONTEXT, sets
+# Sets file_current from the top-level current-context key. With WANTED_CONTEXT, also sets
 # file_namespace and file_has_context from the matching entry of the contexts list.
+# Without it, the contexts list is skipped and the scan stops at current-context.
 scan_file() {
-  local line section="" entry_name="" entry_namespace="" in_entry=0
+  local line section="" entry_name="" entry_namespace="" in_entry=0 seq_indent=-1 indent rest key_prefix="" namespace_indent=0
   file_current="" file_namespace="" file_has_context=0
   while IFS= read -r line || [ -n "$line" ]; do
     case $line in
-      current-context:*) file_current=$(yaml_value "$line"); section=other; continue ;;
-      contexts:*) section=contexts; continue ;;
+      \#*) continue ;;
+      current-context:*)
+        yaml_value "$line"; file_current=$yaml_result; section=other
+        [ -n "$2" ] || return 0
+        continue ;;
+      contexts:*) section=contexts; seq_indent=-1; in_entry=0; continue ;;
       [![:space:]-]*) section=other; continue ;;
     esac
-    [ "$section" = contexts ] || continue
-    case $line in
+    [ "$section" = contexts ] && [ -n "$2" ] || continue
+    indent=${line%%[![:space:]]*}
+    rest=${line#"$indent"}
+    # An entry starts at a dash; later dashes deeper than the first belong to the entry's own lists
+    case $rest in
       "- "*|"-")
-        in_entry=1; entry_name=""; entry_namespace=""
-        line=${line#-}; line="  ${line# }" ;;
+        [ "$seq_indent" -ge 0 ] || seq_indent=${#indent}
+        if [ "${#indent}" -eq "$seq_indent" ]; then
+          in_entry=1; entry_name=""; entry_namespace=""; namespace_indent=-1
+          key_prefix="$indent  "
+          rest=${rest#-}; rest=${rest# }
+          line="$key_prefix$rest"
+        fi ;;
     esac
     [ "$in_entry" = 1 ] || continue
     case $line in
-      "  name:"*) entry_name=$(yaml_value "$line") ;;
-      *[[:space:]]namespace:*) entry_namespace=$(yaml_value "$line") ;;
+      "${key_prefix}name:"*) yaml_value "$line"; entry_name=$yaml_result ;;
+      # The shallowest namespace is the context's own, not one inside an extension
+      *[[:space:]]namespace:*)
+        if [ "$namespace_indent" -lt 0 ] || [ "${#indent}" -le "$namespace_indent" ]; then
+          yaml_value "$line"; entry_namespace=$yaml_result; namespace_indent=${#indent}
+        fi ;;
     esac
-    if [ -n "$2" ] && [ "$entry_name" = "$2" ]; then
+    if [ "$entry_name" = "$2" ]; then
       file_has_context=1; file_namespace=$entry_namespace
     fi
   done < "$1"
