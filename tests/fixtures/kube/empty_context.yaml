@@ -1,0 +1,21 @@
+apiVersion: v1
+clusters:
+- cluster:
+    server: https://a.example
+  name: a
+contexts:
+- context:
+    cluster: a
+    namespace: payments
+    user: u
+  name: dev
+- context:
+    cluster: a
+    user: u
+  name: plain
+current-context: ""
+kind: Config
+users:
+- name: u
+  user:
+    token: x
