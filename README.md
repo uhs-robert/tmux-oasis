@@ -379,7 +379,7 @@ set -g @oasis_pane_borders "header" # "header" gives each pane a title bar, acce
 set -g @oasis_pane_border_format " #{pane_current_command} " # Header text (tmux format), only in "header" mode
 
 # User module settings (opt-in: add "user" to a layout). Shows the login of the tmux server owner, hidden when tmux has no #{user}
-set -g @oasis_user_icon "󰀄 "   # Icon/text shown before the user name
+set -g @oasis_user_icon "󰀄 "   # Icon/text shown before the user name, needs tmux 3.3
 ```
 
 <!-- config:end -->
