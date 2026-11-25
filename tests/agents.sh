@@ -50,6 +50,7 @@ run_after() {
 robot='"<U+F06A9> "'
 robot_excited='"<U+F16A3> "'
 bell='"<U+F009E> "'
+bell_outline='"<U+F009F> "'
 check='"<U+F05E0> "'
 robot_outline='"<U+F167A> "'
 active_pill='#f0e68c'
@@ -68,10 +69,11 @@ assert_equals "idle: the robot outline in the border tone" "fg=#4e6578 bg=$inact
 assert_equals "no agent: the cap follows the name" "$round_right_cap" "$(run_after ' 4 none')"
 assert_equals "round: a space between the inactive icon and the cap" "fg=#7fcf78 bg=$inactive_pill $check + $round_right_cap" "$(run_after ' 1 editor ' 2)"
 assert_equals "running, active tab, frame 0: a robot badge that runs into the cap" "fg=#0c0e13 bg=#7fa3c9 bold \" <U+F06A9> \" + fg=#7fa3c9 bg=#141c24 bold \"<U+E0B4>\"" "$(run_after ' 0 ' 2)"
-frame_0_still_states="$(run_after ' 1 editor ')|$(run_after ' 2 logs ')|$(run_after ' 3 idle ')"
+frame_0_still_states="$(run_after ' 1 editor ')|$(run_after ' 3 idle ')"
 on_server "$agents_server" set -g @keeptabs_frame 1
 assert_equals "running, active tab, frame 1: the excited robot" "fg=#0c0e13 bg=#7fa3c9 bold \" <U+F16A3> \"" "$(run_after ' 0 ')"
-assert_equals "done, waiting and idle, frame 1: still" "$frame_0_still_states" "$(run_after ' 1 editor ')|$(run_after ' 2 logs ')|$(run_after ' 3 idle ')"
+assert_equals "done and idle, frame 1: still" "$frame_0_still_states" "$(run_after ' 1 editor ')|$(run_after ' 3 idle ')"
+assert_equals "waiting, frame 1: the outline bell by default" "fg=#f0e68c bg=$inactive_pill $bell_outline" "$(run_after ' 2 logs ')"
 
 on_server "$agents_server" set -g @oasis_agent_waiting_icon_alt $'\xf3\xb1\x9a\xa3'
 assert_equals "a user-set waiting alt, frame 1: swapped in" "fg=#f0e68c bg=$inactive_pill $robot_excited" "$(run_after ' 2 logs ')"
