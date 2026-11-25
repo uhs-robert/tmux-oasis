@@ -28,3 +28,12 @@ assert_equals "thresholds are options" crit "$(fake_warn=40 fake_crit=60 state s
 assert_equals "text ignores thresholds" "62$deg" "$(fake_warn=40 fake_crit=60 text sys_temp_k10temp)"
 assert_equals "macos is hidden" "" "$(OASIS_UNAME=Darwin text sys_temp_k10temp)"
 assert_equals "unsupported system is hidden" "" "$(OASIS_UNAME=FreeBSD text sys_temp_k10temp)"
+
+assert_equals "Tdie is preferred over Tctl" "55$deg" "$(text sys_temp_tdie)"
+assert_equals "zenpower is a cpu sensor" "58$deg" "$(text sys_temp_zenpower)"
+assert_equals "thermal zone type cpu-thermal" "48$deg" "$(text sys_temp_cpu_dash)"
+assert_equals "69499 rounds down and is ok" ok "$(state sys_temp_69499)"
+assert_equals "69500 rounds up and is warn" warn "$(state sys_temp_69500)"
+assert_equals "79499 is still warn" warn "$(state sys_temp_79499)"
+assert_equals "79500 rounds up and is crit" crit "$(state sys_temp_79500)"
+assert_equals "negative reading is hidden" "" "$(text sys_temp_negative)"
