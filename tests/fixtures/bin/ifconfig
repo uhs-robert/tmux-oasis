@@ -1,0 +1,3 @@
+#!/bin/sh
+# Prints $OASIS_STUB_DATA/ifconfig; fails when the file is missing, like a host without a route
+cat "$OASIS_STUB_DATA/ifconfig" 2>/dev/null
