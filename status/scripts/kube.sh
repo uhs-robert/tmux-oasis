@@ -42,6 +42,7 @@ scan_file() {
     [ "$section" = contexts ] && [ -n "$2" ] || continue
     indent=${line%%[![:space:]]*}
     rest=${line#"$indent"}
+    case $rest in \#*) continue ;; esac
     # An entry starts at a dash; later dashes deeper than the first belong to the entry's own lists
     case $rest in
       "- "*|"-")
