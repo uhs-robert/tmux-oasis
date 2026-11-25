@@ -266,7 +266,7 @@ set -g @oasis_mode_custom_zoom "ZOOM"
 # most two groups: accent at the screen edge, surface inside it. Extra groups are
 # merged into the inner one, with a warning at load.
 # Remove a module or group to hide it; an empty string hides the whole side.
-# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery, user, uptime (or your own, see below)
+# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery, user, uptime, application (or your own, see below)
 # git and battery are not in the default layout; add them to try them, e.g. "git battery | clock"
 set -g @oasis_status_left "mode | session"
 set -g @oasis_status_right "sync folder | clock"
@@ -383,6 +383,10 @@ set -g @oasis_pane_border_format " #{pane_current_command} " # Header text (tmux
 
 # User module settings (opt-in: add "user" to a layout). Shows the login of the tmux server owner, hidden when tmux has no #{user}
 set -g @oasis_user_icon "󰀄 "   # Icon/text shown before the user name, needs tmux 3.3
+
+# Application module settings (opt-in: add "application" to a layout). Shows the active pane's program, cut to 15 characters; hidden while it runs a shell
+set -g @oasis_application_icon "󰣆 "                          # Icon/text shown before the program name
+set -g @oasis_application_hidden_regex "^-?(bash|zsh|fish|sh|dash)$"  # Hide while the command matches this regex (no commas); empty shows every command
 ```
 
 <!-- config:end -->
