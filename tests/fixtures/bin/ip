@@ -1,3 +1,4 @@
 #!/bin/sh
-# Prints $OASIS_STUB_DATA/ip; fails when the file is missing, like a host without a route
+# Only `ip -4 route get 1.1.1.1` is known; it prints $OASIS_STUB_DATA/ip and fails when the file is missing, like a host without a route
+[ "$*" = "-4 route get 1.1.1.1" ] || { echo "ip stub: unexpected call: $*" >&2; exit 2; }
 cat "$OASIS_STUB_DATA/ip" 2>/dev/null

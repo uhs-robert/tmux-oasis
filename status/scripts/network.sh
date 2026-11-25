@@ -20,17 +20,30 @@ linux_main_address() {
   [ -n "$address" ] && printf '%s %s' "$interface" "$address"
 }
 
+# tailscale0 keeps its up flag after `tailscale down` while tailscaled runs, but loses its
+# addresses. It always holds a global-scope IPv6 one (scope 00 in if_inet6). Without
+# if_inet6 (IPv6 disabled) the up flag has to do.
+tailscale_has_address() {
+  local address index plen scope flags name
+  [ -r "$OASIS_PROC_ROOT/net/if_inet6" ] || return 0
+  while read -r address index plen scope flags name; do
+    [ "$name" = "$1" ] && [ "$scope" = 00 ] && return 0
+  done < "$OASIS_PROC_ROOT/net/if_inet6"
+  return 1
+}
+
 # An interface is a VPN when it is up and is a WireGuard device or named tailscale*.
 # operstate reads "unknown" for both, so the up flag (bit 0x1) is used.
 linux_vpn_up() {
   local dir name flags line
   for dir in "$OASIS_SYS_ROOT"/class/net/*/; do
     [ -d "$dir" ] || continue
-    name=$(basename "$dir")
+    name=${dir%/}
+    name=${name##*/}
     flags=
     read -r flags < "$dir/flags" 2>/dev/null
     [ -n "$flags" ] && [ $(( flags & 1 )) -eq 1 ] || continue
-    case $name in tailscale*) return 0 ;; esac
+    case $name in tailscale*) tailscale_has_address "$name" && return 0; continue ;; esac
     while read -r line; do
       [ "$line" = DEVTYPE=wireguard ] && return 0
     done < "$dir/uevent" 2>/dev/null
