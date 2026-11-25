@@ -386,7 +386,7 @@ set -g @oasis_user_icon "󰀄 "   # Icon/text shown before the user name, needs 
 
 # Application module settings (opt-in: add "application" to a layout). Shows the active pane's program, cut to 15 characters; hidden while it runs a shell
 set -g @oasis_application_icon "󰣆 "                          # Icon/text shown before the program name
-set -g @oasis_application_hidden_regex "^-?(bash|zsh|fish|sh|dash)$"  # Hide while the command matches this regex (no commas); empty shows every command
+set -g @oasis_application_hidden_regex "^-?(bash|zsh|fish|sh|dash)$"  # Hide while the command matches this regex; empty shows every command
 ```
 
 <!-- config:end -->
