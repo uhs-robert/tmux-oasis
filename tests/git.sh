@@ -48,7 +48,7 @@ draw_git_bar() {
   env -u TMUX tmux -L oasis-gitbat-draw set -g @oasis_git_icon 'I I'
   env -u TMUX tmux -L oasis-gitbat-draw set -g @oasis_status_right git
   env -u TMUX tmux -L oasis-gitbat-draw source-file "$checkout_dir/oasis_tmux.conf"
-  (env -u TMUX timeout 4 script -qfc "stty cols 100 rows 10; env -u TMUX tmux -L oasis-gitbat-draw attach -t t" "$scratch/term.log" >/dev/null 2>&1 || true)
+  (sleep 5 | env -u TMUX timeout 4 script -qfc "stty cols 100 rows 10; env -u TMUX tmux -L oasis-gitbat-draw attach -t t" "$scratch/term.log" >/dev/null 2>&1 || true)
   env -u TMUX tmux -L oasis-gitbat-draw kill-server 2>/dev/null || true
   sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$scratch/term.log"
 }

@@ -31,7 +31,7 @@ host_tmux set -g @oasis_status_left "host"
 host_tmux set -g @oasis_status_right ""
 host_tmux set -g @oasis_host_states "\$(touch $scratch/pwned) \`touch $scratch/pwned_tick\`=crit *=crit"
 host_tmux source-file "$checkout_dir/oasis_tmux.conf"
-(env -u TMUX timeout 4 script -qfc "stty cols 100 rows 5; env -u TMUX tmux -L oasis-test-hostssh attach -t t" "$scratch/term.log" >/dev/null 2>&1 || true)
+(sleep 5 | env -u TMUX timeout 4 script -qfc "stty cols 100 rows 5; env -u TMUX tmux -L oasis-test-hostssh attach -t t" "$scratch/term.log" >/dev/null 2>&1 || true)
 assert_equals "hostile host_states ran nothing" "" "$(ls "$scratch" | grep '^pwned' || true)"
 # moonlight_dark crit is #ff7979; the colour only appears if host.sh ran and printed crit
 assert_equals "the crit colour was drawn" yes "$(grep -q '255[;:]121[;:]121' "$scratch/term.log" && echo yes || echo no)"
