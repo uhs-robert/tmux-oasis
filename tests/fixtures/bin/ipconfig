@@ -1,0 +1,3 @@
+#!/bin/sh
+# ipconfig getifaddr IF prints $OASIS_STUB_DATA/ipconfig.IF; fails when the file is missing
+cat "$OASIS_STUB_DATA/ipconfig.$2" 2>/dev/null
