@@ -1,0 +1,5 @@
+contexts:
+- name: rev
+  context:
+    namespace: kube-system
+current-context: rev

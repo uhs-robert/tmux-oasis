@@ -266,8 +266,8 @@ set -g @oasis_mode_custom_zoom "ZOOM"
 # most two groups: accent at the screen edge, surface inside it. Extra groups are
 # merged into the inner one, with a warning at load.
 # Remove a module or group to hide it; an empty string hides the whole side.
-# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery, user, uptime, application (or your own, see below)
-# git and battery are not in the default layout; add them to try them, e.g. "git battery | clock"
+# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery, user, uptime, application, kube (or your own, see below)
+# git, battery and kube are not in the default layout; add them to try them, e.g. "git battery | clock"
 set -g @oasis_status_left "mode | session"
 set -g @oasis_status_right "sync folder | clock"
 
@@ -375,6 +375,10 @@ set -g @oasis_battery_crit "20"    # crit state at or below this percent (not wh
 
 # Uptime module settings (not in the default layout): system uptime, e.g. 3d 4h
 set -g @oasis_uptime_icon "󰔟 "  # Icon/text shown before the uptime
+
+# Kube module settings (hidden without a kubeconfig that sets a current context; reads $KUBECONFIG from the tmux server environment or ~/.kube/config, never runs kubectl)
+set -g @oasis_kube_icon "󱃾"         # Icon/text shown before the context
+set -g @oasis_kube_namespace "auto"  # "auto" shows context/namespace unless it is "default", "always" shows it, "never" hides it
 
 # Pane settings
 set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps the terminal background
