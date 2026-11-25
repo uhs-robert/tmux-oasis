@@ -294,7 +294,7 @@ set -g @oasis_agent_idle_icon "󱙺"                  # md-robot_outline
 # Optional second frame per state, shown while @keeptabs_frame is 1. Empty keeps the icon still.
 set -g @oasis_agent_running_icon_alt "󱚣"           # md-robot_excited
 set -g @oasis_agent_done_icon_alt ""
-set -g @oasis_agent_waiting_icon_alt "󰂟"       # md-bell_ring_outline
+set -g @oasis_agent_waiting_icon_alt "󰂟"           # md-bell_ring_outline
 set -g @oasis_agent_idle_icon_alt ""
 set -g @oasis_agent_running_color "#{@thm_primary}"
 set -g @oasis_agent_done_color "#{@thm_green}"
