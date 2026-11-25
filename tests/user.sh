@@ -11,12 +11,12 @@ icon=$(printf '\363\260\200\204 ')
 login=$(id -un)
 module() { user_tmux display -p "#{E:@oasis_module_user}"; }
 
-assert_equals "icon is nf-md-account" "f3 b0 80 84" "$(printf '%s' "$icon" | head -c 4 | od -An -tx1 | tr -s ' ' | sed 's/^ //;s/ $//')"
 assert_equals "icon and login" "$icon$login" "$(module)"
 assert_equals "shown when the user is known" "1" "$(user_tmux display -p "#{E:@oasis_module_user_when}")"
 
 user_tmux set -g @oasis_user_icon "U:"
 assert_equals "icon override" "U:$login" "$(module)"
 
-user_tmux set -g @oasis_module_user_when "#{!=:,}"
-assert_equals "empty user is hidden" "0" "$(user_tmux display -p "#{E:@oasis_module_user_when}")"
+# Swap #{user} in the shipped condition for a format that expands empty, as on a tmux without it
+user_tmux set -g @oasis_user_when_probe "$(user_tmux show -gv @oasis_module_user_when | sed "s/{user}/{no_such_format}/")"
+assert_equals "empty user is hidden" "0" "$(user_tmux display -p "#{E:@oasis_user_when_probe}")"
