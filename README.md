@@ -266,7 +266,7 @@ set -g @oasis_mode_custom_zoom "ZOOM"
 # most two groups: accent at the screen edge, surface inside it. Extra groups are
 # merged into the inner one, with a warning at load.
 # Remove a module or group to hide it; an empty string hides the whole side.
-# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery, user (or your own, see below)
+# Modules: mode, session, sync, folder, clock, load, ram, cpu, disk, host, ssh, git, battery, user, uptime (or your own, see below)
 # git and battery are not in the default layout; add them to try them, e.g. "git battery | clock"
 set -g @oasis_status_left "mode | session"
 set -g @oasis_status_right "sync folder | clock"
@@ -372,6 +372,9 @@ set -g @oasis_battery_icons "    "  # Five icons, empty to full, 
 set -g @oasis_battery_charging_icon ""  # Shown instead of the level icon while charging
 set -g @oasis_battery_warn "50"    # warn state at or below this percent (not while charging)
 set -g @oasis_battery_crit "20"    # crit state at or below this percent (not while charging)
+
+# Uptime module settings (not in the default layout): system uptime, e.g. 3d 4h
+set -g @oasis_uptime_icon "󰔟 "  # Icon/text shown before the uptime
 
 # Pane settings
 set -g @oasis_dim_inactive "on"   # "on" darkens unfocused panes, "off" keeps the terminal background
